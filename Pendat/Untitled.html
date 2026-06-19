@@ -196,6 +196,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../Aljabar_Linear/Tugas_pertemuan_10.html">Tugas pertemuan 10</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Aljabar_Linear/Tugas_pertemuan_12.html">Tugas Pertemuan 12</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Aljabar_Linear/SVD.html">Singular Value Decomposition (SVD)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Aljabar_Linear/Tugas_Akhir.html">TUGAS AKHIR</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Kecerdasan Komputasional</span></p>
 <ul class="nav bd-sidenav">
@@ -439,7 +440,7 @@ document.write(`
 <h1>Proyek Data Mining: Sistem Rekomendasi Buku (Hybrid Filtering)<a class="headerlink" href="#proyek-data-mining-sistem-rekomendasi-buku-hybrid-filtering" title="Link to this heading">#</a></h1>
 <section id="business-understanding">
 <h2>1. Business Understanding<a class="headerlink" href="#business-understanding" title="Link to this heading">#</a></h2>
-<p>Menjelajahi lautan judul buku yang ada saat ini seringkali justru membuat bingung. Berangkat dari masalah tersebut, sistem rekomendasi ini dibangun dengan satu misi sederhana: menjadi asisten pribadi yang membantu pembaca menemukan buku yang benar-benar pas dengan minat mereka, tanpa harus repot menyaring puluhan ribu pilihan secara manual.</p>
+<p>Mencari judul buku yang ada saat ini seringkali justru membuat bingung, Karna Sering kali kita menemukan rekomendasi buku yang tidak sesuai dengan minat kita. Berangkat dari masalah tersebut, sistem rekomendasi ini dibangun dengan satu misi sederhana: menjadi asisten pribadi yang membantu pembaca menemukan buku yang benar-benar pas dengan minat mereka, tanpa harus repot menyaring puluhan ribu pilihan secara manual.</p>
 <p>Untuk mewujudkannya, proyek ini mengolah Book Recommendation Dataset dari Kaggle. Fokus utamanya adalah meracik sebuah sistem Hybrid Filtering yang mampu menjawab beberapa tantangan teknis di lapangan. Secara spesifik, kita akan mengeksplorasi beberapa hal berikut:</p>
 <ul class="simple">
 <li><p>Bagaimana cara merekomendasikan buku dengan mencocokkan atribut bawaannya (seperti nama penulis dan penerbit) melalui pendekatan <strong>Content-Based Filtering</strong>?</p></li>
@@ -638,7 +639,7 @@ Melihat 10 penulis dengan terbitan buku terbanyak :
 </section>
 <section id="data-preparation">
 <h2>3. Data Preparation<a class="headerlink" href="#data-preparation" title="Link to this heading">#</a></h2>
-<p>Bisa dibilang, fase ini adalah bagian yang paling banyak menyita waktu dalam keseluruhan siklus proyek. Alasannya cukup jelas: data mentah tidak bisa serta-merta langsung diproses oleh algoritma machine learning. Kita perlu mengolah dan merapikannya terlebih dahulu.</p>
+<p>Data mentah tidak bisa serta-merta langsung diproses oleh algoritma machine learning. Kita perlu mengolah dan merapikannya terlebih dahulu.</p>
 <p>Pekerjaan di tahap ini lumayan padat. Kita akan banyak berkutat dengan proses integrasi dari berbagai sumber data, membersihkan anomali atau noise yang mengganggu, menyeleksi fitur-fitur mana saja yang paling relevan, hingga akhirnya merombak struktur data tersebut ke dalam format yang matang dan siap pakai.</p>
 <section id="proses-pertama-menghubungkan-data">
 <h3>Proses pertama : Menghubungkan Data<a class="headerlink" href="#proses-pertama-menghubungkan-data" title="Link to this heading">#</a></h3>
@@ -893,10 +894,7 @@ Total keseluruhan rating yang diberikan oleh kelompok ini: 153421
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dimensi Matriks Pivot akhir (User x Buku):
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> (960, 66)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dimensi Matriks Pivot akhir (User x Buku): (960, 66)
 </pre></div>
 </div>
 <div class="output text_html"><div>
