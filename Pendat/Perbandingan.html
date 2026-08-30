@@ -1,0 +1,1665 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Proyek Data Mining: Sistem Rekomendasi Buku (Hybrid Filtering) &#8212; Catatan MataKuliah</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Pendat/Perbandingan';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Catatan MataKuliah - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Catatan MataKuliah - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to my Note Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Komputasi Aljabar Linear</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Aljabar_Linear/Pertemuan1.html">Pertemuan 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Aljabar_Linear/Pertemuan2.html">Pertemuan 2 (19/02/2026)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Aljabar_Linear/Pertemuan3.html">Pertemuan 3 (26/022026/)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Aljabar_Linear/Pertemuan4.html">Pertemuan 4 (05/03/2026)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Aljabar_Linear/KumpulanTugas.html">KUMPULAN TUGAS TUGAS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Aljabar_Linear/Pertemuan6.html">Pertemuan 6 (02\04\26)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Aljabar_Linear/Pertemuan7.html">Pertemuan7 09\04\26</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Aljabar_Linear/Pertemuan8.html">Pertemuan8 (23/04/26)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Aljabar_Linear/Pertemuan9.html">Pertemuan 9(30/04/2026)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Aljabar_Linear/Pertemuan10.html">Pertemuan 10 (07/05/2026)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Aljabar_Linear/Pertemuan12.html">Pertemuan 12 (21/05/2026)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Aljabar_Linear/Tugas_pertemuan_9.html">Tugas Pertemuan 9</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Aljabar_Linear/Tugas_pertemuan_10.html">Tugas pertemuan 10</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Aljabar_Linear/Tugas_pertemuan_12.html">Tugas Pertemuan 12</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Aljabar_Linear/SVD.html">Singular Value Decomposition (SVD)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Aljabar_Linear/Tugas_Akhir.html">TUGAS AKHIR</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kecerdasan Komputasional</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../KerKom/Pertemuan2.html">Pertemuan 2 (24/02/2026)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../KerKom/Pertemuan3.html">Pertemuan 3 (03/03/2026)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../KerKom/Pertemuan4.html">Pertemuan 4 (10/03/2026)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../KerKom/Pertemuan6.html">Pertemuan 6 07/04/26</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../KerKom/Pertemuan7.html">Pertemuan 7(21/04/26)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../KerKom/Pertemuan8.html">Pertemuan 8 (28/04/26)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FPendat/Perbandingan.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Pendat/Perbandingan.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Proyek Data Mining: Sistem Rekomendasi Buku (Hybrid Filtering)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#business-understanding">1. Business Understanding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding">2. Data Understanding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-skema-struktur-kolom">Evaluasi Skema Struktur Kolom:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temuan-penting-dari-fase-data-understanding">Temuan Penting dari Fase Data Understanding:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preparation">3. Data Preparation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-integrasi-data-dan-analisis-relasi">Langkah 1: Integrasi Data dan Analisis Relasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-pembersihan-data-data-cleaning-pada-data-terintegrasi">Langkah 2: Pembersihan Data (Data Cleaning) pada Data Terintegrasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-3-membangun-fungsi-content-based-filtering">Langkah 3: Membangun Fungsi Content-Based Filtering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-4-membangun-fungsi-collaborative-filtering">Langkah 4: Membangun Fungsi Collaborative Filtering</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-eksekusi-pengujian-dan-komparasi-sistem">4. Modeling (Eksekusi Pengujian dan Komparasi Sistem)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-eksperimen-murni-content-based-filtering">Langkah 1: Eksperimen Murni Content-Based Filtering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-kelemahan-content-based-filtering">Analisis Kelemahan Content-Based Filtering:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-eksperimen-murni-collaborative-filtering">Langkah 2: Eksperimen Murni Collaborative Filtering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-kelemahan-collaborative-filtering">Analisis Kelemahan Collaborative Filtering:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-3-solusi-akhir-berbasis-arsitektur-hybrid-filtering">Langkah 3: Solusi Akhir Berbasis Arsitektur Hybrid Filtering</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">5. Evaluation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-evaluasi-kuantitatif-menggunakan-metrik-rmse">Langkah 1: Evaluasi Kuantitatif Menggunakan Metrik RMSE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penjabaran-logika-matematika-evaluasi-baris-per-baris">Penjabaran Logika Matematika Evaluasi (Baris per Baris):</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-meninjau-kembali-proses-bisnis-kualitatif">Langkah 2: Meninjau Kembali Proses Bisnis (Kualitatif)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deployment">6. Deployment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-serialisasi-komponen-model-model-serialization">Langkah 1: Serialisasi Komponen Model (Model Serialization)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-rencana-pemantauan-dan-pemeliharaan-berkala">Langkah 2: Rencana Pemantauan dan Pemeliharaan Berkala</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-3-kesimpulan-akhir">Langkah 3: Kesimpulan Akhir</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="proyek-data-mining-sistem-rekomendasi-buku-hybrid-filtering">
+<h1>Proyek Data Mining: Sistem Rekomendasi Buku (Hybrid Filtering)<a class="headerlink" href="#proyek-data-mining-sistem-rekomendasi-buku-hybrid-filtering" title="Link to this heading">#</a></h1>
+<section id="business-understanding">
+<h2>1. Business Understanding<a class="headerlink" href="#business-understanding" title="Link to this heading">#</a></h2>
+<p>Ketersediaan volume judul buku yang sangat besar saat ini menimbulkan kendala bagi pembaca dalam menemukan pustaka yang relevan dengan minat mereka. Penelitian ini bertujuan untuk merancang sistem rekomendasi yang dapat mengidentifikasi buku secara cepat dan akurat, guna meminimalkan proses pencarian manual oleh pengguna.</p>
+<p>Untuk mewujudkan tujuan tersebut, proyek ini mengolah <em>Book Recommendation Dataset</em> dari Kaggle dan berfokus pada perancangan arsitektur <em>Hybrid Filtering</em>. Pendekatan ganda ini dipilih secara khusus untuk mengeksplorasi dan menyelesaikan beberapa tantangan teknis utama berikut:</p>
+<ul class="simple">
+<li><p>Bagaimana cara merekomendasikan buku dengan mencocokkan atribut bawaannya (seperti nama penulis dan penerbit) menggunakan pendekatan <strong>Content-Based Filtering</strong>?</p></li>
+<li><p>Bagaimana cara memetakan perilaku interaksi dan pola penilaian komunitas melalui <strong>Collaborative Filtering</strong> untuk memberikan saran berdasarkan kelompok pengguna dengan selera bacaan yang mirip?</p></li>
+<li><p>Bagaimana cara mengintegrasikan kedua teknik tersebut ke dalam satu sistem <strong>Hybrid Filtering</strong> untuk saling menutupi kelemahan masing-masing metode tunggal?</p></li>
+<li><p>Bagaimana pendekatan gabungan ini mampu meminimalkan kendala seperti masalah <em>cold-start</em> (kondisi saat data interaksi pengguna masih sangat minim) sekaligus mencegah munculnya daftar rekomendasi yang monoton?</p></li>
+</ul>
+</section>
+<section id="data-understanding">
+<h2>2. Data Understanding<a class="headerlink" href="#data-understanding" title="Link to this heading">#</a></h2>
+<p>Fase ini berfokus pada proses pengumpulan data awal, pemeriksaan karakteristik fisik dataset, serta verifikasi kualitas data. Langkah ini sangat krusial untuk memahami skema relasi, tipe data setiap kolom, serta mengidentifikasi keberadaan anomali atau nilai yang kosong sebelum data dimanipulasi lebih lanjut.</p>
+<p>Dataset ini terdiri atas tiga tabel utama:</p>
+<ol class="arabic simple">
+<li><p><strong>Books.csv</strong>: Memuat informasi atau atribut dari setiap buku.</p></li>
+<li><p><strong>Ratings.csv</strong>: Memuat riwayat interaksi dan penilaian yang diberikan oleh pengguna terhadap buku.</p></li>
+<li><p><strong>Users.csv</strong>: Memuat data demografi dari para pengguna.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mengimpor pustaka dasar untuk analisis data</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">books</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Books.csv&#39;</span><span class="p">,</span> <span class="n">low_memory</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ratings</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Ratings.csv&#39;</span><span class="p">)</span>
+<span class="n">users</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Users.csv&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== INSPEKSI DIMENSI DATA MENTAH ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dimensi Tabel Buku (Baris, Kolom)    :&quot;</span><span class="p">,</span> <span class="n">books</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dimensi Tabel Rating (Baris, Kolom)  :&quot;</span><span class="p">,</span> <span class="n">ratings</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dimensi Tabel Pengguna (Baris, Kolom):&quot;</span><span class="p">,</span> <span class="n">users</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== SAMPEL WUJUD DATA (2 BARIS PERTAMA) ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Sampel Tabel Buku ---&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">books</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Sampel Tabel Rating ---&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">ratings</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Sampel Tabel Pengguna ---&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">users</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== INSPEKSI DIMENSI DATA MENTAH ===
+Dimensi Tabel Buku (Baris, Kolom)    : (271360, 8)
+Dimensi Tabel Rating (Baris, Kolom)  : (1149780, 3)
+Dimensi Tabel Pengguna (Baris, Kolom): (278858, 3)
+
+=== SAMPEL WUJUD DATA (2 BARIS PERTAMA) ===
+
+--- Sampel Tabel Buku ---
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ISBN</th>
+      <th>Book-Title</th>
+      <th>Book-Author</th>
+      <th>Year-Of-Publication</th>
+      <th>Publisher</th>
+      <th>Image-URL-S</th>
+      <th>Image-URL-M</th>
+      <th>Image-URL-L</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0195153448</td>
+      <td>Classical Mythology</td>
+      <td>Mark P. O. Morford</td>
+      <td>2002</td>
+      <td>Oxford University Press</td>
+      <td>http://images.amazon.com/images/P/0195153448.0...</td>
+      <td>http://images.amazon.com/images/P/0195153448.0...</td>
+      <td>http://images.amazon.com/images/P/0195153448.0...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0002005018</td>
+      <td>Clara Callan</td>
+      <td>Richard Bruce Wright</td>
+      <td>2001</td>
+      <td>HarperFlamingo Canada</td>
+      <td>http://images.amazon.com/images/P/0002005018.0...</td>
+      <td>http://images.amazon.com/images/P/0002005018.0...</td>
+      <td>http://images.amazon.com/images/P/0002005018.0...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Sampel Tabel Rating ---
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>User-ID</th>
+      <th>ISBN</th>
+      <th>Book-Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>276725</td>
+      <td>034545104X</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>276726</td>
+      <td>0155061224</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Sampel Tabel Pengguna ---
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>User-ID</th>
+      <th>Location</th>
+      <th>Age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>nyc, new york, usa</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>stockton, california, usa</td>
+      <td>18.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="evaluasi-skema-struktur-kolom">
+<h3>Evaluasi Skema Struktur Kolom:<a class="headerlink" href="#evaluasi-skema-struktur-kolom" title="Link to this heading">#</a></h3>
+<p>Berdasarkan sampel data di atas, kita dapat mengidentifikasi bahwa:</p>
+<ul class="simple">
+<li><p>Tabel <strong>Books</strong> diidentifikasi melalui kunci unik <code class="docutils literal notranslate"><span class="pre">ISBN</span></code>. Kolom seperti <code class="docutils literal notranslate"><span class="pre">Image-URL-S</span></code>, <code class="docutils literal notranslate"><span class="pre">Image-URL-M</span></code>, dan <code class="docutils literal notranslate"><span class="pre">Image-URL-L</span></code> hanya berisi tautan gambar sampul yang tidak memiliki nilai komputasi untuk algoritma, sehingga dapat dipertimbangkan untuk dihapus pada fase persiapan.</p></li>
+<li><p>Tabel <strong>Ratings</strong> menghubungkan <code class="docutils literal notranslate"><span class="pre">User-ID</span></code> dengan <code class="docutils literal notranslate"><span class="pre">ISBN</span></code> buku beserta kolom nilai <code class="docutils literal notranslate"><span class="pre">Book-Rating</span></code>.</p></li>
+<li><p>Tabel <strong>Users</strong> menyimpan karakteristik individu pembaca melalui <code class="docutils literal notranslate"><span class="pre">User-ID</span></code>, <code class="docutils literal notranslate"><span class="pre">Location</span></code>, dan <code class="docutils literal notranslate"><span class="pre">Age</span></code>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== PENGECEKAN TIPE DATA MASING-MASING KOLOM ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Tipe Data Tabel Buku ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">books</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Tipe Data Tabel Rating ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ratings</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Tipe Data Tabel Pengguna ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">users</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== VERIFIKASI KUALITAS DATA (IDENTIFIKASI MISSING VALUES) ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Jumlah Nilai Kosong pada Tabel Buku ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">books</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Jumlah Nilai Kosong pada Tabel Rating ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ratings</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Jumlah Nilai Kosong pada Tabel Pengguna ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">users</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== RINGKASAN STATISTIK DESKRIPTIF DATA RATING ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mengekstrak informasi statistik dari kolom rating untuk memahami sebaran angka.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Perhatikan nilai &#39;min&#39;, &#39;max&#39;, serta kuartil &#39;25%&#39;, &#39;50%&#39;, dan &#39;75%&#39;.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jika angka 0 sangat mendominasi hingga ke persentil 50%, ini membuktikan adanya penumpukan implicit rating.&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">ratings</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== PENGECEKAN TIPE DATA MASING-MASING KOLOM ===
+--- Tipe Data Tabel Buku ---
+ISBN                   str
+Book-Title             str
+Book-Author            str
+Year-Of-Publication    str
+Publisher              str
+Image-URL-S            str
+Image-URL-M            str
+Image-URL-L            str
+dtype: object
+
+--- Tipe Data Tabel Rating ---
+User-ID        int64
+ISBN             str
+Book-Rating    int64
+dtype: object
+
+--- Tipe Data Tabel Pengguna ---
+User-ID       int64
+Location        str
+Age         float64
+dtype: object
+
+=== VERIFIKASI KUALITAS DATA (IDENTIFIKASI MISSING VALUES) ===
+--- Jumlah Nilai Kosong pada Tabel Buku ---
+ISBN                   0
+Book-Title             0
+Book-Author            2
+Year-Of-Publication    0
+Publisher              2
+Image-URL-S            0
+Image-URL-M            0
+Image-URL-L            3
+dtype: int64
+
+--- Jumlah Nilai Kosong pada Tabel Rating ---
+User-ID        0
+ISBN           0
+Book-Rating    0
+dtype: int64
+
+--- Jumlah Nilai Kosong pada Tabel Pengguna ---
+User-ID          0
+Location         0
+Age         110762
+dtype: int64
+
+=== RINGKASAN STATISTIK DESKRIPTIF DATA RATING ===
+Mengekstrak informasi statistik dari kolom rating untuk memahami sebaran angka.
+Perhatikan nilai &#39;min&#39;, &#39;max&#39;, serta kuartil &#39;25%&#39;, &#39;50%&#39;, dan &#39;75%&#39;.
+Jika angka 0 sangat mendominasi hingga ke persentil 50%, ini membuktikan adanya penumpukan implicit rating.
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>User-ID</th>
+      <th>Book-Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>1.149780e+06</td>
+      <td>1.149780e+06</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>1.403864e+05</td>
+      <td>2.866950e+00</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>8.056228e+04</td>
+      <td>3.854184e+00</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>2.000000e+00</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>7.034500e+04</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>1.410100e+05</td>
+      <td>0.000000e+00</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>2.110280e+05</td>
+      <td>7.000000e+00</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>2.788540e+05</td>
+      <td>1.000000e+01</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="temuan-penting-dari-fase-data-understanding">
+<h3>Temuan Penting dari Fase Data Understanding:<a class="headerlink" href="#temuan-penting-dari-fase-data-understanding" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Keselarasan Tipe Data (Relasi Antartabel):</strong></p>
+<ul class="simple">
+<li><p>Tipe data kunci penghubung sudah selaras. <code class="docutils literal notranslate"><span class="pre">User-ID</span></code> bertipe <code class="docutils literal notranslate"><span class="pre">int64</span></code> (angka) baik di tabel Users maupun Ratings. Begitu pula dengan <code class="docutils literal notranslate"><span class="pre">ISBN</span></code> yang bertipe <code class="docutils literal notranslate"><span class="pre">object/str</span></code> (teks) di tabel Books dan Ratings. Hal ini memastikan proses integrasi data (<em>Inner Join</em>) ke depannya akan berjalan aman tanpa bentrokan tipe data.</p></li>
+</ul>
+</li>
+<li><p><strong>Anomali Kualitas (Missing Values):</strong></p>
+<ul class="simple">
+<li><p><strong>Tabel Rating:</strong> Memiliki tingkat kebersihan 100% sempurna tanpa ada satu pun nilai yang kosong.</p></li>
+<li><p><strong>Tabel Buku:</strong> Memiliki kualitas data yang baik, dengan persentase missing values yang sangat rendah pada <code class="docutils literal notranslate"><span class="pre">Book-Author</span></code> (2 baris), <code class="docutils literal notranslate"><span class="pre">Publisher</span></code> (2 baris), dan <code class="docutils literal notranslate"><span class="pre">Image-URL-L</span></code> (3 baris).</p></li>
+<li><p><strong>Tabel Pengguna:</strong> Memiliki kendala serius pada kolom <code class="docutils literal notranslate"><span class="pre">Age</span></code> (Usia) dengan 110.762 data yang kosong. Mengingat arsitektur sistem rekomendasi kita berfokus murni pada interaksi kesamaan selera buku, kolom usia ini tidak akan dilibatkan dalam pemodelan untuk menghindari bias.</p></li>
+</ul>
+</li>
+<li><p><strong>Karakteristik Skala Penilaian:</strong></p>
+<ul class="simple">
+<li><p>Melalui ringkasan statistik deskriptif pada tabel rating, skala nilai berkisar dari minimal 0 hingga maksimal 10.</p></li>
+<li><p>Nilai kuartil 25% (Q1) dan kuartil 50% (Q2/Median) berada mutlak pada angka 0. Hal ini mengonfirmasi adanya dominasi penumpukan data interaksi yang bersifat <em>implicit rating</em> (pembaca berinteraksi dengan buku namun tidak memberikan ulasan skor angka).</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<section id="data-preparation">
+<h2>3. Data Preparation<a class="headerlink" href="#data-preparation" title="Link to this heading">#</a></h2>
+<p>Fase ini memakan porsi waktu dan komputasi yang besar karena data mentah tidak dapat langsung diproses oleh algoritma <em>machine learning</em>. Data perlu diolah, dibersihkan, dan direstrukturisasi. Langkah-langkah yang akan kita lakukan meliputi integrasi data, pembersihan nilai kosong dan anomali, rekayasa fitur untuk pendekatan konten, serta penyaringan matriks untuk pendekatan kolaboratif.</p>
+<section id="langkah-1-integrasi-data-dan-analisis-relasi">
+<h3>Langkah 1: Integrasi Data dan Analisis Relasi<a class="headerlink" href="#langkah-1-integrasi-data-dan-analisis-relasi" title="Link to this heading">#</a></h3>
+<p>Data yang kita miliki saat ini terpisah di tiga tabel berbeda. Kita akan menggabungkan ketiganya secara berurutan menggunakan metode <em>Inner Join</em>.</p>
+<ol class="arabic simple">
+<li><p>Menggabungkan tabel <code class="docutils literal notranslate"><span class="pre">ratings</span></code> dengan <code class="docutils literal notranslate"><span class="pre">books</span></code> berdasarkan <code class="docutils literal notranslate"><span class="pre">ISBN</span></code>.</p></li>
+<li><p>Menggabungkan hasil di atas dengan tabel <code class="docutils literal notranslate"><span class="pre">users</span></code> berdasarkan <code class="docutils literal notranslate"><span class="pre">User-ID</span></code>.</p></li>
+</ol>
+<p>Metode <em>Inner Join</em> akan membuang data yang tidak memiliki pasangan (misalnya: ada <em>rating</em> untuk buku yang datanya tidak ada di tabel <code class="docutils literal notranslate"><span class="pre">Books</span></code>, atau <em>rating</em> dari pengguna yang tidak terdaftar di tabel <code class="docutils literal notranslate"><span class="pre">Users</span></code>). Kita akan memvisualisasikan persentase data yang terbuang ini menggunakan diagram lingkaran.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">total_rating_awal</span> <span class="o">=</span> <span class="n">ratings</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">rating_buku</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">ratings</span><span class="p">,</span> <span class="n">books</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;ISBN&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
+<span class="n">data_lengkap</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">rating_buku</span><span class="p">,</span> <span class="n">users</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;User-ID&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
+<span class="n">total_terintegrasi</span> <span class="o">=</span> <span class="n">data_lengkap</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">data_terbuang</span> <span class="o">=</span> <span class="n">total_rating_awal</span> <span class="o">-</span> <span class="n">total_terintegrasi</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">label_diagram</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Berhasil Terintegrasi&#39;</span><span class="p">,</span> <span class="s1">&#39;Tidak Punya Pasangan (Dibuang)&#39;</span><span class="p">]</span>
+<span class="n">ukuran_diagram</span> <span class="o">=</span> <span class="p">[</span><span class="n">total_terintegrasi</span><span class="p">,</span> <span class="n">data_terbuang</span><span class="p">]</span>
+<span class="n">warna_diagram</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#66b3ff&#39;</span><span class="p">,</span> <span class="s1">&#39;#ff9999&#39;</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">ukuran_diagram</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">label_diagram</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">warna_diagram</span><span class="p">,</span> <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">startangle</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Persentase Keberhasilan Integrasi Data Rating&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jumlah baris awal (Ratings)          :&quot;</span><span class="p">,</span> <span class="n">total_rating_awal</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jumlah baris setelah integrasi penuh :&quot;</span><span class="p">,</span> <span class="n">total_terintegrasi</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Sampel Data yang Telah Terintegrasi ---&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">data_lengkap</span><span class="p">[[</span><span class="s1">&#39;User-ID&#39;</span><span class="p">,</span> <span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="s1">&#39;ISBN&#39;</span><span class="p">,</span> <span class="s1">&#39;Book-Title&#39;</span><span class="p">,</span> <span class="s1">&#39;Book-Rating&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/9fd21f06365e1bc173b44e6838b78dc8649d5e5a25678fefa9b9d29425759472.png" src="../_images/9fd21f06365e1bc173b44e6838b78dc8649d5e5a25678fefa9b9d29425759472.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jumlah baris awal (Ratings)          : 1149780
+Jumlah baris setelah integrasi penuh : 1031136
+
+--- Sampel Data yang Telah Terintegrasi ---
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>User-ID</th>
+      <th>Age</th>
+      <th>ISBN</th>
+      <th>Book-Title</th>
+      <th>Book-Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>276725</td>
+      <td>NaN</td>
+      <td>034545104X</td>
+      <td>Flesh Tones: A Novel</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>276726</td>
+      <td>NaN</td>
+      <td>0155061224</td>
+      <td>Rites of Passage</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>276727</td>
+      <td>16.0</td>
+      <td>0446520802</td>
+      <td>The Notebook</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>Penjabaran Logika Integrasi Baris demi Baris:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">total_rating_awal</span> <span class="pre">=</span> <span class="pre">...</span></code>: Menyimpan jumlah awal interaksi <em>rating</em> (sekitar 1,1 juta baris) sebagai patokan dasar.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rating_buku</span> <span class="pre">=</span> <span class="pre">...</span></code>: Menyatukan data <em>rating</em> dengan atribut buku. Jika terdapat data penilaian (rating) dengan nomor ISBN yang tidak terdaftar pada katalog tabel Books, data tersebut akan dieliminasi.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data_lengkap</span> <span class="pre">=</span> <span class="pre">...</span></code>: Menyatukan data sebelumnya dengan data demografi pengguna. Jika ada <em>rating</em> dari ID Pengguna siluman, data tersebut juga dibuang.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">total_terintegrasi</span> <span class="pre">=</span> <span class="pre">...</span></code>: Menghitung sisa baris yang selamat dari dua proses penyaringan ketat di atas.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data_terbuang</span> <span class="pre">=</span> <span class="pre">...</span></code>: Menghitung selisih antara data awal dengan data yang selamat untuk mengetahui jumlah <em>noise</em>.</p></li>
+<li><p>Blok <code class="docutils literal notranslate"><span class="pre">plt.pie(...)</span></code>: Mengonversi perbandingan angka tersebut ke dalam bentuk diagram lingkaran yang memuat persentase, warna, dan label agar mudah dipahami secara visual.</p></li>
+</ul>
+</section>
+<section id="langkah-2-pembersihan-data-data-cleaning-pada-data-terintegrasi">
+<h3>Langkah 2: Pembersihan Data (Data Cleaning) pada Data Terintegrasi<a class="headerlink" href="#langkah-2-pembersihan-data-data-cleaning-pada-data-terintegrasi" title="Link to this heading">#</a></h3>
+<p>Setelah data disatukan menjadi <code class="docutils literal notranslate"><span class="pre">data_lengkap</span></code>, kita wajib memeriksa kembali sebaran nilai kosongnya secara utuh. Fokus pembersihan kita adalah:</p>
+<ol class="arabic simple">
+<li><p>Mengidentifikasi dan menghapus baris yang memiliki nilai kosong pada atribut esensial (<code class="docutils literal notranslate"><span class="pre">Book-Title</span></code>, <code class="docutils literal notranslate"><span class="pre">Book-Author</span></code>, <code class="docutils literal notranslate"><span class="pre">Publisher</span></code>).</p></li>
+<li><p>Membersihkan <em>Implicit Rating</em> (membuang nilai rating 0) dan memvisualisasikan persentase penyusutan datanya.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=== IDENTIFIKASI NILAI KOSONG PADA DATA INTEGRASI ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data_lengkap</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+
+<span class="n">total_kotor</span> <span class="o">=</span> <span class="n">data_lengkap</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">data_bersih</span> <span class="o">=</span> <span class="n">data_lengkap</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span>
+    <span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Book-Title&#39;</span><span class="p">,</span> <span class="s1">&#39;Book-Author&#39;</span><span class="p">,</span> <span class="s1">&#39;Publisher&#39;</span><span class="p">]</span>
+<span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">data_bersih</span> <span class="o">=</span> <span class="n">data_bersih</span><span class="p">[</span><span class="n">data_bersih</span><span class="p">[</span><span class="s1">&#39;Book-Rating&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">total_bersih</span> <span class="o">=</span> <span class="n">data_bersih</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">total_dibuang</span> <span class="o">=</span> <span class="n">total_kotor</span> <span class="o">-</span> <span class="n">total_bersih</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== DATA SETELAH PEMBERSIHAN ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jumlah baris awal terintegrasi :&quot;</span><span class="p">,</span> <span class="n">total_kotor</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jumlah baris setelah dibersihkan :&quot;</span><span class="p">,</span> <span class="n">total_bersih</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jumlah baris yang dibuang        :&quot;</span><span class="p">,</span> <span class="n">total_dibuang</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">label_bersih</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Data Bersih (Rating 1-10)&#39;</span><span class="p">,</span> <span class="s1">&#39;Data Terbuang (Null &amp; Rating 0)&#39;</span><span class="p">]</span>
+<span class="n">ukuran_bersih</span> <span class="o">=</span> <span class="p">[</span><span class="n">total_bersih</span><span class="p">,</span> <span class="n">total_dibuang</span><span class="p">]</span>
+<span class="n">warna_bersih</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#66b3ff&#39;</span><span class="p">,</span> <span class="s1">&#39;#ffcc99&#39;</span><span class="p">]</span>
+<span class="n">explode_pie</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> 
+
+<span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">ukuran_bersih</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">label_bersih</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="n">warna_bersih</span><span class="p">,</span> <span class="n">autopct</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%1.1f%%</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">startangle</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">explode</span><span class="o">=</span><span class="n">explode_pie</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Proporsi Pembersihan Data: Bersih vs Terbuang&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Sampel Data Bersih Akhir ---&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">data_bersih</span><span class="p">[[</span><span class="s1">&#39;User-ID&#39;</span><span class="p">,</span> <span class="s1">&#39;ISBN&#39;</span><span class="p">,</span> <span class="s1">&#39;Book-Rating&#39;</span><span class="p">,</span> <span class="s1">&#39;Book-Title&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== IDENTIFIKASI NILAI KOSONG PADA DATA INTEGRASI ===
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>User-ID                     0
+ISBN                        0
+Book-Rating                 0
+Book-Title                  0
+Book-Author                 2
+Year-Of-Publication         0
+Publisher                   2
+Image-URL-S                 0
+Image-URL-M                 0
+Image-URL-L                 4
+Location                    0
+Age                    277835
+dtype: int64
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== DATA SETELAH PEMBERSIHAN ===
+Jumlah baris awal terintegrasi : 1031136
+Jumlah baris setelah dibersihkan : 383838
+Jumlah baris yang dibuang        : 647298
+</pre></div>
+</div>
+<img alt="../_images/4ad77ab911cca55ac3bd1185514446f9a871c52fa09918b7ab70e7ebea848df4.png" src="../_images/4ad77ab911cca55ac3bd1185514446f9a871c52fa09918b7ab70e7ebea848df4.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Sampel Data Bersih Akhir ---
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>User-ID</th>
+      <th>ISBN</th>
+      <th>Book-Rating</th>
+      <th>Book-Title</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>276726</td>
+      <td>0155061224</td>
+      <td>5</td>
+      <td>Rites of Passage</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>276729</td>
+      <td>052165615X</td>
+      <td>3</td>
+      <td>Help!: Level 1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>276729</td>
+      <td>0521795028</td>
+      <td>6</td>
+      <td>The Amsterdam Connection : Level 4 (Cambridge ...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>Analisis Identifikasi Nilai Kosong dan Visualisasi Pembersihan:</strong></p>
+<p>Berdasarkan hasil eksekusi kode di atas, kita dapat menyimpulkan beberapa poin analitik penting:</p>
+<ol class="arabic simple">
+<li><p><strong>Identifikasi Nilai Kosong (Null):</strong> Terdapat ratusan ribu data kosong (<code class="docutils literal notranslate"><span class="pre">277.835</span></code> baris) pada kolom <code class="docutils literal notranslate"><span class="pre">Age</span></code> setelah data diintegrasikan. Karena fokus kita adalah merekomendasikan buku berdasarkan pola riwayat bacaan dan bukan demografi usia, kolom usia ini dibiarkan dan tidak memengaruhi pembersihan data utama. Kekosongan pada atribut buku sangat minim (hanya 2 baris pada <code class="docutils literal notranslate"><span class="pre">Book-Author</span></code> dan <code class="docutils literal notranslate"><span class="pre">Publisher</span></code>, serta 4 baris pada <code class="docutils literal notranslate"><span class="pre">Image-URL-L</span></code>).</p></li>
+<li><p><strong>Besaran <em>Implicit Rating</em> (Data Terbuang):</strong> Diagram lingkaran dengan sangat jelas menunjukkan bahwa lebih dari 60% data interaksi kita sebenarnya adalah <em>implicit rating</em> (pengguna berinteraksi tetapi <em>rating</em>-nya bernilai 0).</p></li>
+<li><p><strong>Hasil Akhir:</strong> Dengan membuang <em>rating</em> 0 dan baris kosong pada atribut buku, kita berhasil menyusutkan data kotor menjadi dataset murni berisi penilaian riil (skala 1-10) sebanyak <strong>383.838 baris</strong>. Dataset yang telah dibersihkan ini digunakan untuk mengoptimalkan akurasi algoritma dalam memetakan preferensi pengguna.</p></li>
+</ol>
+</section>
+<section id="langkah-3-membangun-fungsi-content-based-filtering">
+<h3>Langkah 3: Membangun Fungsi Content-Based Filtering<a class="headerlink" href="#langkah-3-membangun-fungsi-content-based-filtering" title="Link to this heading">#</a></h3>
+<p>Pendekatan berbasis konten memerlukan representasi teks untuk mengenali identitas buku. Karena komputer tidak dapat menghitung jarak pada teks huruf, kita menggunakan pustaka <code class="docutils literal notranslate"><span class="pre">TfidfVectorizer</span></code> untuk menerjemahkan teks nama penulis dan penerbit menjadi matriks angka. Setelah itu, kita menghitung sudut kedekatannya menggunakan <code class="docutils literal notranslate"><span class="pre">cosine_similarity</span></code>. Seluruh proses ini dibungkus ke dalam fungsi <code class="docutils literal notranslate"><span class="pre">get_content_based</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.feature_extraction.text</span><span class="w"> </span><span class="kn">import</span> <span class="n">TfidfVectorizer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics.pairwise</span><span class="w"> </span><span class="kn">import</span> <span class="n">cosine_similarity</span>
+
+<span class="n">data_bersih</span><span class="p">[</span><span class="s1">&#39;Fitur_Konten&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_bersih</span><span class="p">[</span><span class="s1">&#39;Book-Author&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">data_bersih</span><span class="p">[</span><span class="s1">&#39;Publisher&#39;</span><span class="p">]</span>
+<span class="n">hitungan_user</span> <span class="o">=</span> <span class="n">data_bersih</span><span class="p">[</span><span class="s1">&#39;User-ID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">user_aktif</span> <span class="o">=</span> <span class="n">hitungan_user</span><span class="p">[</span><span class="n">hitungan_user</span> <span class="o">&gt;=</span> <span class="mi">50</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
+<span class="n">data_filter_user</span> <span class="o">=</span> <span class="n">data_bersih</span><span class="p">[</span><span class="n">data_bersih</span><span class="p">[</span><span class="s1">&#39;User-ID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">user_aktif</span><span class="p">)]</span>
+
+<span class="n">hitungan_buku</span> <span class="o">=</span> <span class="n">data_filter_user</span><span class="p">[</span><span class="s1">&#39;Book-Title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">buku_populer</span> <span class="o">=</span> <span class="n">hitungan_buku</span><span class="p">[</span><span class="n">hitungan_buku</span> <span class="o">&gt;=</span> <span class="mi">50</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
+<span class="n">data_final</span> <span class="o">=</span> <span class="n">data_filter_user</span><span class="p">[</span><span class="n">data_filter_user</span><span class="p">[</span><span class="s1">&#39;Book-Title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">buku_populer</span><span class="p">)]</span>
+
+<span class="n">buku_unik</span> <span class="o">=</span> <span class="n">data_final</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Book-Title&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">tfidf</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">stop_words</span><span class="o">=</span><span class="s1">&#39;english&#39;</span><span class="p">)</span>
+<span class="n">matriks_tfidf</span> <span class="o">=</span> <span class="n">tfidf</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">buku_unik</span><span class="p">[</span><span class="s1">&#39;Fitur_Konten&#39;</span><span class="p">])</span>
+
+<span class="n">kesamaan_konten</span> <span class="o">=</span> <span class="n">cosine_similarity</span><span class="p">(</span><span class="n">matriks_tfidf</span><span class="p">,</span> <span class="n">matriks_tfidf</span><span class="p">)</span>
+<span class="n">df_kesamaan_konten</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">kesamaan_konten</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">buku_unik</span><span class="p">[</span><span class="s1">&#39;Book-Title&#39;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="n">buku_unik</span><span class="p">[</span><span class="s1">&#39;Book-Title&#39;</span><span class="p">])</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_content_based</span><span class="p">(</span><span class="n">user_id</span><span class="p">):</span>
+
+    <span class="n">data_user</span> <span class="o">=</span> <span class="n">data_final</span><span class="p">[</span><span class="n">data_final</span><span class="p">[</span><span class="s1">&#39;User-ID&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">user_id</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">data_user</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;ID Pengguna tidak ditemukan.&quot;</span>
+        
+    <span class="n">buku_favorit</span> <span class="o">=</span> <span class="n">data_user</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;Book-Rating&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="s1">&#39;Book-Title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">skor_konten</span> <span class="o">=</span> <span class="n">df_kesamaan_konten</span><span class="p">[</span><span class="n">buku_favorit</span><span class="p">]</span>
+
+    <span class="n">rekomendasi</span> <span class="o">=</span> <span class="n">skor_konten</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="n">buku_favorit</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">buku_favorit</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Skor Kemiripan Teks&#39;</span><span class="p">:</span> <span class="n">rekomendasi</span><span class="p">})</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fungsi get_content_based() telah berhasil dirakit dan siap digunakan.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fungsi get_content_based() telah berhasil dirakit dan siap digunakan.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="langkah-4-membangun-fungsi-collaborative-filtering">
+<h3>Langkah 4: Membangun Fungsi Collaborative Filtering<a class="headerlink" href="#langkah-4-membangun-fungsi-collaborative-filtering" title="Link to this heading">#</a></h3>
+<p>Berbeda dengan langkah sebelumnya, pendekatan kolaboratif bekerja dengan memetakan pola riwayat nilai antar-pengguna ke dalam peta interaksi dua dimensi (<em>Pivot Table</em>). Algoritma ini membandingkan kedekatan selera pengguna untuk memprediksi buku baru. Fungsi <code class="docutils literal notranslate"><span class="pre">get_collaborative</span></code> dibangun untuk mengeksekusi perhitungan tersebut.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">matriks_pivot</span> <span class="o">=</span> <span class="n">data_final</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
+    <span class="n">index</span><span class="o">=</span><span class="s1">&#39;User-ID&#39;</span><span class="p">,</span> 
+    <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;Book-Title&#39;</span><span class="p">,</span> 
+    <span class="n">values</span><span class="o">=</span><span class="s1">&#39;Book-Rating&#39;</span>
+<span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">kesamaan_user</span> <span class="o">=</span> <span class="n">cosine_similarity</span><span class="p">(</span><span class="n">matriks_pivot</span><span class="p">)</span>
+<span class="n">df_kesamaan_user</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">kesamaan_user</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">matriks_pivot</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">matriks_pivot</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">get_collaborative</span><span class="p">(</span><span class="n">user_id</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">user_id</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">matriks_pivot</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;ID Pengguna tidak ditemukan.&quot;</span>
+    <span class="n">pengguna_mirip</span> <span class="o">=</span> <span class="n">df_kesamaan_user</span><span class="p">[</span><span class="n">user_id</span><span class="p">]</span>
+    <span class="n">pembagi</span> <span class="o">=</span> <span class="n">pengguna_mirip</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">+</span> <span class="mf">1e-8</span>
+
+    <span class="n">skor_kolaboratif</span> <span class="o">=</span> <span class="n">matriks_pivot</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">pengguna_mirip</span><span class="p">)</span> <span class="o">/</span> <span class="n">pembagi</span>
+    
+    <span class="n">buku_telah_dibaca</span> <span class="o">=</span> <span class="n">matriks_pivot</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">matriks_pivot</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">user_id</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">hasil_cf</span> <span class="o">=</span> <span class="n">skor_kolaboratif</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">buku_telah_dibaca</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+    
+    <span class="n">rekomendasi</span> <span class="o">=</span> <span class="n">hasil_cf</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Prediksi Skor Komunitas&#39;</span><span class="p">:</span> <span class="n">rekomendasi</span><span class="p">})</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fungsi get_collaborative() telah berhasil dirakit dan siap digunakan.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fungsi get_collaborative() telah berhasil dirakit dan siap digunakan.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="modeling-eksekusi-pengujian-dan-komparasi-sistem">
+<h2>4. Modeling (Eksekusi Pengujian dan Komparasi Sistem)<a class="headerlink" href="#modeling-eksekusi-pengujian-dan-komparasi-sistem" title="Link to this heading">#</a></h2>
+<p>Fase pemodelan ini didedikasikan murni untuk mengeksekusi, menguji, dan membandingkan hasil keluaran algoritma sistem rekomendasi secara bertahap. Untuk memahami alasan di balik pentingnya arsitektur <em>Hybrid Filtering</em>, kita akan membagi pengujian ini ke dalam tiga tahapan logis:</p>
+<ol class="arabic simple">
+<li><p>Mengeksekusi fungsi <strong>Content-Based Filtering</strong> dan menganalisis keterbatasan hasilnya.</p></li>
+<li><p>Mengeksekusi fungsi <strong>Collaborative Filtering</strong> dan menganalisis keterbatasan hasilnya.</p></li>
+<li><p>Mengeksekusi arsitektur <strong>Hybrid Filtering</strong> sebagai solusi final untuk mengeliminasi kelemahan dari kedua metode tunggal sebelumnya.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Menetapkan satu ID Pengguna dari matriks sebagai subjek uji coba komparasi</span>
+<span class="n">id_pengujian</span> <span class="o">=</span> <span class="n">matriks_pivot</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SIMULASI PENGUJIAN REKOMENDASI UNTUK USER ID: </span><span class="si">{</span><span class="n">id_pengujian</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------------------------------------------------------</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SIMULASI PENGUJIAN REKOMENDASI UNTUK USER ID: 254
+---------------------------------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+<section id="langkah-1-eksperimen-murni-content-based-filtering">
+<h3>Langkah 1: Eksperimen Murni Content-Based Filtering<a class="headerlink" href="#langkah-1-eksperimen-murni-content-based-filtering" title="Link to this heading">#</a></h3>
+<p>Pendekatan ini bekerja dengan cara mencari buku lain yang memiliki kemiripan karakteristik fisik produk (Penulis dan Penerbit) dengan buku yang paling disukai dalam riwayat membaca pengguna. Kita akan memanggil fungsi murni konten untuk melihat hasilnya.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">buku_acuan</span><span class="p">,</span> <span class="n">hasil_content</span> <span class="o">=</span> <span class="n">get_content_based</span><span class="p">(</span><span class="n">id_pengujian</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- HASIL REKOMENDASI MURNI CONTENT-BASED FILTERING ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Buku Acuan Terfavorit Pengguna: &#39;</span><span class="si">{</span><span class="n">buku_acuan</span><span class="si">}</span><span class="s2">&#39;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">hasil_content</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- HASIL REKOMENDASI MURNI CONTENT-BASED FILTERING ---
+Buku Acuan Terfavorit Pengguna: &#39;The Secret Life of Bees&#39;
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Skor Kemiripan Teks</th>
+    </tr>
+    <tr>
+      <th>Book-Title</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Bridget Jones's Diary</th>
+      <td>0.281929</td>
+    </tr>
+    <tr>
+      <th>The Girls' Guide to Hunting and Fishing</th>
+      <td>0.281929</td>
+    </tr>
+    <tr>
+      <th>The Rainmaker</th>
+      <td>0.103931</td>
+    </tr>
+    <tr>
+      <th>The Chamber</th>
+      <td>0.103931</td>
+    </tr>
+    <tr>
+      <th>The Notebook</th>
+      <td>0.079025</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="analisis-kelemahan-content-based-filtering">
+<h3>Analisis Kelemahan Content-Based Filtering:<a class="headerlink" href="#analisis-kelemahan-content-based-filtering" title="Link to this heading">#</a></h3>
+<p>Berdasarkan tabel keluaran di atas, terlihat bahwa seluruh buku yang disarankan memiliki keterikatan atribut yang sangat kaku (misalnya merekomendasikan judul lain dari penulis atau penerbit yang sama persis). Hal ini memperlihatkan batasan nyata dari metode konten, yaitu:</p>
+<ul class="simple">
+<li><p><strong>Over-Specialization (Rekomendasi Monoton):</strong> Sistem tidak dapat merekomendasikan buku di luar cakupan atribut yang pernah dinilai oleh pengguna, sehingga variasi rekomendasi menjadi terbatas.</p></li>
+<li><p><strong>Masalah Pengguna Baru (Cold-Start User):</strong> Jika ada pembaca baru yang belum pernah memberikan penilaian pada buku apa pun, metode ini tidak dapat dieksekusi karena ketiadaan data riwayat transaksi awal sebagai acuan perhitungan kemiripan teks.</p></li>
+</ul>
+</section>
+<section id="langkah-2-eksperimen-murni-collaborative-filtering">
+<h3>Langkah 2: Eksperimen Murni Collaborative Filtering<a class="headerlink" href="#langkah-2-eksperimen-murni-collaborative-filtering" title="Link to this heading">#</a></h3>
+<p>Kita beralih ke pendekatan kedua. Metode kolaboratif sepenuhnya mengabaikan teks identitas buku. Algoritma ini murni memetakan kemiripan selera antarpengguna berdasarkan riwayat penilaian pada komunitas. Kita akan melihat buku apa saja yang disarankan oleh kelompok sosial pembaca yang sejenis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hasil_collab</span> <span class="o">=</span> <span class="n">get_collaborative</span><span class="p">(</span><span class="n">id_pengujian</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- HASIL REKOMENDASI MURNI COLLABORATIVE FILTERING ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Daftar judul buku yang disukai oleh komunitas pembaca yang selaras:&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">hasil_collab</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- HASIL REKOMENDASI MURNI COLLABORATIVE FILTERING ---
+Daftar judul buku yang disukai oleh komunitas pembaca yang selaras:
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Prediksi Skor Komunitas</th>
+    </tr>
+    <tr>
+      <th>Book-Title</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Harry Potter and the Order of the Phoenix (Book 5)</th>
+      <td>2.426014</td>
+    </tr>
+    <tr>
+      <th>Harry Potter and the Sorcerer's Stone (Harry Potter (Paperback))</th>
+      <td>1.863556</td>
+    </tr>
+    <tr>
+      <th>The Two Towers (The Lord of the Rings, Part 2)</th>
+      <td>1.343791</td>
+    </tr>
+    <tr>
+      <th>Bridget Jones's Diary</th>
+      <td>1.082179</td>
+    </tr>
+    <tr>
+      <th>The Da Vinci Code</th>
+      <td>0.861199</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="analisis-kelemahan-collaborative-filtering">
+<h3>Analisis Kelemahan Collaborative Filtering:<a class="headerlink" href="#analisis-kelemahan-collaborative-filtering" title="Link to this heading">#</a></h3>
+<p>Meskipun variasi judul buku yang diberikan oleh metode kolaboratif jauh lebih kaya dan tidak monoton, metode ini menyimpan kelemahan struktural yang fatal dalam penerapannya di dunia nyata, yaitu:</p>
+<ul class="simple">
+<li><p><strong>Masalah Cold-Start pada Produk Baru:</strong> Jika ada sebuah buku baru yang baru saja diterbitkan dan dimasukkan ke dalam katalog, buku tersebut tidak akan pernah bisa direkomendasikan kepada pengguna mana pun. Hal ini terjadi karena buku baru tersebut belum mengumpulkan riwayat penilaian (<em>rating</em>) sama sekali di dalam peta <code class="docutils literal notranslate"><span class="pre">matriks_pivot</span></code>.</p></li>
+<li><p><strong>Kelangkaan Data (Data Sparsity):</strong> Apabila volume pengguna sangat besar namun interaksi nilai yang masuk sangat sedikit, akurasi matriks kesamaan pengguna akan menurun drastis.</p></li>
+</ul>
+</section>
+<section id="langkah-3-solusi-akhir-berbasis-arsitektur-hybrid-filtering">
+<h3>Langkah 3: Solusi Akhir Berbasis Arsitektur Hybrid Filtering<a class="headerlink" href="#langkah-3-solusi-akhir-berbasis-arsitektur-hybrid-filtering" title="Link to this heading">#</a></h3>
+<p>Untuk mengatasi keterbatasan struktural dari kedua metode tunggal tersebut, kita mengintegrasikan kedua nilai ke dalam fungsi <code class="docutils literal notranslate"><span class="pre">get_hybrid</span></code>. Arsitektur hibrida ini menjumlahkan bobot nilai dari kesamaan karakteristik produk dengan prediksi selera komunitas secara linear dengan proporsi seimbang (50:50).</p>
+<p>Melalui penggabungan ini, jika ada buku baru yang belum memiliki penilaian, ia tetap dapat direkomendasikan lewat jalur kesamaan teks penulis. sebaliknya, batasan over-specialization dapat dimitigasi melalui integrasi variasi judul dari preferensi komunitas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_hybrid</span><span class="p">(</span><span class="n">user_id</span><span class="p">,</span> <span class="n">bobot_cb</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">bobot_cf</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+    <span class="n">data_user</span> <span class="o">=</span> <span class="n">data_final</span><span class="p">[</span><span class="n">data_final</span><span class="p">[</span><span class="s1">&#39;User-ID&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">user_id</span><span class="p">]</span>
+    <span class="n">buku_favorit</span> <span class="o">=</span> <span class="n">data_user</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;Book-Rating&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="s1">&#39;Book-Title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">skor_cb_penuh</span> <span class="o">=</span> <span class="n">df_kesamaan_konten</span><span class="p">[</span><span class="n">buku_favorit</span><span class="p">]</span>
+    
+    <span class="n">pengguna_mirip</span> <span class="o">=</span> <span class="n">df_kesamaan_user</span><span class="p">[</span><span class="n">user_id</span><span class="p">]</span>
+    <span class="n">skor_cf_penuh</span> <span class="o">=</span> <span class="n">matriks_pivot</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">pengguna_mirip</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">pengguna_mirip</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">+</span> <span class="mf">1e-8</span><span class="p">)</span>
+    
+    <span class="n">skor_akhir</span> <span class="o">=</span> <span class="p">(</span><span class="n">bobot_cb</span> <span class="o">*</span> <span class="n">skor_cb_penuh</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">bobot_cf</span> <span class="o">*</span> <span class="n">skor_cf_penuh</span><span class="p">)</span>
+
+    <span class="n">buku_telah_dibaca</span> <span class="o">=</span> <span class="n">matriks_pivot</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">matriks_pivot</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">user_id</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+    <span class="n">rekomendasi</span> <span class="o">=</span> <span class="n">skor_akhir</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">buku_telah_dibaca</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Skor Final Hybrid&#39;</span><span class="p">:</span> <span class="n">rekomendasi</span><span class="p">})</span>
+
+<span class="n">hasil_hybrid</span> <span class="o">=</span> <span class="n">get_hybrid</span><span class="p">(</span><span class="n">id_pengujian</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- HASIL REKOMENDASI AKHIR BERBASIS INTEGRASI HYBRID FILTERING ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hasil kombinasi seimbang untuk memberikan rekomendasi yang akurat namun tetap bervariasi:&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">hasil_hybrid</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- HASIL REKOMENDASI AKHIR BERBASIS INTEGRASI HYBRID FILTERING ---
+Hasil kombinasi seimbang untuk memberikan rekomendasi yang akurat namun tetap bervariasi:
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Skor Final Hybrid</th>
+    </tr>
+    <tr>
+      <th>Book-Title</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Harry Potter and the Order of the Phoenix (Book 5)</th>
+      <td>1.213007</td>
+    </tr>
+    <tr>
+      <th>Harry Potter and the Sorcerer's Stone (Harry Potter (Paperback))</th>
+      <td>0.969616</td>
+    </tr>
+    <tr>
+      <th>Bridget Jones's Diary</th>
+      <td>0.682054</td>
+    </tr>
+    <tr>
+      <th>The Two Towers (The Lord of the Rings, Part 2)</th>
+      <td>0.671896</td>
+    </tr>
+    <tr>
+      <th>The Da Vinci Code</th>
+      <td>0.430600</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="evaluation">
+<h2>5. Evaluation<a class="headerlink" href="#evaluation" title="Link to this heading">#</a></h2>
+<p>Fase evaluasi digunakan untuk mengukur kinerja algoritma secara objektif. Evaluasi ini dibagi menjadi dua bagian:</p>
+<ol class="arabic simple">
+<li><p><strong>Evaluasi Kuantitatif:</strong> Menggunakan metrik <em>Root Mean Square Error</em> (RMSE) untuk mengukur tingkat deviasi antara nilai prediksi sistem dengan nilai aktual (<em>rating</em>) pada jalur kolaboratif.</p></li>
+<li><p><strong>Review Proses (Kualitatif):</strong> Meninjau kembali hasil eksperimen dari Bab 4 untuk memastikan seluruh keterbatasan metode tunggal telah berhasil diatasi oleh arsitektur hibrida.</p></li>
+</ol>
+<section id="langkah-1-evaluasi-kuantitatif-menggunakan-metrik-rmse">
+<h3>Langkah 1: Evaluasi Kuantitatif Menggunakan Metrik RMSE<a class="headerlink" href="#langkah-1-evaluasi-kuantitatif-menggunakan-metrik-rmse" title="Link to this heading">#</a></h3>
+<p>Kita akan menguji akurasi prediksi dengan cara membandingkan nilai ulasan asli yang diberikan oleh pengguna sampel terhadap nilai prediksi yang dihitung oleh sistem.</p>
+<p>Untuk menghindari bias, formula pembagi dikunci menggunakan vektor penanda biner (<em>masking</em> biner). Pendekatan ini memastikan bahwa angka pembagi hanya menjumlahkan bobot kemiripan dari anggota komunitas yang benar-benar pernah mengulas buku target, bukan menjumlahkan seluruh anggota komunitas secara acak.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">mean_squared_error</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">user_evaluasi</span> <span class="o">=</span> <span class="n">id_pengujian</span>
+<span class="n">rating_asli</span> <span class="o">=</span> <span class="n">matriks_pivot</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">user_evaluasi</span><span class="p">]</span>
+<span class="n">user_sim</span> <span class="o">=</span> <span class="n">df_kesamaan_user</span><span class="p">[</span><span class="n">user_evaluasi</span><span class="p">]</span>
+<span class="n">mask_rating_positif</span> <span class="o">=</span> <span class="p">(</span><span class="n">matriks_pivot</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">total_skor_bobot</span> <span class="o">=</span> <span class="n">matriks_pivot</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">user_sim</span><span class="p">)</span>
+<span class="n">total_bobot_aktif</span> <span class="o">=</span> <span class="n">mask_rating_positif</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">user_sim</span><span class="p">)</span>
+<span class="n">prediksi_semua_rating</span> <span class="o">=</span> <span class="n">total_skor_bobot</span> <span class="o">/</span> <span class="p">(</span><span class="n">total_bobot_aktif</span> <span class="o">+</span> <span class="mf">1e-8</span><span class="p">)</span>
+
+<span class="n">buku_telah_dirating</span> <span class="o">=</span> <span class="n">rating_asli</span><span class="p">[</span><span class="n">rating_asli</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
+<span class="n">array_asli</span> <span class="o">=</span> <span class="n">rating_asli</span><span class="p">[</span><span class="n">buku_telah_dirating</span><span class="p">]</span>
+<span class="n">array_prediksi</span> <span class="o">=</span> <span class="n">prediksi_semua_rating</span><span class="p">[</span><span class="n">buku_telah_dirating</span><span class="p">]</span>
+
+<span class="n">nilai_rmse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">array_asli</span><span class="p">,</span> <span class="n">array_prediksi</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Nilai RMSE hasil optimasi masking biner untuk pengguna </span><span class="si">{</span><span class="n">user_evaluasi</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">nilai_rmse</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Nilai RMSE hasil optimasi masking biner untuk pengguna 254: 0.3596
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="penjabaran-logika-matematika-evaluasi-baris-per-baris">
+<h3>Penjabaran Logika Matematika Evaluasi (Baris per Baris):<a class="headerlink" href="#penjabaran-logika-matematika-evaluasi-baris-per-baris" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">user_evaluasi</span> <span class="pre">=</span> <span class="pre">id_pengujian</span></code>: Mengunci subjek pengujian pada ID pengguna yang sama dengan Bab 4 untuk menjaga konsistensi analisis.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rating_asli</span> <span class="pre">=</span> <span class="pre">matriks_pivot.loc[...]</span></code>: Mengambil satu baris data ulasan riil (skala 1-10) dari tabel matriks interaksi milik pengguna target.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">user_sim</span> <span class="pre">=</span> <span class="pre">df_kesamaan_user[...]</span></code>: Mengambil baris tingkat kemiripan kosinus antara pengguna target dengan 959 pengguna lainnya di dalam database.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mask_rating_positif</span> <span class="pre">=</span> <span class="pre">(...)</span></code>: Mentransformasikan seluruh isi matriks interaksi menjadi angka biner <code class="docutils literal notranslate"><span class="pre">1</span></code> jika pengguna sudah memberikan nilai, dan angka <code class="docutils literal notranslate"><span class="pre">0</span></code> jika belum membaca.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">total_skor_bobot</span> <span class="pre">=</span> <span class="pre">...</span> <span class="pre">.dot(user_sim)</span></code>: Mengalikan seluruh matriks ulasan komunitas dengan tingkat kemiripan mereka untuk mengumpulkan akumulasi skor preferensi kelompok sejenis.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">total_bobot_aktif</span> <span class="pre">=</span> <span class="pre">...</span> <span class="pre">.dot(user_sim)</span></code>: Mengalikan matriks penanda biner dengan tingkat kemiripan pengguna. Operasi ini sangat krusial untuk memastikan nilai pembagi hanya menjumlahkan bobot kemiripan dari pengguna yang secara aktual memberikan penilaian pada buku tersebut.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">prediksi_semua_rating</span> <span class="pre">=</span> <span class="pre">...</span></code>: Membagi total skor bobot dengan total bobot aktif untuk menghasilkan nilai prediksi ulasan akhir. Penambahan konstanta <code class="docutils literal notranslate"><span class="pre">1e-8</span></code> ditujukan untuk menghindari kegagalan sistem akibat pembagian dengan nilai nol.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">buku_telah_dirating</span> <span class="pre">=</span> <span class="pre">...</span> <span class="pre">.index</span></code>: Mengisolasi daftar judul buku yang memiliki nilai ulasan nyata dari pengguna target untuk dijadikan sebagai pembanding.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">array_asli</span></code> dan <code class="docutils literal notranslate"><span class="pre">array_prediksi</span></code>: Mengumpulkan nilai ulasan aktual dari manusia dan nilai perkiraan dari sistem ke dalam dua larik array yang sejajar.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nilai_rmse</span> <span class="pre">=</span> <span class="pre">np.sqrt(...)</span></code>: Menghitung rata-rata selisih kuadrat antara ulasan asli dengan perkiraan sistem, kemudian menarik nilai akarnya untuk mengetahui tingkat toleransi kesalahan model pada skala asli (1-10).</p></li>
+</ul>
+</section>
+<section id="langkah-2-meninjau-kembali-proses-bisnis-kualitatif">
+<h3>Langkah 2: Meninjau Kembali Proses Bisnis (Kualitatif)<a class="headerlink" href="#langkah-2-meninjau-kembali-proses-bisnis-kualitatif" title="Link to this heading">#</a></h3>
+<p>Berdasarkan visualisasi hasil rekomendasi bertahap pada Bab 4 dan perolehan metrik kuantitatif di atas, tingkat keberhasilan proyek dapat disimpulkan melalui poin-poin berikut:</p>
+<ul class="simple">
+<li><p><strong>Solusi terhadap Over-Specialization (Rekomendasi Monoton):</strong> Melalui pengujian Langkah 1 di Bab 4, kita melihat bahwa metode konten cenderung memberikan rekomendasi yang kaku pada lingkaran penulis yang sama. Keterbatasan tersebut dapat diatasi pada Langkah 3 melalui integrasi metode collaborative filtering, yang menyuntikkan variasi judul baru dari komunitas selera sejenis.</p></li>
+<li><p><strong>Solusi terhadap Kasus Pengguna dan Produk Baru (Cold-Start):</strong> Sistem tidak lagi mengalami kelumpuhan total. Jika terdapat produk buku baru yang belum mengumpulkan ulasan di dalam matriks interaksi, jalur <em>Content-Based</em> tetap dapat mengidentifikasi kedekatan karakteristik teksnya melalui pembobotan TF-IDF untuk memunculkan rekomendasi.</p></li>
+<li><p><strong>Validitas Akurasi Prediksi:</strong> Perolehan nilai RMSE yang sangat rendah (berada di kisaran 0.35) membuktikan secara empiris bahwa penyesuaian formula pembagi menggunakan <em>masking</em> biner mampu menghasilkan prediksi nilai yang sangat akurat dan mendekati pola penilaian riil dari pembaca manusia.</p></li>
+</ul>
+</section>
+</section>
+<section id="deployment">
+<h2>6. Deployment<a class="headerlink" href="#deployment" title="Link to this heading">#</a></h2>
+<p>Fase terakhir ini merencanakan implementasi arsitektur model sistem rekomendasi ke dalam lingkungan produksi nyata agar dapat diakses oleh aplikasi pengguna akhir, sekaligus menarik kesimpulan akhir proyek.</p>
+<section id="langkah-1-serialisasi-komponen-model-model-serialization">
+<h3>Langkah 1: Serialisasi Komponen Model (Model Serialization)<a class="headerlink" href="#langkah-1-serialisasi-komponen-model-model-serialization" title="Link to this heading">#</a></h3>
+<p>Ketika sistem rekomendasi diintegrasikan ke dalam layanan aplikasi (seperti <em>framework backend</em> FastAPI, Flask, atau Laravel), server aplikasi tidak boleh menghitung ulang proses TF-IDF, tabel matriks pivot, atau tingkat kesamaan kosinus dari awal setiap kali ada pengguna yang meminta rekomendasi karena akan membebani memori (<em>RAM</em>) server secara masif.</p>
+<p>Untuk mengatasinya, kita menggunakan pustaka <code class="docutils literal notranslate"><span class="pre">pickle</span></code> untuk mengekspor objek matriks yang sudah matang ke dalam berkas biner terkompresi (<code class="docutils literal notranslate"><span class="pre">.pkl</span></code>). Aplikasi web nantinya hanya perlu memuat berkas biner yang ringan ini untuk langsung mengeksekusi fungsi rekomendasi.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;df_kesamaan_konten.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_konten</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">df_kesamaan_konten</span><span class="p">,</span> <span class="n">file_konten</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;df_kesamaan_user.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_user</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">df_kesamaan_user</span><span class="p">,</span> <span class="n">file_user</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;matriks_pivot.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file_pivot</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">matriks_pivot</span><span class="p">,</span> <span class="n">file_pivot</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Status Penyelarasan: Berhasil! Berkas .pkl telah terbentuk di direktori kerja.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Status Penyelarasan: Berhasil! Berkas .pkl telah terbentuk di direktori kerja.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="langkah-2-rencana-pemantauan-dan-pemeliharaan-berkala">
+<h3>Langkah 2: Rencana Pemantauan dan Pemeliharaan Berkala<a class="headerlink" href="#langkah-2-rencana-pemantauan-dan-pemeliharaan-berkala" title="Link to this heading">#</a></h3>
+<p>Karakteristik data sistem rekomendasi bersifat dinamis karena selera pembaca dan katalog buku selalu berkembang. Rencana pemeliharaan jangka panjang yang wajib diterapkan meliputi:</p>
+<ul class="simple">
+<li><p><strong>Jadwal Pelatihan Ulang (Retraining Plan):</strong> Menjadwalkan eksekusi otomatis skrip pengolahan data ini (misalnya seminggu sekali) untuk menyerap data ulasan baru serta memperbarui matriks kesamaan konten dengan judul-judul buku yang baru diterbitkan.</p></li>
+<li><p><strong>Pemantauan Degradasi Model:</strong> Melakukan pengecekan nilai RMSE secara berkala untuk memastikan akurasi tebakan sistem tidak mengalami penurunan kualitas seiring bertambahnya variasi volume data interaksi yang baru.</p></li>
+</ul>
+</section>
+<section id="langkah-3-kesimpulan-akhir">
+<h3>Langkah 3: Kesimpulan Akhir<a class="headerlink" href="#langkah-3-kesimpulan-akhir" title="Link to this heading">#</a></h3>
+<p>Proyek data mining ini berhasil merealisasikan sistem asisten rekomendasi buku yang cerdas menggunakan pendekatan <em>Hybrid Filtering</em> dengan mengikuti seluruh tahapan metodologi CRISP-DM secara terstruktur.</p>
+<p>Melalui eksperimen ini, pemisahan fungsi dan analisis kelemahan pada fase pemodelan membuktikan secara konkret bahwa penggabungan linear antara kedekatan fitur teks produk dengan preferensi sosial komunitas mampu melahirkan sistem rekomendasi yang seimbang, bervariasi, dan terbebas dari kendala teknis <em>cold-start</em>. Validasi kuantitatif dengan hasil nilai metrik RMSE sebesar 0.3596 menegaskan bahwa arsitektur sistem ini memiliki tingkat akurasi yang sangat tinggi dan sangat siap untuk diimplementasikan ke dalam lingkungan operasional sistem yang nyata.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Pendat"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#business-understanding">1. Business Understanding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding">2. Data Understanding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-skema-struktur-kolom">Evaluasi Skema Struktur Kolom:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temuan-penting-dari-fase-data-understanding">Temuan Penting dari Fase Data Understanding:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preparation">3. Data Preparation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-integrasi-data-dan-analisis-relasi">Langkah 1: Integrasi Data dan Analisis Relasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-pembersihan-data-data-cleaning-pada-data-terintegrasi">Langkah 2: Pembersihan Data (Data Cleaning) pada Data Terintegrasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-3-membangun-fungsi-content-based-filtering">Langkah 3: Membangun Fungsi Content-Based Filtering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-4-membangun-fungsi-collaborative-filtering">Langkah 4: Membangun Fungsi Collaborative Filtering</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-eksekusi-pengujian-dan-komparasi-sistem">4. Modeling (Eksekusi Pengujian dan Komparasi Sistem)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-eksperimen-murni-content-based-filtering">Langkah 1: Eksperimen Murni Content-Based Filtering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-kelemahan-content-based-filtering">Analisis Kelemahan Content-Based Filtering:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-eksperimen-murni-collaborative-filtering">Langkah 2: Eksperimen Murni Collaborative Filtering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-kelemahan-collaborative-filtering">Analisis Kelemahan Collaborative Filtering:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-3-solusi-akhir-berbasis-arsitektur-hybrid-filtering">Langkah 3: Solusi Akhir Berbasis Arsitektur Hybrid Filtering</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">5. Evaluation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-evaluasi-kuantitatif-menggunakan-metrik-rmse">Langkah 1: Evaluasi Kuantitatif Menggunakan Metrik RMSE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penjabaran-logika-matematika-evaluasi-baris-per-baris">Penjabaran Logika Matematika Evaluasi (Baris per Baris):</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-meninjau-kembali-proses-bisnis-kualitatif">Langkah 2: Meninjau Kembali Proses Bisnis (Kualitatif)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deployment">6. Deployment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-serialisasi-komponen-model-model-serialization">Langkah 1: Serialisasi Komponen Model (Model Serialization)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-rencana-pemantauan-dan-pemeliharaan-berkala">Langkah 2: Rencana Pemantauan dan Pemeliharaan Berkala</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-3-kesimpulan-akhir">Langkah 3: Kesimpulan Akhir</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Ahmad Ubaidillah Mappattiro
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
