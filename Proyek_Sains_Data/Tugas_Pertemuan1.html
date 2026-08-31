@@ -410,6 +410,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-datacube-menggunakan-koordinat">Membuat Datacube menggunakan koordinat</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eksekusi-code">Eksekusi Code</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-data">Eksplorasi Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lokasi-data">Lokasi Data</a></li>
 </ul>
 </li>
 </ul>
@@ -564,19 +565,19 @@ Kondisi kualitas udara sangat bergantung pada konsentrasi gas dan partikel berba
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mengeksekusi unduhan NO2...
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:00 Job &#39;j-2608310143544073904344955fcbcc91&#39;: send &#39;start&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:00 Job &#39;j-2608310411054f92874789ccb6ec1d17&#39;: send &#39;start&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:02 Job &#39;j-2608310143544073904344955fcbcc91&#39;: created (progress 0%)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:02 Job &#39;j-2608310411054f92874789ccb6ec1d17&#39;: queued (progress 0%)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:07 Job &#39;j-2608310143544073904344955fcbcc91&#39;: queued (progress 0%)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:07 Job &#39;j-2608310411054f92874789ccb6ec1d17&#39;: queued (progress 0%)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:14 Job &#39;j-2608310143544073904344955fcbcc91&#39;: queued (progress 0%)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:14 Job &#39;j-2608310411054f92874789ccb6ec1d17&#39;: queued (progress 0%)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:22 Job &#39;j-2608310143544073904344955fcbcc91&#39;: queued (progress 0%)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:22 Job &#39;j-2608310411054f92874789ccb6ec1d17&#39;: queued (progress 0%)
 </pre></div>
 </div>
 </div>
@@ -591,7 +592,11 @@ Kondisi kualitas udara sangat bergantung pada konsentrasi gas dan partikel berba
 <li><p><strong>Identifikasi Anomali:</strong> Melakukan identifikasi <em>missing values</em> (data satelit harian yang kosong/NaN akibat tertutup awan) serta mendeteksi keberadaan <em>outliers</em> dan data <em>noise</em> yang mungkin dipengaruhi oleh kesalahan sensor satelit.</p></li>
 <li><p><strong>Pembuatan Output:</strong> Mengonversi data dari format mentah NetCDF (<code class="docutils literal notranslate"><span class="pre">.nc</span></code>) menjadi format tabel dan mengekspornya sebagai <em>file</em> <code class="docutils literal notranslate"><span class="pre">.csv</span></code> untuk kemudahan pemodelan di aplikasi data mining lebih lanjut.</p></li>
 </ul>
-<div class="cell docutils container">
+</section>
+<section id="lokasi-data">
+<h3>Lokasi Data<a class="headerlink" href="#lokasi-data" title="Link to this heading">#</a></h3>
+<p>Data yang diambil berasal dari kepulauan masalembu yang berada di sumenep</p>
+<img src="images/kepulauan.png" width="600px" height="600px"><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
@@ -765,6 +770,7 @@ Kondisi kualitas udara sangat bergantung pada konsentrasi gas dan partikel berba
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-datacube-menggunakan-koordinat">Membuat Datacube menggunakan koordinat</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eksekusi-code">Eksekusi Code</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-data">Eksplorasi Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lokasi-data">Lokasi Data</a></li>
 </ul>
 </li>
 </ul>
