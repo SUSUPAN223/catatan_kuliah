@@ -565,19 +565,19 @@ Kondisi kualitas udara sangat bergantung pada konsentrasi gas dan partikel berba
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mengeksekusi unduhan NO2...
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:00 Job &#39;j-2608310411054f92874789ccb6ec1d17&#39;: send &#39;start&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:00 Job &#39;j-26090609542048b4b099b6f856965aa6&#39;: send &#39;start&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:02 Job &#39;j-2608310411054f92874789ccb6ec1d17&#39;: queued (progress 0%)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:03 Job &#39;j-26090609542048b4b099b6f856965aa6&#39;: queued (progress 0%)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:07 Job &#39;j-2608310411054f92874789ccb6ec1d17&#39;: queued (progress 0%)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:09 Job &#39;j-26090609542048b4b099b6f856965aa6&#39;: queued (progress 0%)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:14 Job &#39;j-2608310411054f92874789ccb6ec1d17&#39;: queued (progress 0%)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:16 Job &#39;j-26090609542048b4b099b6f856965aa6&#39;: queued (progress 0%)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:22 Job &#39;j-2608310411054f92874789ccb6ec1d17&#39;: queued (progress 0%)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:25 Job &#39;j-26090609542048b4b099b6f856965aa6&#39;: queued (progress 0%)
 </pre></div>
 </div>
 </div>
@@ -703,6 +703,45 @@ Kondisi kualitas udara sangat bergantung pada konsentrasi gas dan partikel berba
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/e34891fb5a890d11ec31190f8dd9c5c245f831d16aaf67c5a09c10b526faf1bf.png" src="../_images/e34891fb5a890d11ec31190f8dd9c5c245f831d16aaf67c5a09c10b526faf1bf.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+
+<span class="n">unsur_polutan</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;NO2&quot;</span><span class="p">,</span> <span class="s2">&quot;CO&quot;</span><span class="p">,</span> <span class="s2">&quot;SO2&quot;</span><span class="p">,</span> <span class="s2">&quot;O3&quot;</span><span class="p">,</span> <span class="s2">&quot;HCHO&quot;</span><span class="p">]</span>
+<span class="n">list_df</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">polutan</span> <span class="ow">in</span> <span class="n">unsur_polutan</span><span class="p">:</span>
+    <span class="c1"># Membaca file NetCDF</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;kualitas_udara_</span><span class="si">{</span><span class="n">polutan</span><span class="si">}</span><span class="s2">.nc&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Konversi data xarray menjadi DataFrame Pandas</span>
+    <span class="c1"># reset_index() digunakan untuk memunculkan koordinat waktu &#39;t&#39; menjadi kolom</span>
+    <span class="n">df_temp</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">polutan</span><span class="p">]</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    
+    <span class="c1"># Memfilter hanya mengambil kolom waktu (&#39;t&#39;) dan kolom nilai polutannya</span>
+    <span class="n">df_temp</span> <span class="o">=</span> <span class="n">df_temp</span><span class="p">[[</span><span class="s1">&#39;t&#39;</span><span class="p">,</span> <span class="n">polutan</span><span class="p">]]</span>
+    
+    <span class="c1"># Mengatur kolom &#39;t&#39; sebagai Index agar penggabungan tabel berpatokan pada tanggal</span>
+    <span class="n">df_temp</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">list_df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df_temp</span><span class="p">)</span>
+
+<span class="c1"># Menggabungkan semua tabel polutan berdasarkan tanggal (axis=1 menggabung ke samping)</span>
+<span class="n">df_gabungan</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">list_df</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Mengembalikan index tanggal menjadi kolom biasa dan mengganti namanya</span>
+<span class="n">df_gabungan</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_gabungan</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;index&#39;</span><span class="p">:</span> <span class="s1">&#39;tanggal&#39;</span><span class="p">,</span> <span class="s1">&#39;t&#39;</span><span class="p">:</span> <span class="s1">&#39;tanggal&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Format kolom tanggal menjadi YYYY-MM-DD agar mudah dibaca PostgreSQL</span>
+<span class="n">df_gabungan</span><span class="p">[</span><span class="s1">&#39;tanggal&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df_gabungan</span><span class="p">[</span><span class="s1">&#39;tanggal&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span>
+
+<span class="c1"># Menyimpan hasil ke format CSV</span>
+<span class="n">df_gabungan</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;data_kualitas_udara.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 </div>
 </section>
