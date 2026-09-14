@@ -210,6 +210,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Tugas_Pertemuan1.html">Tugas_Pertemuan1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tugas_Pertemuan2.html">Tugas Pertemuan 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tugas_Pertemuan3.html">Tugas Pertemuan 3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Pertemuan2.html">Pertemuan 2</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Pertemuan 3</a></li>
 </ul>
@@ -384,7 +385,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -400,6 +403,15 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alur-kerja-sistem-cerdas">Alur Kerja SIstem Cerdas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#domain-utama-ekstraksi">3 Domain Utama Ekstraksi</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -411,6 +423,136 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="pertemuan-3">
 <h1>Pertemuan 3<a class="headerlink" href="#pertemuan-3" title="Link to this heading">#</a></h1>
+<p>Sebelum melakukan ekstraksi fitur</p>
+<p>kita perlu memperbaiki kualitas data, kita data understanding yakni kapan data kita missing.</p>
+<p>nah untuk mengisi data yang kosong adalah dengan data processing, salah satunya dengan menggunakan metode interpolation</p>
+<p>interpolation sendiri adalah sebuah metode untuk mencari nilai yang tidak diketahui diantara beberapa data yang sudah diketahui</p>
+<p>metode lain yang bisa digunakan :</p>
+<ul class="simple">
+<li><p>moving average</p></li>
+</ul>
+<p>Sebelum menggunakan metode untuk mencari missing values, pastikan sudah mengidentifikasi outlier terlebih dahulu</p>
+<p>Metode yang bisa digunakan:</p>
+<ul class="simple">
+<li><p>Metode statistik</p></li>
+<li><p>Metode Visualisasi</p></li>
+</ul>
+<p>NOTE</p>
+<p>Untuk tugas 2 nya, coba nanti menggunakan beberapa metode dengan teknik imputasi</p>
+<p>jadi untuk minggu depan datanya sudah bersih</p>
+<section id="alur-kerja-sistem-cerdas">
+<h2>Alur Kerja SIstem Cerdas<a class="headerlink" href="#alur-kerja-sistem-cerdas" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Dataset</p></li>
+<li><p>Ekstraksi Fitur</p></li>
+<li><p>Dataset Tabular</p></li>
+</ol>
+<p><em>Data yang dimiliki adalah 365, total barisnya ada 366 terhitung dengan baris fitur</em></p>
+</section>
+<section id="domain-utama-ekstraksi">
+<h2>3 Domain Utama Ekstraksi<a class="headerlink" href="#domain-utama-ekstraksi" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Domain Statistik
+Menggambarkan distribusi dan karakteristik sentral dari amplitudo sinyal secara keseluruhan, seperti mean, variance, dan energi RMS.</p></li>
+<li><p>Domain Temporal
+Mengukur dinamica dan perubahan nilai seiring berjalannya waktu seperti ZCR ( Zeri Crissubg Rate) perbedaan absolut berurutan.</p></li>
+<li><p>Domain Spektral
+Menganalisis komposisi frekkuensi sinyal setelahan ditransformasikan ke domain frekuensi menggunakan FFT ( Fast  Fourier Transform)</p></li>
+</ul>
+<p>Perthitungan Manual RMS</p>
+<p>NOTE :</p>
+<ul class="simple">
+<li><p>Gunakan TSFEL</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Data time series 30 hari</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;tanggal&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;2026-08-09&#39;</span><span class="p">,</span> <span class="s1">&#39;2026-08-10&#39;</span><span class="p">,</span> <span class="s1">&#39;2026-08-11&#39;</span><span class="p">,</span> <span class="s1">&#39;2026-08-12&#39;</span><span class="p">,</span> <span class="s1">&#39;2026-08-13&#39;</span><span class="p">,</span> 
+                <span class="s1">&#39;2026-08-14&#39;</span><span class="p">,</span> <span class="s1">&#39;2026-08-15&#39;</span><span class="p">,</span> <span class="s1">&#39;2026-08-16&#39;</span><span class="p">,</span> <span class="s1">&#39;2026-08-17&#39;</span><span class="p">,</span> <span class="s1">&#39;2026-08-18&#39;</span><span class="p">,</span> 
+                <span class="s1">&#39;2026-08-19&#39;</span><span class="p">,</span> <span class="s1">&#39;2026-08-20&#39;</span><span class="p">,</span> <span class="s1">&#39;2026-08-21&#39;</span><span class="p">,</span> <span class="s1">&#39;2026-08-22&#39;</span><span class="p">,</span> <span class="s1">&#39;2026-08-23&#39;</span><span class="p">,</span> 
+                <span class="s1">&#39;2026-08-24&#39;</span><span class="p">,</span> <span class="s1">&#39;2026-08-25&#39;</span><span class="p">,</span> <span class="s1">&#39;2026-08-26&#39;</span><span class="p">,</span> <span class="s1">&#39;2026-08-27&#39;</span><span class="p">,</span> <span class="s1">&#39;2026-08-28&#39;</span><span class="p">,</span> 
+                <span class="s1">&#39;2026-08-29&#39;</span><span class="p">,</span> <span class="s1">&#39;2026-08-30&#39;</span><span class="p">,</span> <span class="s1">&#39;2026-08-31&#39;</span><span class="p">,</span> <span class="s1">&#39;2026-09-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2026-09-02&#39;</span><span class="p">,</span> 
+                <span class="s1">&#39;2026-09-03&#39;</span><span class="p">,</span> <span class="s1">&#39;2026-09-04&#39;</span><span class="p">,</span> <span class="s1">&#39;2026-09-05&#39;</span><span class="p">,</span> <span class="s1">&#39;2026-09-06&#39;</span><span class="p">,</span> <span class="s1">&#39;2026-09-07&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;jumlah_pengunjung&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">152</span><span class="p">,</span> <span class="mi">184</span><span class="p">,</span> <span class="mi">165</span><span class="p">,</span> <span class="mi">192</span><span class="p">,</span> <span class="mi">210</span><span class="p">,</span> <span class="mi">205</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="mi">145</span><span class="p">,</span> <span class="mi">280</span><span class="p">,</span> <span class="mi">215</span><span class="p">,</span> <span class="mi">220</span><span class="p">,</span> <span class="mi">235</span><span class="p">,</span> 
+                          <span class="mi">240</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">170</span><span class="p">,</span> <span class="mi">265</span><span class="p">,</span> <span class="mi">280</span><span class="p">,</span> <span class="mi">275</span><span class="p">,</span> <span class="mi">290</span><span class="p">,</span> <span class="mi">310</span><span class="p">,</span> <span class="mi">195</span><span class="p">,</span> <span class="mi">205</span><span class="p">,</span> <span class="mi">330</span><span class="p">,</span> <span class="mi">345</span><span class="p">,</span> 
+                          <span class="mi">340</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="mi">380</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">260</span><span class="p">,</span> <span class="mi">410</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Membuat DataFrame dan mengonversi kolom tanggal ke format datetime</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;tanggal&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;tanggal&#39;</span><span class="p">])</span>
+
+<span class="c1"># Mengatur ukuran kanvas visualisasi</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># Memplot garis data time series</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;tanggal&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;jumlah_pengunjung&#39;</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#2c3e50&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Pengunjung Harian&#39;</span><span class="p">)</span>
+
+<span class="c1"># Menambahkan judul dan label sumbu</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Tren Jumlah Pengunjung (9 Ags - 7 Sep 2026)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Tanggal&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Total Pengunjung&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="c1"># Memutar teks tanggal di sumbu X agar tidak saling bertumpuk</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+
+<span class="c1"># Menambahkan gridline ringan untuk memudahkan pembacaan titik data</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+
+<span class="c1"># Menambahkan legenda dan merapikan layout</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="c1"># Menampilkan grafik</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/cead4400975b47dfaef021c58a4255db08c535044b3fb8158a654d11cf45eadb.png" src="../_images/cead4400975b47dfaef021c58a4255db08c535044b3fb8158a654d11cf45eadb.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tsfel</span>
+
+<span class="c1"># Data time series 30 hari</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;jumlah_pengunjung&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">152</span><span class="p">,</span> <span class="mi">184</span><span class="p">,</span> <span class="mi">165</span><span class="p">,</span> <span class="mi">192</span><span class="p">,</span> <span class="mi">210</span><span class="p">,</span> <span class="mi">205</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="mi">145</span><span class="p">,</span> <span class="mi">280</span><span class="p">,</span> <span class="mi">215</span><span class="p">,</span> <span class="mi">220</span><span class="p">,</span> <span class="mi">235</span><span class="p">,</span> 
+                          <span class="mi">240</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">170</span><span class="p">,</span> <span class="mi">265</span><span class="p">,</span> <span class="mi">280</span><span class="p">,</span> <span class="mi">275</span><span class="p">,</span> <span class="mi">290</span><span class="p">,</span> <span class="mi">310</span><span class="p">,</span> <span class="mi">195</span><span class="p">,</span> <span class="mi">205</span><span class="p">,</span> <span class="mi">330</span><span class="p">,</span> <span class="mi">345</span><span class="p">,</span> 
+                          <span class="mi">340</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="mi">380</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">260</span><span class="p">,</span> <span class="mi">410</span><span class="p">]</span>
+<span class="p">}</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># 1. Mendapatkan konfigurasi fitur bawaan tsfel untuk domain statistik</span>
+<span class="n">cfg</span> <span class="o">=</span> <span class="n">tsfel</span><span class="o">.</span><span class="n">get_features_by_domain</span><span class="p">(</span><span class="s1">&#39;statistical&#39;</span><span class="p">)</span>
+
+<span class="c1"># 2. Menjalankan pipeline ekstraksi fitur (tsfel akan mengatur &#39;window&#39; otomatis)</span>
+<span class="c1"># verbose=0 digunakan untuk menyembunyikan progress bar di terminal</span>
+<span class="c1"># Tambahkan fs=1 untuk mendefinisikan 1 sampel per hari</span>
+<span class="n">hasil_ekstraksi</span> <span class="o">=</span> <span class="n">tsfel</span><span class="o">.</span><span class="n">time_series_features_extractor</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;jumlah_pengunjung&#39;</span><span class="p">],</span> <span class="n">fs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># 3. Mengambil secara spesifik nilai Root Mean Square (RMS) dari DataFrame hasil</span>
+<span class="c1"># tsfel secara default menambahkan prefix &quot;0_&quot; untuk data 1 dimensi</span>
+<span class="n">rms_value</span> <span class="o">=</span> <span class="n">hasil_ekstraksi</span><span class="p">[</span><span class="s1">&#39;0_Root mean square&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Nilai RMS: </span><span class="si">{</span><span class="n">rms_value</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Nilai RMS: 257.27
+</pre></div>
+</div>
+</div>
+</div>
+<p>Total data yang kalian miliki kan 365, sedangkan fitur dari tsfel ada 68, nah gunakan data tersebut untuk digunakan pada setiap setiap fitur dari tsfel gunakan pada polutan CO, juga tampilkan bagaimana masing masing fitung bekerja dan menghitung untuk mendapatkan hasil</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -458,6 +600,22 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alur-kerja-sistem-cerdas">Alur Kerja SIstem Cerdas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#domain-utama-ekstraksi">3 Domain Utama Ekstraksi</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
