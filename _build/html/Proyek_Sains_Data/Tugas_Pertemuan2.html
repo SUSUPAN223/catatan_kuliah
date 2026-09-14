@@ -1,0 +1,905 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Tugas Pertemuan 2 &#8212; Catatan MataKuliah</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=1ae7504c"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Proyek_Sains_Data/Tugas_Pertemuan2';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Tugas_Pertemuan1" href="Tugas_Pertemuan1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Catatan MataKuliah - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Catatan MataKuliah - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to my Note Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Komputasi Aljabar Linear</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Aljabar_Linear/Pertemuan1.html">Pertemuan 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Aljabar_Linear/Pertemuan2.html">Pertemuan 2 (19/02/2026)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Aljabar_Linear/Pertemuan3.html">Pertemuan 3 (26/022026/)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Aljabar_Linear/Pertemuan4.html">Pertemuan 4 (05/03/2026)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Aljabar_Linear/KumpulanTugas.html">KUMPULAN TUGAS TUGAS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Aljabar_Linear/Pertemuan6.html">Pertemuan 6 (02\04\26)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Aljabar_Linear/Pertemuan7.html">Pertemuan7 09\04\26</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Aljabar_Linear/Pertemuan8.html">Pertemuan8 (23/04/26)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Aljabar_Linear/Pertemuan9.html">Pertemuan 9(30/04/2026)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Aljabar_Linear/Pertemuan10.html">Pertemuan 10 (07/05/2026)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Aljabar_Linear/Pertemuan12.html">Pertemuan 12 (21/05/2026)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Aljabar_Linear/Tugas_pertemuan_9.html">Tugas Pertemuan 9</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Aljabar_Linear/Tugas_pertemuan_10.html">Tugas pertemuan 10</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Aljabar_Linear/Tugas_pertemuan_12.html">Tugas Pertemuan 12</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Aljabar_Linear/SVD.html">Singular Value Decomposition (SVD)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Aljabar_Linear/Tugas_Akhir.html">TUGAS AKHIR</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Kecerdasan Komputasional</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../KerKom/Pertemuan2.html">Pertemuan 2 (24/02/2026)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../KerKom/Pertemuan3.html">Pertemuan 3 (03/03/2026)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../KerKom/Pertemuan4.html">Pertemuan 4 (10/03/2026)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../KerKom/Pertemuan6.html">Pertemuan 6 07/04/26</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../KerKom/Pertemuan7.html">Pertemuan 7(21/04/26)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../KerKom/Pertemuan8.html">Pertemuan 8 (28/04/26)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Proyek Sains Data</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Tugas_Pertemuan1.html">Tugas_Pertemuan1</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tugas Pertemuan 2</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FProyek_Sains_Data/Tugas_Pertemuan2.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Proyek_Sains_Data/Tugas_Pertemuan2.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Tugas Pertemuan 2</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proses-pengumpulan-data-kedalam-format-csv">Proses pengumpulan data kedalam format .csv</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upload-csv-ke-postgre">upload csv ke postgre</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aiven-io">Aiven.io</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dbeaver">DBEAVER</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knime">KNIME</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-workflow">HASIL WORKFLOW</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-statistic-view">HASIL STATISTIC VIEW</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-masing-masing-properti">Penjelasan Masing Masing Properti</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-yang-dihasilkan-dari-setiap-properti">Perhitungan yang dihasilkan dari setiap properti</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kolom-no2">Kolom : NO2</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kolom-co">Kolom : CO</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kolom-so2">Kolom : SO2</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kolom-o3">Kolom : O3</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kolom-hcho">Kolom : HCHO</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="tugas-pertemuan-2">
+<h1>Tugas Pertemuan 2<a class="headerlink" href="#tugas-pertemuan-2" title="Link to this heading">#</a></h1>
+<section id="proses-pengumpulan-data-kedalam-format-csv">
+<h2>Proses pengumpulan data kedalam format .csv<a class="headerlink" href="#proses-pengumpulan-data-kedalam-format-csv" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+
+<span class="n">unsur_polutan</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;NO2&quot;</span><span class="p">,</span> <span class="s2">&quot;CO&quot;</span><span class="p">,</span> <span class="s2">&quot;SO2&quot;</span><span class="p">,</span> <span class="s2">&quot;O3&quot;</span><span class="p">,</span> <span class="s2">&quot;HCHO&quot;</span><span class="p">]</span>
+<span class="n">list_df</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">polutan</span> <span class="ow">in</span> <span class="n">unsur_polutan</span><span class="p">:</span>
+    <span class="c1"># Membaca file NetCDF</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;kualitas_udara_</span><span class="si">{</span><span class="n">polutan</span><span class="si">}</span><span class="s2">.nc&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Konversi data xarray menjadi DataFrame Pandas</span>
+    <span class="c1"># reset_index() digunakan untuk memunculkan koordinat waktu &#39;t&#39; menjadi kolom</span>
+    <span class="n">df_temp</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">polutan</span><span class="p">]</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    
+    <span class="c1"># Memfilter hanya mengambil kolom waktu (&#39;t&#39;) dan kolom nilai polutannya</span>
+    <span class="n">df_temp</span> <span class="o">=</span> <span class="n">df_temp</span><span class="p">[[</span><span class="s1">&#39;t&#39;</span><span class="p">,</span> <span class="n">polutan</span><span class="p">]]</span>
+    
+    <span class="c1"># Mengatur kolom &#39;t&#39; sebagai Index agar penggabungan tabel berpatokan pada tanggal</span>
+    <span class="n">df_temp</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">list_df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df_temp</span><span class="p">)</span>
+
+<span class="c1"># Menggabungkan semua tabel polutan berdasarkan tanggal (axis=1 menggabung ke samping)</span>
+<span class="n">df_gabungan</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">list_df</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Mengembalikan index tanggal menjadi kolom biasa dan mengganti namanya</span>
+<span class="n">df_gabungan</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df_gabungan</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;index&#39;</span><span class="p">:</span> <span class="s1">&#39;tanggal&#39;</span><span class="p">,</span> <span class="s1">&#39;t&#39;</span><span class="p">:</span> <span class="s1">&#39;tanggal&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Format kolom tanggal menjadi YYYY-MM-DD agar mudah dibaca PostgreSQL</span>
+<span class="n">df_gabungan</span><span class="p">[</span><span class="s1">&#39;tanggal&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df_gabungan</span><span class="p">[</span><span class="s1">&#39;tanggal&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span>
+
+<span class="c1"># Menyimpan hasil ke format CSV</span>
+<span class="n">df_gabungan</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;data_kualitas_udara.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="upload-csv-ke-postgre">
+<h2>upload csv ke postgre<a class="headerlink" href="#upload-csv-ke-postgre" title="Link to this heading">#</a></h2>
+<section id="aiven-io">
+<h3><a class="reference external" href="http://Aiven.io">Aiven.io</a><a class="headerlink" href="#aiven-io" title="Link to this heading">#</a></h3>
+<p><em>Langkah Langkah yang perlu dilakukan :</em></p>
+<ul class="simple">
+<li><p>Membuka <a class="reference external" href="http://aiven.io">aiven.io</a> dan login</p></li>
+<li><p>Membuat project baru dan memilih postgresql</p></li>
+<li><p>setelah selesai, pastikan postgre yang baru dibuat ada dalam status ON</p></li>
+<li><p>klik nama project untuk melihat data lengkap mengenai host, nama db, password, dan port</p></li>
+</ul>
+</section>
+<section id="dbeaver">
+<h3>DBEAVER<a class="headerlink" href="#dbeaver" title="Link to this heading">#</a></h3>
+<p>Pada DB eaver, kita akan menyambungkan project di aiven ke dbeaver, setelah itu akan kita upload file .csv yang kita miliki ke aiven dengan perantara dbeaver</p>
+<p><em>Langkah Langkah yang perlu dilakukan :</em></p>
+<ul class="simple">
+<li><p>buka DBeaver</p></li>
+<li><p>klik menu database pada navigasi atas</p></li>
+<li><p>pilih “New Database Connection”</p></li>
+<li><p>masukkan hostname, dbname, username, dan password yang ada di aiven ke dbeaver</p></li>
+<li><p>kemudian klik next, sampai pada tipe data, perhatikan apakah tipe data sudah sesuai atau belum</p></li>
+<li><p>jika type data sudah sesuai, klik next atau proceed</p></li>
+</ul>
+</section>
+<section id="knime">
+<h3>KNIME<a class="headerlink" href="#knime" title="Link to this heading">#</a></h3>
+<p>pada tahap ini, kita sudah memiliki data di <a class="reference external" href="http://aiven.io">aiven.io</a>, sehingga kita tinggal membangung workflownya</p>
+<p><em>Langkah Langkah yang perlu dilakukan :</em></p>
+<ul class="simple">
+<li><p>Buka KNIME</p></li>
+<li><p>Pilih create new project atau ikon +</p></li>
+<li><p>di menu kiri, pilih “Nodes” kemudian search postgre</p></li>
+<li><p>pilih “PostgreSQL Connector”, kemudian konfigurasi menyesuaikan aiven</p></li>
+<li><p>pilih nodes lagi, lalu search “DB Table Selector”, pilih schema public kemudian pilih data</p></li>
+<li><p>klik nodes lagi, lalu search “DB reader”</p></li>
+<li><p>lalu di nodes, cari 3 nodes ini :Statistics, Table View, Statistics view</p></li>
+<li><p>jika sudah, klik icon statistics kemudian klik kanan dan pilih open view atau langsung pencet f10</p></li>
+</ul>
+<section id="hasil-workflow">
+<h4>HASIL WORKFLOW<a class="headerlink" href="#hasil-workflow" title="Link to this heading">#</a></h4>
+<img src="images/statistic_1.png" width="600px" height="600px">
+</section>
+<section id="hasil-statistic-view">
+<h4>HASIL STATISTIC VIEW<a class="headerlink" href="#hasil-statistic-view" title="Link to this heading">#</a></h4>
+<img src="images/statistic_view1.png" width="600px" height="600px"></section>
+</section>
+<section id="penjelasan-masing-masing-properti">
+<h3>Penjelasan Masing Masing Properti<a class="headerlink" href="#penjelasan-masing-masing-properti" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Column
+Nama fitur atau variabel kolom yang dianalisis dari database.</p></li>
+</ul>
+<p>Cara Penentuan: Mengambil langsung header dari tabel dataset (contoh: NO2, CO).</p>
+<ul class="simple">
+<li><p>Min (Minimum)
+Nilai terkecil atau terendah dalam sekumpulan data di kolom tersebut.</p></li>
+</ul>
+<p>Rumus/Cara: Urutkan seluruh data dari nilai terkecil hingga terbesar, lalu ambil nilai urutan pertama.</p>
+<p><span class="math notranslate nohighlight">\(\min(X)\)</span></p>
+<ul class="simple">
+<li><p>Mean (Rata-rata)
+Nilai rata-rata aritmatika dari keseluruhan data. Menunjukkan titik berat dari sekumpulan angka tersebut.</p></li>
+</ul>
+<p>Rumus/Cara: Jumlahkan seluruh nilai data, lalu bagi dengan total banyaknya observasi (<span class="math notranslate nohighlight">\(n\)</span>).</p>
+<div class="math notranslate nohighlight">
+\[\bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i\]</div>
+<ul class="simple">
+<li><p>Median (Nilai Tengah)
+Nilai yang membagi data yang sudah terurut menjadi dua bagian yang sama banyak. Median tidak mudah terpengaruh oleh pencilan (outlier).</p></li>
+</ul>
+<p>Rumus/Cara: Urutkan observasi dari yang terkecil. Jika total data (<span class="math notranslate nohighlight">\(n\)</span>) ganjil, ambil tepat di tengah. Jika genap, jumlahkan dua nilai di tengah lalu bagi dua.</p>
+<p>Untuk <span class="math notranslate nohighlight">\(n\)</span> ganjil: <span class="math notranslate nohighlight">\(x_{\frac{n+1}{2}}\)</span>
+Untuk <span class="math notranslate nohighlight">\(n\)</span> genap: <span class="math notranslate nohighlight">\(\frac{x_{\frac{n}{2}} + x_{\frac{n}{2} + 1}}{2}\)</span></p>
+<ul class="simple">
+<li><p>Max (Maksimum)
+Nilai paling besar atau tertinggi dari seluruh baris data.</p></li>
+</ul>
+<p>Rumus/Cara: Urutkan seluruh data, lalu ambil angka urutan terakhir.</p>
+<p><span class="math notranslate nohighlight">\(\max(X)\)</span></p>
+<ul class="simple">
+<li><p>Std. Dev. (Standar Deviasi)
+Ukuran simpangan baku yang menunjukkan seberapa jauh variasi sebaran data menyimpang dari rata-ratanya (Mean). Semakin kecil nilainya, semakin data mengelompok di dekat rata-rata.</p></li>
+</ul>
+<p>Rumus/Cara: Hitung selisih tiap data terhadap rata-rata, kuadratkan, jumlahkan, bagi dengan total data dikurangi satu, lalu tarik akar kuadratnya (akar dari varians sampel).</p>
+<div class="math notranslate nohighlight">
+\[s = \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^2}\]</div>
+<ul class="simple">
+<li><p>Skewness (Kemencengan)
+Ukuran ketidaksimetrisan kurva distribusi frekuensi data. Nilai <span class="math notranslate nohighlight">\(&gt; 0\)</span> berarti ekor distribusi memanjang ke kanan. Nilai <span class="math notranslate nohighlight">\(&lt; 0\)</span> berarti ekor ke kiri. Nilai <span class="math notranslate nohighlight">\(0\)</span> berarti simetris.</p></li>
+</ul>
+<p>Rumus/Cara: Menghitung rata-rata deviasi pangkat tiga dibagi standar deviasi pangkat tiga.</p>
+<div class="math notranslate nohighlight">
+\[g_1 = \frac{\frac{1}{n}\sum_{i=1}^{n}(x_i - \bar{x})^3}{s^3}\]</div>
+<ul class="simple">
+<li><p>Kurtosis (Keruncingan)
+Mengukur tingkat keruncingan kurva dan ketebalan “ekor” distribusi. Nilai yang tinggi menunjukkan bahwa data memiliki lebih banyak nilai ekstrem (outlier) dibanding distribusi normal.</p></li>
+</ul>
+<p>Rumus/Cara: Menghitung deviasi pangkat empat dibagi standar deviasi pangkat empat (dikurangi 3 untuk Excess Kurtosis acuan kurva normal).</p>
+<div class="math notranslate nohighlight">
+\[g_2 = \frac{\frac{1}{n}\sum_{i=1}^{n}(x_i - \bar{x})^4}{s^4} - 3\]</div>
+<ul class="simple">
+<li><p>No. Missing
+Total baris yang datanya kosong, gagal terbaca, atau bernilai NULL.
+Cara Menghitung: Sistem memindai kolom dan menghitung jumlah sel yang tidak berisi tipe data angka yang valid.</p></li>
+<li><p>No. +<span class="math notranslate nohighlight">\(\infty\)</span> (Plus Infinity)
+Total data yang terdeteksi sebagai nilai tak terhingga positif.</p></li>
+</ul>
+<p>Cara Menghitung: Sistem menghitung jumlah sel yang bernilai <span class="math notranslate nohighlight">\(+\infty\)</span> (biasanya muncul akibat komputasi bilangan positif dibagi nol).</p>
+<ul class="simple">
+<li><p>No. -<span class="math notranslate nohighlight">\(\infty\)</span> (Minus Infinity)
+Total data yang terdeteksi sebagai tak terhingga negatif.</p></li>
+</ul>
+<p>Cara Menghitung: Sistem menghitung jumlah sel yang bernilai <span class="math notranslate nohighlight">\(-\infty\)</span> (akibat pembagian bilangan negatif dengan nol).</p>
+<ul class="simple">
+<li><p>Histogram
+Representasi grafik batang dari rentang sebaran frekuensi data.</p></li>
+</ul>
+<p>Cara Menghitung: Membagi rentang nilai (dari Min hingga Max) menjadi beberapa keranjang (interval/bin), lalu menghitung jumlah data yang jatuh di dalam masing-masing interval tersebut.</p>
+</section>
+<section id="perhitungan-yang-dihasilkan-dari-setiap-properti">
+<h3>Perhitungan yang dihasilkan dari setiap properti<a class="headerlink" href="#perhitungan-yang-dihasilkan-dari-setiap-properti" title="Link to this heading">#</a></h3>
+<section id="kolom-no2">
+<h4>Kolom : NO2<a class="headerlink" href="#kolom-no2" title="Link to this heading">#</a></h4>
+<hr class="docutils" />
+<p>Min : Hasil properti ini diambil dengan mengurutkan 186 data valid dari angka terkecil hingga terbesar, lalu mengambil nilai pada urutan pertama.</p>
+<p>Hasil : -941</p>
+<hr class="docutils" />
+<p>Mean : Hasil properti ini dihitung dengan menjumlahkan seluruh 186 angka valid di kolom tersebut (total penjumlahan 56.013), lalu membaginya dengan jumlah baris data valid (<span class="math notranslate nohighlight">\(n = 186\)</span>).</p>
+<p>Hasil : 301.1452</p>
+<hr class="docutils" />
+<p>Median : Hasil properti ini didapat dari mencari letak nilai tengah setelah keseluruhan data diurutkan. Karena jumlah data genap (186), nilainya diambil dari penjumlahan data urutan ke-93 (202) dan ke-94 (202), lalu dibagi dua.</p>
+<p>Hasil : 202</p>
+<hr class="docutils" />
+<p>Max : Hasil properti ini diambil dengan melihat angka terakhir atau yang paling besar nilainya setelah keseluruhan 186 data valid diurutkan.</p>
+<p>Hasil : 998</p>
+<hr class="docutils" />
+<p>Std. Dev. : Hasil properti ini dihitung dari selisih setiap 186 data terhadap nilai rata-rata (301.1452). Selisih tersebut dikuadratkan, dijumlahkan, dibagi <span class="math notranslate nohighlight">\(n-1\)</span> (yaitu 185) untuk mendapat varians sampel, lalu ditarik akar kuadratnya.</p>
+<p>Hasil : 379.2674</p>
+<hr class="docutils" />
+<p>Kurtosis : Hasil properti ini dihitung menggunakan rumus deviasi pangkat empat untuk melihat tingkat keruncingan kurva puncak data tersebut jika dibandingkan dengan kurva lonceng distribusi normal.</p>
+<p>Hasil : 1.028</p>
+<hr class="docutils" />
+<p>Skewness : Hasil properti ini dihitung menggunakan rasio deviasi pangkat tiga untuk mengukur arah kemiringan sebaran angka (karena hasilnya negatif, persebaran angka lebih padat di sisi kanan).</p>
+<p>Hasil : -0.5772</p>
+<hr class="docutils" />
+<p>No. Missing : Hasil properti ini diambil dengan memindai baris dari atas ke bawah dan menghitung jumlah sel baris yang kosong atau tidak berisi angka valid.</p>
+<p>Hasil : 157 baris kosong, total baris 343, sisa data valid 186 baris.</p>
+<hr class="docutils" />
+<p>No. +unlimited : Hasil properti ini diambil dari pendeteksian jumlah data riil yang bernilai tak terhingga positif akibat operasi sistem (misalnya pembagian bilangan positif dengan nol).</p>
+<p>Hasil : 0</p>
+<hr class="docutils" />
+<p>No. -unlimited : Hasil properti ini diambil dari pendeteksian jumlah data yang bernilai tak terhingga negatif.</p>
+<p>Hasil : 0</p>
+</section>
+<section id="kolom-co">
+<h4>Kolom : CO<a class="headerlink" href="#kolom-co" title="Link to this heading">#</a></h4>
+<hr class="docutils" />
+<p>Min : Hasil properti ini diambil dengan mengurutkan 127 data valid dari angka terkecil hingga terbesar, lalu mengambil nilai pada urutan pertama.</p>
+<p>Hasil : 0.0196</p>
+<hr class="docutils" />
+<p>Mean : Hasil properti ini dihitung dengan menjumlahkan seluruh 127 angka valid di kolom tersebut (total penjumlahan sekitar 3.5553), lalu membaginya dengan jumlah baris data valid (<span class="math notranslate nohighlight">\(n = 127\)</span>).</p>
+<p>Hasil : 0.028 (hasil pembulatan dari 0.02799…)</p>
+<hr class="docutils" />
+<p>Median : Hasil properti ini didapat dari mencari letak nilai tengah setelah keseluruhan data diurutkan. Karena jumlah data ganjil (127), nilainya diambil dari angka yang tepat berada di urutan ke-64.</p>
+<p>Hasil : 0.028</p>
+<hr class="docutils" />
+<p>Max : Hasil properti ini diambil dengan melihat angka terakhir atau yang paling besar nilainya setelah keseluruhan 127 data valid diurutkan.</p>
+<p>Hasil : 0.0374</p>
+<hr class="docutils" />
+<p>Std. Dev. : Hasil properti ini dihitung dari selisih setiap 127 data terhadap nilai rata-rata (0.028). Selisih tersebut dikuadratkan, dijumlahkan, dibagi <span class="math notranslate nohighlight">\(n-1\)</span> (yaitu 126) untuk mendapat varians sampel, lalu ditarik akar kuadratnya.</p>
+<p>Hasil : 0.0038</p>
+<hr class="docutils" />
+<p>Kurtosis : Hasil properti ini dihitung menggunakan rumus deviasi pangkat empat untuk melihat tingkat keruncingan kurva puncak data tersebut jika dibandingkan dengan kurva lonceng distribusi normal. (Nilai negatif berarti puncak kurva lebih datar/landai).</p>
+<p>Hasil : -0.3023</p>
+<hr class="docutils" />
+<p>Skewness : Hasil properti ini dihitung menggunakan rasio deviasi pangkat tiga untuk mengukur arah kemiringan sebaran angka. (Karena hasilnya positif, persebaran angka sedikit lebih padat di sisi kiri, dengan ekor memanjang ke kanan).</p>
+<p>Hasil : 0.1719</p>
+<hr class="docutils" />
+<p>No. Missing : Hasil properti ini diambil dengan memindai baris dari atas ke bawah dan menghitung jumlah sel baris yang kosong atau tidak berisi angka valid.</p>
+<p>Hasil : 216 baris kosong, total baris 343, sisa data valid 127 baris.</p>
+<hr class="docutils" />
+<p>No. +unlimited : Hasil properti ini diambil dari pendeteksian jumlah data riil yang bernilai tak terhingga positif akibat operasi sistem (misalnya pembagian bilangan positif dengan nol).</p>
+<p>Hasil : 0</p>
+<hr class="docutils" />
+<p>No. -unlimited : Hasil properti ini diambil dari pendeteksian jumlah data yang bernilai tak terhingga negatif.</p>
+<p>Hasil : 0</p>
+</section>
+<section id="kolom-so2">
+<h4>Kolom : SO2<a class="headerlink" href="#kolom-so2" title="Link to this heading">#</a></h4>
+<hr class="docutils" />
+<p>Min : Hasil properti ini diambil dengan mengurutkan 231 data valid dari angka terkecil hingga terbesar, lalu mengambil nilai pada urutan pertama.</p>
+<p>Hasil : -991</p>
+<hr class="docutils" />
+<p>Mean : Hasil properti ini dihitung dengan menjumlahkan seluruh 231 angka valid di kolom tersebut, lalu membaginya dengan jumlah baris data valid (<span class="math notranslate nohighlight">\(n = 231\)</span>).</p>
+<p>Hasil : -30.2208 (hasil pembulatan dari -30.22077…)</p>
+<hr class="docutils" />
+<p>Median : Hasil properti ini didapat dari mencari letak nilai tengah setelah keseluruhan data diurutkan. Karena jumlah data ganjil (231), nilainya diambil dari angka yang tepat berada di urutan ke-116.</p>
+<p>Hasil : -0.0001 (hasil pembulatan dari -0.000107…)</p>
+<hr class="docutils" />
+<p>Max : Hasil properti ini diambil dengan melihat angka terakhir atau yang paling besar nilainya setelah keseluruhan 231 data valid diurutkan.</p>
+<p>Hasil : 982</p>
+<hr class="docutils" />
+<p>Std. Dev. : Hasil properti ini dihitung dari selisih setiap 231 data terhadap nilai rata-rata (-30.2208). Selisih tersebut dikuadratkan, dijumlahkan, dibagi <span class="math notranslate nohighlight">\(n-1\)</span> (yaitu 230) untuk mendapat varians sampel, lalu ditarik akar kuadratnya.</p>
+<p>Hasil : 476.077 (hasil pembulatan dari 476.0769…)</p>
+<hr class="docutils" />
+<p>Kurtosis : Hasil properti ini dihitung menggunakan rumus deviasi pangkat empat untuk melihat tingkat keruncingan kurva puncak data tersebut jika dibandingkan dengan kurva lonceng distribusi normal.</p>
+<p>Hasil : -0.2325</p>
+<hr class="docutils" />
+<p>Skewness : Hasil properti ini dihitung menggunakan rasio deviasi pangkat tiga untuk mengukur arah kemiringan sebaran angka.</p>
+<p>Hasil : -0.0247</p>
+<hr class="docutils" />
+<p>No. Missing : Hasil properti ini diambil dengan memindai baris dari atas ke bawah dan menghitung jumlah sel baris yang kosong atau tidak berisi angka valid.</p>
+<p>Hasil : 112 baris kosong, total baris 343, sisa data valid 231 baris.</p>
+<hr class="docutils" />
+<p>No. +unlimited : Hasil properti ini diambil dari pendeteksian jumlah data riil yang bernilai tak terhingga positif akibat operasi sistem.</p>
+<p>Hasil : 0</p>
+<hr class="docutils" />
+<p>No. -unlimited : Hasil properti ini diambil dari pendeteksian jumlah data yang bernilai tak terhingga negatif.</p>
+<p>Hasil : 0</p>
+</section>
+<section id="kolom-o3">
+<h4>Kolom : O3<a class="headerlink" href="#kolom-o3" title="Link to this heading">#</a></h4>
+<hr class="docutils" />
+<p>Min : Hasil properti ini diambil dengan mengurutkan 339 data valid dari angka terkecil hingga terbesar, lalu mengambil nilai pada urutan pertama.</p>
+<p>Hasil : 0.1069 (hasil pembulatan dari 0.10688…)</p>
+<hr class="docutils" />
+<p>Mean : Hasil properti ini dihitung dengan menjumlahkan seluruh 339 angka valid di kolom tersebut, lalu membaginya dengan jumlah baris data valid (<span class="math notranslate nohighlight">\(n = 339\)</span>).</p>
+<p>Hasil : 0.1155 (hasil pembulatan dari 0.11546…)</p>
+<hr class="docutils" />
+<p>Median : Hasil properti ini didapat dari mencari letak nilai tengah setelah keseluruhan data diurutkan. Karena jumlah data ganjil (339), nilainya diambil dari angka yang tepat berada di urutan ke-170.</p>
+<p>Hasil : 0.1151 (hasil pembulatan dari 0.11512…)</p>
+<hr class="docutils" />
+<p>Max : Hasil properti ini diambil dengan melihat angka terakhir atau yang paling besar nilainya setelah keseluruhan 339 data valid diurutkan.</p>
+<p>Hasil : 0.1241 (hasil pembulatan dari 0.12406…)</p>
+<hr class="docutils" />
+<p>Std. Dev. : Hasil properti ini dihitung dari selisih setiap 339 data terhadap nilai rata-rata (0.1155). Selisih tersebut dikuadratkan, dijumlahkan, dibagi <span class="math notranslate nohighlight">\(n-1\)</span> (yaitu 338) untuk mendapat varians sampel, lalu ditarik akar kuadratnya.</p>
+<p>Hasil : 0.0028</p>
+<hr class="docutils" />
+<p>Kurtosis : Hasil properti ini dihitung menggunakan rumus deviasi pangkat empat untuk melihat tingkat keruncingan kurva puncak data tersebut jika dibandingkan dengan kurva lonceng distribusi normal.</p>
+<p>Hasil : -0.0559</p>
+<hr class="docutils" />
+<p>Skewness : Hasil properti ini dihitung menggunakan rasio deviasi pangkat tiga untuk mengukur arah kemiringan sebaran angka.</p>
+<p>Hasil : 0.4513</p>
+<hr class="docutils" />
+<p>No. Missing : Hasil properti ini diambil dengan memindai baris dari atas ke bawah dan menghitung jumlah sel baris yang kosong atau tidak berisi angka valid.</p>
+<p>Hasil : 4 baris kosong, total baris 343, sisa data valid 339 baris.</p>
+<hr class="docutils" />
+<p>No. +unlimited : Hasil properti ini diambil dari pendeteksian jumlah data riil yang bernilai tak terhingga positif akibat operasi sistem.</p>
+<p>Hasil : 0</p>
+<hr class="docutils" />
+<p>No. -unlimited : Hasil properti ini diambil dari pendeteksian jumlah data yang bernilai tak terhingga negatif.</p>
+<p>Hasil : 0</p>
+</section>
+<section id="kolom-hcho">
+<h4>Kolom : HCHO<a class="headerlink" href="#kolom-hcho" title="Link to this heading">#</a></h4>
+<hr class="docutils" />
+<p>Min : Hasil properti ini diambil dengan mengurutkan 250 data valid dari angka terkecil hingga terbesar, lalu mengambil nilai pada urutan pertama.</p>
+<p>Hasil : -856</p>
+<hr class="docutils" />
+<p>Mean : Hasil properti ini dihitung dengan menjumlahkan seluruh 250 angka valid di kolom tersebut, lalu membaginya dengan jumlah baris data valid (<span class="math notranslate nohighlight">\(n = 250\)</span>).</p>
+<p>Hasil : 131.7401 (hasil pembulatan dari 131.74007…)</p>
+<hr class="docutils" />
+<p>Median : Hasil properti ini didapat dari mencari letak nilai tengah setelah keseluruhan data diurutkan. Karena jumlah data genap (250), nilainya diambil dari menjumlahkan angka urutan ke-125 dan ke-126, lalu dibagi dua.</p>
+<p>Hasil : 0.0002 (hasil pembulatan dari 0.000223…)</p>
+<hr class="docutils" />
+<p>Max : Hasil properti ini diambil dengan melihat angka terakhir atau yang paling besar nilainya setelah keseluruhan 250 data valid diurutkan.</p>
+<p>Hasil : 956</p>
+<hr class="docutils" />
+<p>Std. Dev. : Hasil properti ini dihitung dari selisih setiap 250 data terhadap nilai rata-rata (131.7401). Selisih tersebut dikuadratkan, dijumlahkan, dibagi <span class="math notranslate nohighlight">\(n-1\)</span> (yaitu 249) untuk mendapat varians sampel, lalu ditarik akar kuadratnya.</p>
+<p>Hasil : 384.7434</p>
+<hr class="docutils" />
+<p>Kurtosis : Hasil properti ini dihitung menggunakan rumus deviasi pangkat empat untuk melihat tingkat keruncingan kurva puncak data tersebut jika dibandingkan dengan kurva lonceng distribusi normal.</p>
+<p>Hasil : -0.0483</p>
+<hr class="docutils" />
+<p>Skewness : Hasil properti ini dihitung menggunakan rasio deviasi pangkat tiga untuk mengukur arah kemiringan sebaran angka.</p>
+<p>Hasil : 0.0832</p>
+<hr class="docutils" />
+<p>No. Missing : Hasil properti ini diambil dengan memindai baris dari atas ke bawah dan menghitung jumlah sel baris yang kosong atau tidak berisi angka valid.</p>
+<p>Hasil : 93 baris kosong, total baris 343, sisa data valid 250 baris.</p>
+<hr class="docutils" />
+<p>No. +unlimited : Hasil properti ini diambil dari pendeteksian jumlah data riil yang bernilai tak terhingga positif akibat operasi sistem.</p>
+<p>Hasil : 0</p>
+<hr class="docutils" />
+<p>No. -unlimited : Hasil properti ini diambil dari pendeteksian jumlah data yang bernilai tak terhingga negatif.</p>
+<p>Hasil : 0</p>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Proyek_Sains_Data"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Tugas_Pertemuan1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Tugas_Pertemuan1</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proses-pengumpulan-data-kedalam-format-csv">Proses pengumpulan data kedalam format .csv</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#upload-csv-ke-postgre">upload csv ke postgre</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aiven-io">Aiven.io</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dbeaver">DBEAVER</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knime">KNIME</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-workflow">HASIL WORKFLOW</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-statistic-view">HASIL STATISTIC VIEW</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-masing-masing-properti">Penjelasan Masing Masing Properti</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perhitungan-yang-dihasilkan-dari-setiap-properti">Perhitungan yang dihasilkan dari setiap properti</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kolom-no2">Kolom : NO2</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kolom-co">Kolom : CO</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kolom-so2">Kolom : SO2</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kolom-o3">Kolom : O3</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kolom-hcho">Kolom : HCHO</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Ahmad Ubaidillah Mappattiro
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

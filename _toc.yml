@@ -31,5 +31,11 @@ parts :
     - file: KerKom/Pertemuan6
     - file: KerKom/Pertemuan7
     - file: KerKom/Pertemuan8
-- caption: 
+- caption: Proyek Sains Data
+  chapters:
+  - file: Proyek_Sains_Data/Tugas_Pertemuan1
+  - file: Proyek_Sains_Data/Tugas_Pertemuan2
+  - file: Proyek_Sains_Data/Tugas_Pertemuan3
+  - file: Proyek_Sains_Data/Pertemuan2
+  - file: Proyek_Sains_Data/Pertemuan3
 
