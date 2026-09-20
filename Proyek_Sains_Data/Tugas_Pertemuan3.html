@@ -431,7 +431,11 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penanganan-outlier-menggunakan-metode-imputation">PENANGANAN OUTLIER MENGGUNAKAN METODE IMPUTATION</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identifikasi-outlier-menggunakan-metode-z-score">IDENTIFIKASI OUTLIER MENGGUNAKAN METODE Z-SCORE</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penanganan-outlier-menggunakan-metode-z-score">PENANGANAN OUTLIER MENGGUNAKAN METODE Z-SCORE</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-data-menggunakan-library-tsfel">Menghitung data menggunakan library TSFEL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-terhadap-library-tsfel">IMPLEMENTASI TERHADAP LIBRARY TSFEL</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-library-tsfel">PENJELASAN LIBRARY TSFEL</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-data-menggunakan-library-tsfel">Menghitung data menggunakan library TSFEL</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-ekstraksi-fitur">Hasil Ekstraksi Fitur</a></li>
 </ul>
 </li>
@@ -567,7 +571,7 @@ document.write(`
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_8a02b7d59fc4069eefce3acc7ef8ebb4 {
+                #map_b2f2d476aa1f83585718c10481329223 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -604,14 +608,14 @@ document.write(`
 &lt;body&gt;
     
     
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_8a02b7d59fc4069eefce3acc7ef8ebb4&quot; &gt;&lt;/div&gt;
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_b2f2d476aa1f83585718c10481329223&quot; &gt;&lt;/div&gt;
         
 &lt;/body&gt;
 &lt;script&gt;
     
     
-            var map_8a02b7d59fc4069eefce3acc7ef8ebb4 = L.map(
-                &quot;map_8a02b7d59fc4069eefce3acc7ef8ebb4&quot;,
+            var map_b2f2d476aa1f83585718c10481329223 = L.map(
+                &quot;map_b2f2d476aa1f83585718c10481329223&quot;,
                 {
                     center: [-5.56, 114.42],
                     crs: L.CRS.EPSG3857,
@@ -633,7 +637,7 @@ document.write(`
 
         
     
-            var tile_layer_e626f9091e69e65d791b5603f0a1a2a0 = L.tileLayer(
+            var tile_layer_8d1d7a21bc35fc6bf8b8ad549f6f09d9 = L.tileLayer(
                 &quot;https://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {
   &quot;minZoom&quot;: 0,
@@ -650,44 +654,44 @@ document.write(`
             );
         
     
-            tile_layer_e626f9091e69e65d791b5603f0a1a2a0.addTo(map_8a02b7d59fc4069eefce3acc7ef8ebb4);
+            tile_layer_8d1d7a21bc35fc6bf8b8ad549f6f09d9.addTo(map_b2f2d476aa1f83585718c10481329223);
         
     
-        function geo_json_0342a078286bff16467f008d84277342_styler(feature) {
+        function geo_json_8b6c2b2d1763c7e818556ebddeea88e9_styler(feature) {
             switch(feature.id) {
                 default:
                     return {&quot;color&quot;: &quot;#cc0000&quot;, &quot;fillColor&quot;: &quot;#ff4d4d&quot;, &quot;fillOpacity&quot;: 0.4, &quot;weight&quot;: 3};
             }
         }
 
-        function geo_json_0342a078286bff16467f008d84277342_onEachFeature(feature, layer) {
+        function geo_json_8b6c2b2d1763c7e818556ebddeea88e9_onEachFeature(feature, layer) {
 
             layer.on({
             });
         };
-        var geo_json_0342a078286bff16467f008d84277342 = L.geoJson(null, {
-                onEachFeature: geo_json_0342a078286bff16467f008d84277342_onEachFeature,
+        var geo_json_8b6c2b2d1763c7e818556ebddeea88e9 = L.geoJson(null, {
+                onEachFeature: geo_json_8b6c2b2d1763c7e818556ebddeea88e9_onEachFeature,
             
-                style: geo_json_0342a078286bff16467f008d84277342_styler,
+                style: geo_json_8b6c2b2d1763c7e818556ebddeea88e9_styler,
             ...{
 }
         });
 
-        function geo_json_0342a078286bff16467f008d84277342_add (data) {
-            geo_json_0342a078286bff16467f008d84277342
+        function geo_json_8b6c2b2d1763c7e818556ebddeea88e9_add (data) {
+            geo_json_8b6c2b2d1763c7e818556ebddeea88e9
                 .addData(data);
         }
-            geo_json_0342a078286bff16467f008d84277342_add({&quot;features&quot;: [{&quot;geometry&quot;: {&quot;coordinates&quot;: [[[114.3944446, -5.5423607], [114.3939531, -5.5642533], [114.3950039, -5.5688155], [114.3988683, -5.5712245], [114.4149544, -5.5740227], [114.4222159, -5.5893249], [114.4349065, -5.5873077], [114.4477753, -5.5785626], [114.45452, -5.5647903], [114.4512776, -5.5581054], [114.4525677, -5.547253], [114.4431058, -5.5478645], [114.4401566, -5.5490876], [114.4390507, -5.5448068], [114.4224617, -5.5461522], [114.4138599, -5.5449292], [114.4129997, -5.5419938], [114.4153345, -5.5364899], [114.4125082, -5.5322091], [114.4123853, -5.5322091], [114.3944446, -5.5423607]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;0&quot;, &quot;properties&quot;: {}, &quot;type&quot;: &quot;Feature&quot;}], &quot;type&quot;: &quot;FeatureCollection&quot;});
+            geo_json_8b6c2b2d1763c7e818556ebddeea88e9_add({&quot;features&quot;: [{&quot;geometry&quot;: {&quot;coordinates&quot;: [[[114.3944446, -5.5423607], [114.3939531, -5.5642533], [114.3950039, -5.5688155], [114.3988683, -5.5712245], [114.4149544, -5.5740227], [114.4222159, -5.5893249], [114.4349065, -5.5873077], [114.4477753, -5.5785626], [114.45452, -5.5647903], [114.4512776, -5.5581054], [114.4525677, -5.547253], [114.4431058, -5.5478645], [114.4401566, -5.5490876], [114.4390507, -5.5448068], [114.4224617, -5.5461522], [114.4138599, -5.5449292], [114.4129997, -5.5419938], [114.4153345, -5.5364899], [114.4125082, -5.5322091], [114.4123853, -5.5322091], [114.3944446, -5.5423607]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;0&quot;, &quot;properties&quot;: {}, &quot;type&quot;: &quot;Feature&quot;}], &quot;type&quot;: &quot;FeatureCollection&quot;});
 
         
     
-            geo_json_0342a078286bff16467f008d84277342.addTo(map_8a02b7d59fc4069eefce3acc7ef8ebb4);
+            geo_json_8b6c2b2d1763c7e818556ebddeea88e9.addTo(map_b2f2d476aa1f83585718c10481329223);
         
     
-            tile_layer_e626f9091e69e65d791b5603f0a1a2a0.addTo(map_8a02b7d59fc4069eefce3acc7ef8ebb4);
+            tile_layer_8d1d7a21bc35fc6bf8b8ad549f6f09d9.addTo(map_b2f2d476aa1f83585718c10481329223);
         
     
-            geo_json_0342a078286bff16467f008d84277342.addTo(map_8a02b7d59fc4069eefce3acc7ef8ebb4);
+            geo_json_8b6c2b2d1763c7e818556ebddeea88e9.addTo(map_b2f2d476aa1f83585718c10481329223);
         
 &lt;/script&gt;
 &lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div></div>
@@ -849,19 +853,19 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:00 Job &#39;j-26092015302640458bea0bd1c2eee447&#39;: send &#39;start&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:00 Job &#39;j-2609201548404a15b4fcc0ee9be51e6a&#39;: send &#39;start&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:03 Job &#39;j-26092015302640458bea0bd1c2eee447&#39;: created (progress 0%)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:02 Job &#39;j-2609201548404a15b4fcc0ee9be51e6a&#39;: queued (progress 0%)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:08 Job &#39;j-26092015302640458bea0bd1c2eee447&#39;: queued (progress 0%)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:08 Job &#39;j-2609201548404a15b4fcc0ee9be51e6a&#39;: queued (progress 0%)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:15 Job &#39;j-26092015302640458bea0bd1c2eee447&#39;: queued (progress 0%)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:14 Job &#39;j-2609201548404a15b4fcc0ee9be51e6a&#39;: queued (progress 0%)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:23 Job &#39;j-26092015302640458bea0bd1c2eee447&#39;: queued (progress 0%)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:22 Job &#39;j-2609201548404a15b4fcc0ee9be51e6a&#39;: queued (progress 0%)
 </pre></div>
 </div>
 </div>
@@ -3177,8 +3181,151 @@ Jumlah Outlier       : 11 baris
 </div>
 </div>
 </section>
+<section id="implementasi-terhadap-library-tsfel">
+<h3>IMPLEMENTASI TERHADAP LIBRARY TSFEL<a class="headerlink" href="#implementasi-terhadap-library-tsfel" title="Link to this heading">#</a></h3>
+<section id="penjelasan-library-tsfel">
+<h4>PENJELASAN LIBRARY TSFEL<a class="headerlink" href="#penjelasan-library-tsfel" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>abs_energy</strong>
+Total energi absolut dari deret waktu (jumlah dari seluruh nilai yang dikuadratkan). Berguna untuk melihat seberapa besar intensitas atau “kekuatan” total fluktuasi kadar polutan.</p></li>
+<li><p><strong>auc</strong>
+<em>Area Under the Curve</em> (Luas area di bawah kurva). Berguna untuk menghitung akumulasi total atau jumlah paparan keseluruhan dari polutan selama periode waktu tersebut.</p></li>
+<li><p><strong>autocorr</strong>
+Autokorelasi. Mengukur tingkat kemiripan data dengan data di waktu sebelumnya (terpaut beberapa interval waktu). Sangat berguna untuk mendeteksi keberadaan pola musiman atau siklus yang berulang (misal: polusi selalu tinggi setiap pagi).</p></li>
+<li><p><strong>average_power</strong>
+Rata-rata daya dari sinyal. Menunjukkan tingkat kekuatan atau intensitas rata-rata dari osilasi nilai polutan.</p></li>
+<li><p><strong>calc_centroid</strong>
+Titik berat waktu (<em>centroid</em>). Menunjukkan di bagian waktu sebelah mana (awal, tengah, atau akhir periode) massa atau sebaran data paling banyak terkonsentrasi.</p></li>
+<li><p><strong>calc_max</strong>
+Nilai maksimum. Berguna untuk mengetahui titik puncak tertinggi (lonjakan ekstrem terparah) dari kadar polutan.</p></li>
+<li><p><strong>calc_mean</strong>
+Nilai rata-rata. Menunjukkan tingkat dasar (<em>baseline</em>) atau kadar rata-rata polutan secara keseluruhan.</p></li>
+<li><p><strong>calc_median</strong>
+Nilai tengah data. Berfungsi mengukur nilai sentral yang lebih stabil dan tidak terpengaruh jika tiba-tiba ada pencilan (<em>outlier</em>) ekstrem sesaat.</p></li>
+<li><p><strong>calc_min</strong>
+Nilai minimum. Berguna untuk mengetahui titik terendah (paling bersih) dari kadar polutan.</p></li>
+<li><p><strong>calc_std</strong>
+Standar deviasi. Mengukur seberapa lebar sebaran data menyimpang dari nilai rata-ratanya. Ini mengukur seberapa volatil (naik-turun) kondisi polutan tersebut.</p></li>
+<li><p><strong>calc_var</strong>
+Varians (kuadrat dari standar deviasi). Metrik tingkat fluktuasi keseluruhan dalam deret waktu.</p></li>
+<li><p><strong>dfa</strong>
+<em>Detrended Fluctuation Analysis</em>. Mendeteksi adanya korelasi memori jangka panjang dalam data; memastikan apakah tren polutan saat ini dipengaruhi oleh sejarah panjang rentetan nilainya secara sistematis.</p></li>
+<li><p><strong>distance</strong>
+Panjang lintasan geometris kurva deret waktu. Semakin bergerigi, tajam, dan fluktuatif kurva polutannya, semakin panjang nilai lintasannya.</p></li>
+<li><p><strong>ecdf</strong>
+<em>Empirical Cumulative Distribution Function</em>. Merepresentasikan bentuk fungsi dari distribusi probabilitas kumulatif polutan.</p></li>
+<li><p><strong>ecdf_percentile</strong>
+Nilai batas polutan pada persentil tertentu berdasarkan kurva ECDF. Berguna untuk analisis batas aman (misal: batas polusi untuk 90% waktu).</p></li>
+<li><p><strong>ecdf_percentile_count</strong>
+Jumlah akumulasi baris data yang berada di rentang persentil ECDF tertentu.</p></li>
+<li><p><strong>ecdf_slope</strong>
+Kemiringan kurva ECDF. Menunjukkan seberapa cepat probabilitas kumulatif dari kadar polutan tertentu meningkat/tercapai.</p></li>
+<li><p><strong>entropy</strong>
+Entropi (biasanya entropi Shannon). Mengukur tingkat keacakan, ketidakteraturan, atau kompleksitas kemunculan nilai polutan. Entropi tinggi berarti pola pergerakan polutan sangat acak dan sulit ditebak.</p></li>
+<li><p><strong>fundamental_frequency</strong>
+Frekuensi fundamental. Menunjukkan frekuensi terendah yang paling mendominasi pola berulang (osilasi utama) pada deret waktu.</p></li>
+<li><p><strong>higuchi_fractal_dimension</strong>
+Dimensi Fraktal Higuchi. Mengukur tingkat kekasaran (<em>roughness</em>) atau kompleksitas lekukan kurva polutan.</p></li>
+<li><p><strong>hist_mode</strong>
+Modus dari histogram. Menunjukkan kadar polutan atau rentang nilai yang paling sering terjadi dan paling umum muncul sehari-hari.</p></li>
+<li><p><strong>human_range_energy</strong>
+Energi di rentang frekuensi tertentu. Meski asalnya mengukur pita frekuensi pendengaran manusia pada audio, dalam deret waktu angka ini mengekstrak energi pada pita frekuensi osilasi menengah.</p></li>
+<li><p><strong>hurst_exponent</strong>
+Eksponen Hurst. Mengukur ketahanan tren (<em>memori jangka panjang</em>); menentukan apakah data punya kecenderungan untuk melanjutkan tren, selalu berbalik ke arah rata-rata (<em>mean-reverting</em>), atau hanya bergerak secara acak.</p></li>
+<li><p><strong>interq_range</strong>
+<em>Interquartile Range</em> (IQR). Jarak antara kuartil 3 dan kuartil 1. Mengukur sebaran 50% rentang data di bagian tengah yang kebal terhadap <em>outlier</em>.</p></li>
+<li><p><strong>kurtosis</strong>
+Keruncingan distribusi. Menilai apakah data polutan memiliki banyak lonjakan nilai ekstrem (<em>outlier</em>) jika dibandingkan dengan distribusi normal.</p></li>
+<li><p><strong>lempel_ziv</strong>
+Kompleksitas Lempel-Ziv. Mengukur seberapa mudah pola deret waktu dikompresi; semakin sulit dikompresi, artinya semakin kompleks dan tidak berpola fluktuasi gas tersebut.</p></li>
+<li><p><strong>lpcc</strong>
+<em>Linear Prediction Cepstral Coefficients</em>. Menangkap karakteristik bentuk dan tekstur dari selubung frekuensi osilasi data.</p></li>
+<li><p><strong>max_frequency</strong>
+Letak frekuensi yang menyumbangkan energi yang paling tinggi dan paling dominan pada pergerakan data.</p></li>
+<li><p><strong>max_power_spectrum</strong>
+Nilai besaran energi tertinggi pada spektrum daya (menunjukkan amplitudo/kekuatan dari <em>max_frequency</em>).</p></li>
+<li><p><strong>maximum_fractal_length</strong>
+Panjang fraktal maksimum. Metrik tambahan komputasional untuk mengukur tingkat kerumitan struktural pergerakan polutan.</p></li>
+<li><p><strong>mean_abs_deviation</strong>
+Rata-rata deviasi absolut (MAD). Mengukur simpangan rata-rata tiap data terhadap titik pusatnya; merupakan alternatif dari standar deviasi namun secara perhitungan lebih kebal terhadap nilai pencilan yang parah.</p></li>
+<li><p><strong>mean_abs_diff</strong>
+Rata-rata dari selisih absolut antar data yang berurutan. Sangat penting untuk mengukur tingkat volatilitas (seberapa drastis polutan berubah dari satu titik waktu ke satu titik waktu berikutnya secara rata-rata).</p></li>
+<li><p><strong>mean_diff</strong>
+Rata-rata dari selisih nilai yang berurutan. Menunjukkan kecenderungan arah tren per langkah waktu (apakah secara umum cenderung merangkak naik atau turun).</p></li>
+<li><p><strong>median_abs_deviation</strong>
+Median deviasi absolut. Ukuran sebaran deviasi data yang sangat stabil dan sama sekali tidak peka terhadap lonjakan ekstrem polutan (karena menggunakan hitungan nilai tengah, bukan rata-rata).</p></li>
+<li><p><strong>median_abs_diff</strong>
+Median dari selisih absolut antar data berurutan. Mengukur volatilitas titik demi titik dengan mengabaikan lompatan fluktuasi ekstrem sesaat.</p></li>
+<li><p><strong>median_diff</strong>
+Median dari selisih nilai secara berurutan.</p></li>
+<li><p><strong>median_frequency</strong>
+Frekuensi median. Letak frekuensi yang membelah spektrum daya menjadi dua bagian energi yang sama besarnya.</p></li>
+<li><p><strong>mfcc</strong>
+<em>Mel-Frequency Cepstral Coefficients</em>. Fitur ekstraksi populer yang mengubah spektrum ke rentang logaritmik; sangat canggih untuk mendeskripsikan tekstur pola dan fitur nonlinear dalam osilasi data polutan.</p></li>
+<li><p><strong>mse</strong>
+<em>Mean Squared Error</em> (terhadap <em>mean</em>). Mengukur rata-rata dari seberapa jauh kuadrat nilai data menyimpang; secara fungsional identik dengan varians data.</p></li>
+<li><p><strong>negative_turning</strong>
+Jumlah titik balik negatif. Menghitung seberapa sering tren polutan berubah arah dari semula merangkak naik, kemudian berbalik menjadi turun (membentuk formasi puncak/gunung).</p></li>
+<li><p><strong>neighbourhood_peaks</strong>
+Jumlah puncak (<em>peaks</em>) lokal di dalam area sekumpulan titik data. Berguna untuk menghitung jumlah lonjakan tajam atau anomali kenaikan sesaat.</p></li>
+<li><p><strong>petrosian_fractal_dimension</strong>
+Dimensi Fraktal Petrosian. Cara algoritma matematis cepat untuk mengukur seberapa kompleks bentuk kurva hanya berdasarkan hitungan persilangan fluktuasi nilainya.</p></li>
+<li><p><strong>pk_pk_distance</strong>
+Jarak <em>Peak-to-Peak</em>. Selisih langsung antara nilai polutan yang paling tinggi (maksimum) dikurangi dengan nilai yang paling rendah (minimum) alias rentang (<em>Range</em>).</p></li>
+<li><p><strong>positive_turning</strong>
+Jumlah titik balik positif. Menghitung seberapa sering tren berubah dari posisi turun merosot, berbalik menjadi merangkak naik (membentuk formasi lembah/jurang).</p></li>
+<li><p><strong>power_bandwidth</strong>
+Lebar pita daya. Menunjukkan seberapa sempit atau melebar rentang frekuensi tempat energi data tersebut berosilasi.</p></li>
+<li><p><strong>rms</strong>
+<em>Root Mean Square</em>. Nilai keefektifan kuadratik yang menunjukkan ukuran skala kekuatan “riil” rata-rata dari fluktuasi sinyal tanpa terpengaruh nilai minus.</p></li>
+<li><p><strong>skewness</strong>
+Kemiringan distribusi (<em>Asimetri/Skewness</em>). Menunjukkan kecenderungan penumpukan nilai. Jika nilainya condong ke batas rendah (miring kanan/positif) atau condong ke batas tinggi (miring kiri/negatif).</p></li>
+<li><p><strong>slope</strong>
+Kemiringan tren regresi linear. Mengukur apakah secara keseluruhan polutan tersebut memiliki pergerakan garis tren yang menanjak (naik) atau menurun dari awal waktu hingga akhir.</p></li>
+<li><p><strong>spectral_centroid</strong>
+Titik berat/pusat spektrum frekuensi. Mengidentifikasi di frekuensi rata-rata sebelah mana energi osilasi berpusat.</p></li>
+<li><p><strong>spectral_decrease</strong>
+Penurunan spektral. Mengukur seberapa tajam energi spektrum melemah saat menuju frekuensi tinggi (apakah didominasi getaran stabil yang lambat atau cepat).</p></li>
+<li><p><strong>spectral_distance</strong>
+Jarak spektral. Mengukur jarak matematis antar distribusi kepadatan spektrum.</p></li>
+<li><p><strong>spectral_entropy</strong>
+Entropi spektral. Menilai tingkat kerataan distribusi energi frekuensi. Jika energinya tidak tertebak tersebar di mana-mana (<em>white noise</em>), nilai entropi ini akan sangat tinggi.</p></li>
+<li><p><strong>spectral_kurtosis</strong>
+Keruncingan distribusi energi di domain frekuensi.</p></li>
+<li><p><strong>spectral_positive_turning</strong>
+Jumlah titik balik pembentukan lembah (perubahan dari spektrum yang menurun lalu menanjak) yang dihitung dari grafik kepadatan frekuensi.</p></li>
+<li><p><strong>spectral_roll_off</strong>
+Frekuensi batas (<em>roll-off</em>). Titik frekuensi di mana mayoritas energi sinyal (biasanya 85% atau 95%) telah tercapai dari total akumulasi spektrum keseluruhannya.</p></li>
+<li><p><strong>spectral_roll_on</strong>
+Titik awal frekuensi spektral di mana energinya baru mulai membengkak atau terkumpul secara signifikan.</p></li>
+<li><p><strong>spectral_skewness</strong>
+Asimetri atau kemiringan letak penumpukan distribusi energi pada domain frekuensi.</p></li>
+<li><p><strong>spectral_slope</strong>
+Kemiringan kurva spektrum daya, mendeskripsikan gradien distribusi pelemahan/penguatan energi terhadap frekuensi.</p></li>
+<li><p><strong>spectral_spread</strong>
+Sebaran spektral (varians dari titik berat frekuensi). Mengukur seberapa lebar rentang pita osilasinya.</p></li>
+<li><p><strong>spectral_variation</strong>
+Mengukur besaran variasi dinamis pada domain spektral/frekuensi di sepanjang jalannya periode waktu.</p></li>
+<li><p><strong>spectrogram_mean_coeff</strong>
+Rata-rata dari koefisien matriks spektrogram yang mewakili distribusi antara informasi waktu dan informasi frekuensi secara keseluruhan.</p></li>
+<li><p><strong>sum_abs_diff</strong>
+Total akumulasi dari seluruh selisih absolut antar data yang berurutan. Ini adalah metrik “jarak tempuh vertikal” yang menjumlahkan total keparahan seluruh lonjakan naik dan turun dari data awal hingga akhir.</p></li>
+<li><p><strong>wavelet_abs_mean</strong>
+Rata-rata nilai absolut dari ekstraksi dekomposisi <em>wavelet</em>. Transformasi <em>wavelet</em> sangat canggih karena mampu menangkap informasi frekuensi pada titik waktu yang sangat spesifik (berbeda dari spektral biasa).</p></li>
+<li><p><strong>wavelet_energy</strong>
+Tingkat energi dari koefisien dekomposisi <em>wavelet</em>.</p></li>
+<li><p><strong>wavelet_entropy</strong>
+Entropi dari <em>wavelet</em>. Mengukur ketidakteraturan, kekacauan, atau kompleksitas informasi polutan dalam bentuk gabungan waktu-dan-frekuensi.</p></li>
+<li><p><strong>wavelet_std</strong>
+Standar deviasi dari sebaran nilai-nilai koefisien <em>wavelet</em>.</p></li>
+<li><p><strong>wavelet_var</strong>
+Varians (<em>variance</em>) dari koefisien <em>wavelet</em>, menunjukkan tingkat fluktuasi pola osilasi berdasarkan skala dekomposisinya.</p></li>
+<li><p><strong>zero_cross</strong>
+Angka persilangan rata-rata (<em>Zero-crossing rate</em>). Jumlah seberapa sering lekukan data memotong atau melewati garis nilai rata-ratanya. Metrik ini sangat akurat untuk merepresentasikan kehalusan (nilai rendah) atau tingkat kekasaran osilasi drastis (nilai tinggi) pada polutan.</p></li>
+</ul>
+</section>
 <section id="menghitung-data-menggunakan-library-tsfel">
-<h3>Menghitung data menggunakan library TSFEL<a class="headerlink" href="#menghitung-data-menggunakan-library-tsfel" title="Link to this heading">#</a></h3>
+<h4>Menghitung data menggunakan library TSFEL<a class="headerlink" href="#menghitung-data-menggunakan-library-tsfel" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -3600,6 +3747,7 @@ Data CH4 berhasil disimpan ke &#39;CH4_Fitur_TSFEL_Masalembu_Final.csv&#39;
 </div></div></div>
 </div>
 </section>
+</section>
 <section id="hasil-ekstraksi-fitur">
 <h3>Hasil Ekstraksi Fitur<a class="headerlink" href="#hasil-ekstraksi-fitur" title="Link to this heading">#</a></h3>
 <p>Proses ekstraksi fitur menggunakan pustaka TSFEL terhadap data deret waktu konsentrasi gas CO di Masalembu menghasilkan matriks dimensi tunggal berukuran 1 baris dan 68 kolom. Dari keseluruhan target 68 fitur, sebanyak 56 fitur berhasil dieksekusi secara optimal. Fitur-fitur yang diekstrak mencakup domain statistik, temporal, dan spektral primer, yang merepresentasikan pola observasi harian secara komprehensif selama satu tahun (365 observasi). Seluruh luaran yang menghasilkan nilai majemuk (multi-nilai) telah direduksi menjadi bentuk himpunan (array) pada sel kolom tunggal guna menjaga konsistensi dimensi matriks.</p>
@@ -3704,7 +3852,11 @@ Data CH4 berhasil disimpan ke &#39;CH4_Fitur_TSFEL_Masalembu_Final.csv&#39;
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penanganan-outlier-menggunakan-metode-imputation">PENANGANAN OUTLIER MENGGUNAKAN METODE IMPUTATION</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identifikasi-outlier-menggunakan-metode-z-score">IDENTIFIKASI OUTLIER MENGGUNAKAN METODE Z-SCORE</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penanganan-outlier-menggunakan-metode-z-score">PENANGANAN OUTLIER MENGGUNAKAN METODE Z-SCORE</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-data-menggunakan-library-tsfel">Menghitung data menggunakan library TSFEL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementasi-terhadap-library-tsfel">IMPLEMENTASI TERHADAP LIBRARY TSFEL</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-library-tsfel">PENJELASAN LIBRARY TSFEL</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-data-menggunakan-library-tsfel">Menghitung data menggunakan library TSFEL</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-ekstraksi-fitur">Hasil Ekstraksi Fitur</a></li>
 </ul>
 </li>
