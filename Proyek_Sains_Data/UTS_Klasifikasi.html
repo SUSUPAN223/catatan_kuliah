@@ -57,7 +57,7 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script type="application/vnd.jupyter.widget-state+json">{"state": {"1460ae34a0034b7283140e8a211614ec": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "500px"}}}, "version_major": 2, "version_minor": 0}</script>
+    <script type="application/vnd.jupyter.widget-state+json">{"state": {"7089dbd052514e99a9dee86521c0e44c": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "500px"}}}, "version_major": 2, "version_minor": 0}</script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script crossorigin="anonymous" data-jupyter-widgets-cdn="https://cdn.jsdelivr.net/npm/" src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@1.0.6/dist/embed-amd.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Proyek_Sains_Data/UTS_Klasifikasi';</script>
@@ -1093,7 +1093,7 @@ Name: count, dtype: int64
 <h3>Konsep Alur Kerja Pemodelan<a class="headerlink" href="#konsep-alur-kerja-pemodelan" title="Link to this heading">#</a></h3>
 <p>Proses pemodelan dibagi menjadi dua fase utama untuk memastikan model yang dihasilkan tidak hanya pintar di data latihan, melainkan juga andal saat diuji dengan data baru:</p>
 <ul class="simple">
-<li><p>Fase Pelatihan (Training): Algoritma Random Forest Classifier dilatih menggunakan data latih hasil penyeimbangan hibrida (hybrid balancing). Di tahap ini, model mempelajari pola dan karakteristik unik dari nilai pantulan spektral Band 2, Band 3, Band 4, Band 8a, dan Band 11 untuk masing-masing target kelas objek.</p></li>
+<li><p>Fase Pelatihan (Training):Algoritma Random Forest Classifier dilatih menggunakan data latih hasil undersampling murni dan pembobotan algoritma. Di tahap ini, model mempelajari pola dan karakteristik unik dari nilai pantulan spektral Band 2, Band 3, Band 4, Band 8a, dan Band 11 untuk masing-masing target kelas objek.</p></li>
 <li><p>Fase Pengujian (Testing): Model yang telah selesai dilatih kemudian dievaluasi menggunakan data uji. Data uji ini sengaja disembunyikan sejak awal dan belum pernah dilihat oleh model selama masa pelatihan. Langkah ini krusial untuk menguji performa objektif model saat dihadapkan pada skenario data dunia nyata yang sesungguhnya.</p></li>
 </ul>
 </section>
@@ -1425,8 +1425,9 @@ Samples Data Latih:
                 }
             </style>
             </div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Menjalankan prediksi pada data uji...
-
-Akurasi Global Model: 97.76% 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi Global Model: 97.76% 
 
 Laporan Klasifikasi Detail:
                 precision    recall  f1-score   support
