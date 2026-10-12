@@ -57,12 +57,10 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script type="application/vnd.jupyter.widget-state+json">{"state": {"668c6217d6dd4113aaaf73ccfcecaca3": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "500px"}}}, "version_major": 2, "version_minor": 0}</script>
-    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script crossorigin="anonymous" data-jupyter-widgets-cdn="https://cdn.jsdelivr.net/npm/" src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@1.0.6/dist/embed-amd.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Proyek_Sains_Data/Tugas_Polinomial';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="UTS KLASIFIKASI" href="UTS_Klasifikasi.html" />
     <link rel="prev" title="&lt;no title&gt;" href="Pertemuan4.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -218,6 +216,7 @@
 <li class="toctree-l1"><a class="reference internal" href="Pertemuan3.html">Pertemuan 3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tugas_Pertemuan4.html">Tugas PERTEMUAN 4</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Tugas_Polinomial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UTS_Klasifikasi.html">UTS KLASIFIKASI</a></li>
 </ul>
 
     </div>
@@ -452,6 +451,7 @@ document.write(`
 <span class="kn">import</span><span class="w"> </span><span class="nn">folium</span> 
 <span class="kn">import</span><span class="w"> </span><span class="nn">geemap</span> 
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="k">try</span><span class="p">:</span>
     <span class="n">ee</span><span class="o">.</span><span class="n">Initialize</span><span class="p">()</span>
@@ -997,8 +997,42 @@ document.write(`
 <span class="n">S2_lengkap</span> <span class="o">=</span> <span class="n">S2_final</span><span class="o">.</span><span class="n">addBands</span><span class="p">([</span><span class="n">ndvi</span><span class="p">,</span> <span class="n">ndwi</span><span class="p">])</span>
 
 <span class="n">bandes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;B2&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">,</span> <span class="s1">&#39;B4&#39;</span><span class="p">,</span> <span class="s1">&#39;B8&#39;</span><span class="p">,</span> <span class="s1">&#39;ndvi&#39;</span><span class="p">,</span> <span class="s1">&#39;ndwi&#39;</span><span class="p">]</span>
-<span class="n">entrainement</span> <span class="o">=</span> <span class="n">S2_lengkap</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">bandes</span><span class="p">)</span><span class="o">.</span><span class="n">sampleRegions</span><span class="p">(</span><span class="n">collection</span><span class="o">=</span><span class="n">data_training</span><span class="p">,</span> <span class="n">properties</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Classe&#39;</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">classicateur</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Classifier</span><span class="o">.</span><span class="n">smileRandomForest</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="n">entrainement</span><span class="p">,</span> <span class="n">classProperty</span><span class="o">=</span><span class="s1">&#39;Classe&#39;</span><span class="p">,</span> <span class="n">inputProperties</span><span class="o">=</span><span class="n">bandes</span><span class="p">)</span>
+
+<span class="c1"># ==============================================================================</span>
+<span class="c1"># --- MULAI BAGIAN EVALUASI MACHINE LEARNING (SPLIT 70/30) ---</span>
+<span class="c1"># Tarik semua piksel dari poligon</span>
+<span class="n">semua_data</span> <span class="o">=</span> <span class="n">S2_lengkap</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">bandes</span><span class="p">)</span><span class="o">.</span><span class="n">sampleRegions</span><span class="p">(</span><span class="n">collection</span><span class="o">=</span><span class="n">data_training</span><span class="p">,</span> <span class="n">properties</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Classe&#39;</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Pecah 70% buat training, 30% buat testing</span>
+<span class="n">data_dengan_random</span> <span class="o">=</span> <span class="n">semua_data</span><span class="o">.</span><span class="n">randomColumn</span><span class="p">(</span><span class="s1">&#39;random&#39;</span><span class="p">)</span>
+<span class="n">data_training_ml</span> <span class="o">=</span> <span class="n">data_dengan_random</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">lt</span><span class="p">(</span><span class="s1">&#39;random&#39;</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">))</span>
+<span class="n">data_testing_ml</span>  <span class="o">=</span> <span class="n">data_dengan_random</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">gte</span><span class="p">(</span><span class="s1">&#39;random&#39;</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- STATISTIK DATA MACHINE LEARNING ---&quot;</span><span class="p">)</span>
+<span class="n">jml_total</span> <span class="o">=</span> <span class="n">semua_data</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">getInfo</span><span class="p">()</span>
+<span class="n">jml_train</span> <span class="o">=</span> <span class="n">data_training_ml</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">getInfo</span><span class="p">()</span>
+<span class="n">jml_test</span>  <span class="o">=</span> <span class="n">data_testing_ml</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">getInfo</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total Data Ekstraksi : </span><span class="si">{</span><span class="n">jml_total</span><span class="si">}</span><span class="s2"> baris piksel&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data Training (70%)  : </span><span class="si">{</span><span class="n">jml_train</span><span class="si">}</span><span class="s2"> baris&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data Testing (30%)   : </span><span class="si">{</span><span class="n">jml_test</span><span class="si">}</span><span class="s2"> baris&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Cuplikan 5 Baris Pertama Data Training:&quot;</span><span class="p">)</span>
+<span class="n">cuplikan_data</span> <span class="o">=</span> <span class="n">data_training_ml</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">getInfo</span><span class="p">()[</span><span class="s1">&#39;features&#39;</span><span class="p">]</span>
+<span class="n">list_baris</span> <span class="o">=</span> <span class="p">[</span><span class="n">feat</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">feat</span> <span class="ow">in</span> <span class="n">cuplikan_data</span><span class="p">]</span>
+<span class="n">df_cuplikan</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">list_baris</span><span class="p">)[[</span><span class="s1">&#39;Classe&#39;</span><span class="p">,</span> <span class="s1">&#39;B2&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">,</span> <span class="s1">&#39;B4&#39;</span><span class="p">,</span> <span class="s1">&#39;B8&#39;</span><span class="p">,</span> <span class="s1">&#39;ndvi&#39;</span><span class="p">,</span> <span class="s1">&#39;ndwi&#39;</span><span class="p">]]</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">df_cuplikan</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Melatih model Random Forest...&quot;</span><span class="p">)</span>
+<span class="n">classicateur</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Classifier</span><span class="o">.</span><span class="n">smileRandomForest</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="n">data_training_ml</span><span class="p">,</span> <span class="n">classProperty</span><span class="o">=</span><span class="s1">&#39;Classe&#39;</span><span class="p">,</span> <span class="n">inputProperties</span><span class="o">=</span><span class="n">bandes</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Menguji akurasi pada Data Testing...&quot;</span><span class="p">)</span>
+<span class="n">hasil_uji</span> <span class="o">=</span> <span class="n">data_testing_ml</span><span class="o">.</span><span class="n">classify</span><span class="p">(</span><span class="n">classicateur</span><span class="p">)</span>
+<span class="n">confusion_matrix</span> <span class="o">=</span> <span class="n">hasil_uji</span><span class="o">.</span><span class="n">errorMatrix</span><span class="p">(</span><span class="s1">&#39;Classe&#39;</span><span class="p">,</span> <span class="s1">&#39;classification&#39;</span><span class="p">)</span>
+<span class="n">akurasi</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="o">.</span><span class="n">accuracy</span><span class="p">()</span><span class="o">.</span><span class="n">getInfo</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;-&gt; Akurasi Model: </span><span class="si">{</span><span class="n">akurasi</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="c1"># --- SELESAI BAGIAN EVALUASI MACHINE LEARNING ---</span>
+<span class="c1"># ==============================================================================</span>
+
 <span class="n">hasil_klasifikasi</span> <span class="o">=</span> <span class="n">S2_lengkap</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">bandes</span><span class="p">)</span><span class="o">.</span><span class="n">classify</span><span class="p">(</span><span class="n">classicateur</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Klasifikasi selesai! Menyiapkan peta...&quot;</span><span class="p">)</span>
@@ -1055,6 +1089,103 @@ document.write(`
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Earth Engine terhubung! Mulai memproses data...
 Ditemukan 2 kelas otomatis dari data: {&#39;Bukan Sawah&#39;: 0, &#39;Sawah&#39;: 1}
+
+--- STATISTIK DATA MACHINE LEARNING ---
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total Data Ekstraksi : 7552 baris piksel
+Data Training (70%)  : 5312 baris
+Data Testing (30%)   : 2240 baris
+
+Cuplikan 5 Baris Pertama Data Training:
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Classe</th>
+      <th>B2</th>
+      <th>B3</th>
+      <th>B4</th>
+      <th>B8</th>
+      <th>ndvi</th>
+      <th>ndwi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>648</td>
+      <td>944</td>
+      <td>907</td>
+      <td>3276</td>
+      <td>0.566340</td>
+      <td>-0.552607</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>528</td>
+      <td>821</td>
+      <td>643</td>
+      <td>3848</td>
+      <td>0.713650</td>
+      <td>-0.648319</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>443</td>
+      <td>698</td>
+      <td>536</td>
+      <td>4148</td>
+      <td>0.771136</td>
+      <td>-0.711927</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>530</td>
+      <td>822</td>
+      <td>698</td>
+      <td>3520</td>
+      <td>0.669037</td>
+      <td>-0.621373</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>540</td>
+      <td>770</td>
+      <td>644</td>
+      <td>3752</td>
+      <td>0.707006</td>
+      <td>-0.659443</td>
+    </tr>
+  </tbody>
+</table>
+</div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Melatih model Random Forest...
+Menguji akurasi pada Data Testing...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-&gt; Akurasi Model: 94.02%
+
 Klasifikasi selesai! Menyiapkan peta...
 </pre></div>
 </div>
@@ -1077,7 +1208,7 @@ Klasifikasi selesai! Menyiapkan peta...
             &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
             &lt;style&gt;
-                #map_d862cd9ff16325b4aed3993615d34820 {
+                #map_1e2296d94141c92b5c75b2cdbf009ee0 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -1119,14 +1250,14 @@ Klasifikasi selesai! Menyiapkan peta...
 &lt;b&gt;Keterangan Lahan:&lt;/b&gt;&lt;br&gt;
 &lt;i style=&quot;background:red; width: 12px; height: 12px; float: left; margin-right: 8px; margin-top: 3px;&quot;&gt;&lt;/i&gt; Bukan Sawah&lt;br&gt;&lt;i style=&quot;background:green; width: 12px; height: 12px; float: left; margin-right: 8px; margin-top: 3px;&quot;&gt;&lt;/i&gt; Sawah&lt;br&gt;&lt;/div&gt;
     
-            &lt;div class=&quot;folium-map&quot; id=&quot;map_d862cd9ff16325b4aed3993615d34820&quot; &gt;&lt;/div&gt;
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_1e2296d94141c92b5c75b2cdbf009ee0&quot; &gt;&lt;/div&gt;
         
 &lt;/body&gt;
 &lt;script&gt;
     
     
-            var map_d862cd9ff16325b4aed3993615d34820 = L.map(
-                &quot;map_d862cd9ff16325b4aed3993615d34820&quot;,
+            var map_1e2296d94141c92b5c75b2cdbf009ee0 = L.map(
+                &quot;map_1e2296d94141c92b5c75b2cdbf009ee0&quot;,
                 {
                     center: [-6.902677401306153, 107.70507119999827],
                     crs: L.CRS.EPSG3857,
@@ -1143,7 +1274,7 @@ Klasifikasi selesai! Menyiapkan peta...
 
         
     
-            var tile_layer_d83ca02e761cf22821a7eb214ce4b98c = L.tileLayer(
+            var tile_layer_e7fc5a22aba0b561c5fa3c518fa22089 = L.tileLayer(
                 &quot;https://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
                 {
   &quot;minZoom&quot;: 0,
@@ -1160,11 +1291,11 @@ Klasifikasi selesai! Menyiapkan peta...
             );
         
     
-            tile_layer_d83ca02e761cf22821a7eb214ce4b98c.addTo(map_d862cd9ff16325b4aed3993615d34820);
+            tile_layer_e7fc5a22aba0b561c5fa3c518fa22089.addTo(map_1e2296d94141c92b5c75b2cdbf009ee0);
         
     
-            var tile_layer_b0f0a77727f622e80c70309a9ff14b4c = L.tileLayer(
-                &quot;https://earthengine.googleapis.com/v1/projects/930269063286/maps/a30439a506b5d37ec8658d7810210861-50163a8e06f98f7df32fba5a550f92ec/tiles/{z}/{x}/{y}&quot;,
+            var tile_layer_b09ece6beaa3b55d64d4478f53cc2ff8 = L.tileLayer(
+                &quot;https://earthengine.googleapis.com/v1/projects/930269063286/maps/c1177481e50b79af5804b51e7b95352f-c1e08ae5be670080b4cc05ca6498c1bf/tiles/{z}/{x}/{y}&quot;,
                 {
   &quot;minZoom&quot;: 0,
   &quot;maxZoom&quot;: 18,
@@ -1180,11 +1311,11 @@ Klasifikasi selesai! Menyiapkan peta...
             );
         
     
-            tile_layer_b0f0a77727f622e80c70309a9ff14b4c.addTo(map_d862cd9ff16325b4aed3993615d34820);
+            tile_layer_b09ece6beaa3b55d64d4478f53cc2ff8.addTo(map_1e2296d94141c92b5c75b2cdbf009ee0);
         
     
-            var tile_layer_8c355124751fa41115afd223252b6260 = L.tileLayer(
-                &quot;https://earthengine.googleapis.com/v1/projects/930269063286/maps/65947d6e2bd66e5ce78605773a8d357c-4cd0beef0380a0c28e6d5d7e32d6a682/tiles/{z}/{x}/{y}&quot;,
+            var tile_layer_c7308ac8c3b16416ac467d463f5c283a = L.tileLayer(
+                &quot;https://earthengine.googleapis.com/v1/projects/930269063286/maps/5a9399a16abf5516983a438b213fe954-090e7d7df556769badadfc96eca88467/tiles/{z}/{x}/{y}&quot;,
                 {
   &quot;minZoom&quot;: 0,
   &quot;maxZoom&quot;: 18,
@@ -1200,40 +1331,32 @@ Klasifikasi selesai! Menyiapkan peta...
             );
         
     
-            tile_layer_8c355124751fa41115afd223252b6260.addTo(map_d862cd9ff16325b4aed3993615d34820);
+            tile_layer_c7308ac8c3b16416ac467d463f5c283a.addTo(map_1e2296d94141c92b5c75b2cdbf009ee0);
         
     
-            var layer_control_c46b8a1db4739c3e769c2f04128e3207_layers = {
+            var layer_control_33ea21e75ba00f9f873bb8d8a7780cd7_layers = {
                 base_layers : {
-                    &quot;openstreetmap&quot; : tile_layer_d83ca02e761cf22821a7eb214ce4b98c,
+                    &quot;openstreetmap&quot; : tile_layer_e7fc5a22aba0b561c5fa3c518fa22089,
                 },
                 overlays :  {
-                    &quot;Citra Sentinel-2&quot; : tile_layer_b0f0a77727f622e80c70309a9ff14b4c,
-                    &quot;Hasil Klasifikasi Lahan&quot; : tile_layer_8c355124751fa41115afd223252b6260,
+                    &quot;Citra Sentinel-2&quot; : tile_layer_b09ece6beaa3b55d64d4478f53cc2ff8,
+                    &quot;Hasil Klasifikasi Lahan&quot; : tile_layer_c7308ac8c3b16416ac467d463f5c283a,
                 },
             };
-            let layer_control_c46b8a1db4739c3e769c2f04128e3207 = L.control.layers(
-                layer_control_c46b8a1db4739c3e769c2f04128e3207_layers.base_layers,
-                layer_control_c46b8a1db4739c3e769c2f04128e3207_layers.overlays,
+            let layer_control_33ea21e75ba00f9f873bb8d8a7780cd7 = L.control.layers(
+                layer_control_33ea21e75ba00f9f873bb8d8a7780cd7_layers.base_layers,
+                layer_control_33ea21e75ba00f9f873bb8d8a7780cd7_layers.overlays,
                 {
   &quot;position&quot;: &quot;topright&quot;,
   &quot;collapsed&quot;: true,
   &quot;autoZIndex&quot;: true,
 }
-            ).addTo(map_d862cd9ff16325b4aed3993615d34820);
+            ).addTo(map_1e2296d94141c92b5c75b2cdbf009ee0);
 
         
 &lt;/script&gt;
 &lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sedang mendownload Klasifikasi_Lahan_Cilengkrang_Bandung.tif...
 Generating URL ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading data from https://earthengine.googleapis.com/v1/projects/930269063286/thumbnails/2bcb70771a69b9fff20ccf6372f03516-af6b766b3a10360f34cee946c6875a4f:getPixels
-Please wait ...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data downloaded to C:\xampp\htdocs\Jupyter_Book\Catatan\Proyek_Sains_Data\Klasifikasi_Lahan_Cilengkrang_Bandung.tif
-Selesai!
 </pre></div>
 </div>
 </div>
@@ -1279,6 +1402,15 @@ Selesai!
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">&lt;no title&gt;</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="UTS_Klasifikasi.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">UTS KLASIFIKASI</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
