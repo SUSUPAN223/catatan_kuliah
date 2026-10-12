@@ -57,7 +57,7 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script type="application/vnd.jupyter.widget-state+json">{"state": {"b65ce7588a584c859756bd9c531c946c": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "500px"}}}, "version_major": 2, "version_minor": 0}</script>
+    <script type="application/vnd.jupyter.widget-state+json">{"state": {"c3ee1b6827774059b0957b88bf30cccc": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "500px"}}}, "version_major": 2, "version_minor": 0}</script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script crossorigin="anonymous" data-jupyter-widgets-cdn="https://cdn.jsdelivr.net/npm/" src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@1.0.6/dist/embed-amd.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Proyek_Sains_Data/UTS_Klasifikasi';</script>
@@ -609,14 +609,14 @@ document.write(`
 File &#39;dataset_training.csv&#39; dan &#39;Sentinel2_Area.tif&#39; ditemukan. Menggunakan data lokal...
 
 Analisis Eksplorasi Data (Data Understanding)...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Struktur Dataset:
+Struktur Dataset:
 Total baris data (piksel) : 423909
 Total kolom              : 6 (1 label &#39;Class&#39;, 5 fitur spektral)
 
 Distribusi Kelas:
- - Perairan       : 379374 piksel
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> - Perairan       : 379374 piksel
  - Hutan          : 38532 piksel
  - Hutan Mangrove : 4176 piksel
  - Sawah          : 1340 piksel
@@ -1273,8 +1273,16 @@ Samples Data Latih:
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Memulai proses pelatihan model Random Forest...&quot;</span><span class="p">)</span>
 
-<span class="c1"># Inisialisasi model dengan konfigurasi parameter optimal</span>
-<span class="n">rf_model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># Inisialisasi model Random Forest</span>
+<span class="c1"># Parameter class_weight dihapus karena dataset X_train_bal telah diseimbangkan secara hibrida</span>
+<span class="n">rf_model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span>
+    <span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> 
+    <span class="n">max_depth</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>             <span class="c1"># Pembatasan kedalaman pohon untuk mencegah overfitting pada data sintetis</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> 
+    <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span>
+<span class="p">)</span>
+
+<span class="c1"># Pelatihan model menggunakan data hasil balancing (SMOTE &amp; Undersampling)</span>
 <span class="n">rf_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_bal</span><span class="p">,</span> <span class="n">y_train_bal</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Proses pelatihan selesai. Model berhasil dibangun.&quot;</span><span class="p">)</span>
@@ -1318,20 +1326,23 @@ Samples Data Latih:
 <p>Setelah dilakukannya training, didapatkanlah model seperti berikut :</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_tree</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_tree</span>
 
-<span class="c1"># Mengambil pohon keputusan pertama dari 100 pohon yang ada</span>
+<span class="c1"># Mengekstrak estimator pohon keputusan pertama dari ansambel Random Forest</span>
 <span class="n">pohon_pertama</span> <span class="o">=</span> <span class="n">rf_model</span><span class="o">.</span><span class="n">estimators_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
-<span class="n">plot_tree</span><span class="p">(</span><span class="n">pohon_pertama</span><span class="p">,</span> 
-          <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;B2&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">,</span> <span class="s1">&#39;B4&#39;</span><span class="p">,</span> <span class="s1">&#39;B8A&#39;</span><span class="p">,</span> <span class="s1">&#39;B11&#39;</span><span class="p">],</span> 
-          <span class="n">class_names</span><span class="o">=</span><span class="n">rf_model</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> 
-          <span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
-          <span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># Dibatasi kedalamannya 3 tingkat agar gambarnya tidak terlalu raksasa</span>
+<span class="n">plot_tree</span><span class="p">(</span>
+    <span class="n">pohon_pertama</span><span class="p">,</span> 
+    <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Band_2&#39;</span><span class="p">,</span> <span class="s1">&#39;Band_3&#39;</span><span class="p">,</span> <span class="s1">&#39;Band_4&#39;</span><span class="p">,</span> <span class="s1">&#39;B8A&#39;</span><span class="p">,</span> <span class="s1">&#39;Band_11&#39;</span><span class="p">],</span> 
+    <span class="n">class_names</span><span class="o">=</span><span class="n">rf_model</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> 
+    <span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+    <span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span>
+<span class="p">)</span> 
 
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Visualisasi Salah Satu Pohon Keputusan (Decision Tree) di dalam Random Forest&quot;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Visualisasi Arsitektur Pohon Keputusan Pertama pada Model Random Forest&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1359,7 +1370,7 @@ Samples Data Latih:
                     --jp-layout-color3: var(--colab-primary-surface-color, white);
                 }
             </style>
-            </div><img alt="../_images/ffbf518b44cdec9c9b007c506659da5bda00e64ec92064bc6f0d4c6c650bf668.png" src="../_images/ffbf518b44cdec9c9b007c506659da5bda00e64ec92064bc6f0d4c6c650bf668.png" />
+            </div><img alt="../_images/25c7d388cc83f01c52924f471ec9f5c9b3828a47517f2115fd0cd4ff523af019.png" src="../_images/25c7d388cc83f01c52924f471ec9f5c9b3828a47517f2115fd0cd4ff523af019.png" />
 </div>
 </div>
 </section>
@@ -1368,26 +1379,21 @@ Samples Data Latih:
 <p>Setelah proses pelatihan selesai, model diuji menggunakan data uji untuk mengevaluasi performa klasifikasinya secara menyeluruh. Pengujian ini penting untuk melihat kemampuan generalisasi model terhadap data baru yang belum pernah dipelajari sebelumnya.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">accuracy_score</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">accuracy_score</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">joblib</span>
 
-<span class="c1"># Menampilkan rincian jumlah data uji</span>
-<span class="n">jumlah_data_uji</span> <span class="o">=</span> <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total baris data uji (X_test): </span><span class="si">{</span><span class="n">jumlah_data_uji</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> piksel&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Keterangan: Data uji menggunakan proporsi asli lapangan (tanpa penyeimbangan).</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Distribusi Kelas Data Uji:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">y_test</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Menjalankan prediksi pada data uji...&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Menjalankan prediksi pada data uji...&quot;</span><span class="p">)</span>
+<span class="c1"># Evaluasi model menggunakan data uji murni yang independen dari proses latih</span>
 <span class="n">y_pred</span> <span class="o">=</span> <span class="n">rf_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-
-<span class="c1"># Menghitung evaluasi performa model</span>
 <span class="n">akurasi</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Akurasi Global Model: </span><span class="si">{</span><span class="n">akurasi</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
 
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Akurasi Global Model: </span><span class="si">{</span><span class="n">akurasi</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Laporan Klasifikasi Detail:&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+
+<span class="c1"># Ekspor hasil pemodelan ke berkas biner pkl</span>
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">rf_model</span><span class="p">,</span> <span class="s1">&#39;model_rf.pkl&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Proses selesai. Model berhasil disimpan sebagai &#39;model_rf.pkl&#39;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1414,22 +1420,9 @@ Samples Data Latih:
                     --jp-layout-color3: var(--colab-primary-surface-color, white);
                 }
             </style>
-            </div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total baris data uji (X_test): 84,782 piksel
-Keterangan: Data uji menggunakan proporsi asli lapangan (tanpa penyeimbangan).
+            </div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Menjalankan prediksi pada data uji...
 
-Distribusi Kelas Data Uji:
-Class
-Perairan          75875
-Hutan              7707
-Hutan Mangrove      835
-Sawah               268
-Bangunan             97
-Name: count, dtype: int64
-
-Menjalankan prediksi pada data uji...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi Global Model: 99.10%
+Akurasi Global Model: 99.11%
 
 Laporan Klasifikasi Detail:
 </pre></div>
@@ -1440,11 +1433,14 @@ Laporan Klasifikasi Detail:
          Hutan       1.00      0.98      0.99      7707
 Hutan Mangrove       0.54      0.97      0.69       835
       Perairan       1.00      0.99      1.00     75875
-         Sawah       0.92      0.99      0.95       268
+         Sawah       0.91      0.99      0.95       268
 
       accuracy                           0.99     84782
      macro avg       0.89      0.99      0.92     84782
   weighted avg       0.99      0.99      0.99     84782
+
+
+Proses selesai. Model berhasil disimpan sebagai &#39;model_rf.pkl&#39;
 </pre></div>
 </div>
 </div>
@@ -1453,43 +1449,6 @@ Hutan Mangrove       0.54      0.97      0.69       835
 </section>
 <section id="deployment">
 <h2>DEPLOYMENT<a class="headerlink" href="#deployment" title="Link to this heading">#</a></h2>
-<p>Pertama, kita buat file .pkl untuk digunakan ke streamlit</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">joblib</span>
-<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">rf_model</span><span class="p">,</span> <span class="s1">&#39;model_rf.pkl&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;File model_rf.pkl berhasil disimpan!&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-            <style>
-                .geemap-dark {
-                    --jp-widgets-color: white;
-                    --jp-widgets-label-color: white;
-                    --jp-ui-font-color1: white;
-                    --jp-layout-color2: #454545;
-                    background-color: #383838;
-                }
-
-                .geemap-dark .jupyter-button {
-                    --jp-layout-color3: #383838;
-                }
-
-                .geemap-colab {
-                    background-color: var(--colab-primary-surface-color, white);
-                }
-
-                .geemap-colab .jupyter-button {
-                    --jp-layout-color3: var(--colab-primary-surface-color, white);
-                }
-            </style>
-            </div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File model_rf.pkl berhasil disimpan!
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
