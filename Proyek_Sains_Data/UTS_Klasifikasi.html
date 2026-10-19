@@ -57,7 +57,7 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script type="application/vnd.jupyter.widget-state+json">{"state": {"952a2c9765f64c9ea06dde49a06fae7d": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "500px"}}}, "version_major": 2, "version_minor": 0}</script>
+    <script type="application/vnd.jupyter.widget-state+json">{"state": {"75cc2b4e914e42b3823eb86c547f09db": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "500px"}}}, "version_major": 2, "version_minor": 0}</script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script crossorigin="anonymous" data-jupyter-widgets-cdn="https://cdn.jsdelivr.net/npm/" src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@1.0.6/dist/embed-amd.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Proyek_Sains_Data/UTS_Klasifikasi';</script>
@@ -450,9 +450,9 @@ document.write(`
 <h1>UTS KLASIFIKASI<a class="headerlink" href="#uts-klasifikasi" title="Link to this heading">#</a></h1>
 <section id="business-understanding">
 <h2>BUSINESS UNDERSTANDING<a class="headerlink" href="#business-understanding" title="Link to this heading">#</a></h2>
-<p>Proyek klasifikasi tutupan lahan (Land Use Land Cover) wilayah Jawa Timur ini dikembangkan untuk merespons tingginya dinamika alih fungsi lahan akibat urbanisasi dan pertumbuhan ekonomi. Mengingat pemantauan manual di lapangan sangat tidak efisien, sistem ini memanfaatkan citra satelit Sentinel-2 untuk memetakan permukaan bumi secara otomatis, cepat, dan berkala.</p>
-<p>Dengan mengekstrak nilai spektral dari Band 4 (Red), Band 8A (Narrow NIR), dan Band 11 (SWIR), model Machine Learning yang dibangun mampu mengatasi kebingungan visual pada citra standar. Sistem dapat membedakan secara presisi objek-objek yang sering kali mengecoh mata manusia, seperti memisahkan hutan daratan dengan hutan mangrove pesisir, atau lahan pertanian produktif dengan area terbangun (build-up area).</p>
-<p>Hasil akhir dari prediksi model ini disajikan dalam bentuk dashboard peta interaktif. Melalui platform ini, para pengambil kebijakan dapat langsung memfilter dan memantau distribusi lahan secara real-time demi mendukung perencanaan tata ruang serta pelestarian lingkungan yang lebih akurat.</p>
+<p>Proyek klasifikasi tutupan lahan (<em>Land Use Land Cover</em>) wilayah Jawa Timur ini dikembangkan untuk merespons tingginya dinamika alih fungsi lahan akibat urbanisasi dan pertumbuhan ekonomi. Mengingat pemantauan manual di lapangan sangat tidak efisien dan memakan biaya tinggi, sistem ini memanfaatkan penginderaan jauh dari citra satelit Sentinel-2 untuk memetakan permukaan bumi secara otomatis, cepat, dan berkala.</p>
+<p>Dengan mengekstrak 8 fitur andalan yang terdiri dari 6 pita spektral (Band 2, 3, 4, 8A, 11, 12) serta indeks komputasi tambahan berupa NDVI (Kerapatan Vegetasi) dan NDWI (Indeks Kebasahan Air), model <em>Machine Learning</em> Random Forest yang dibangun mampu mengatasi kebingungan visual pada citra standar RGB. Sistem dapat membedakan secara presisi objek-objek yang sering kali mengecoh mata manusia, seperti memisahkan hutan daratan biasa dengan hutan mangrove di pesisir, atau membedakan lahan pertanian produktif dengan area terbangun (<em>built-up area</em>).</p>
+<p>Hasil akhir dari prediksi model ini disajikan dalam bentuk <em>dashboard</em> peta geospasial interaktif. Melalui platform ini, para pengambil kebijakan dapat langsung memantau, memfilter, dan menganalisis distribusi tutupan lahan secara <em>real-time</em> demi mendukung perencanaan tata ruang serta pelestarian lingkungan yang lebih akurat dan berbasis data (<em>data-driven</em>).</p>
 </section>
 <section id="data-understanding">
 <h2>DATA UNDERSTANDING<a class="headerlink" href="#data-understanding" title="Link to this heading">#</a></h2>
@@ -469,8 +469,8 @@ document.write(`
 <span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
 
 <span class="n">file_csv</span> <span class="o">=</span> <span class="s1">&#39;dataset_training.csv&#39;</span>
-<span class="n">file_tif</span> <span class="o">=</span> <span class="s1">&#39;Sentinel2_Area.tif&#39;</span>
-<span class="n">file_geojson</span> <span class="o">=</span> <span class="s1">&#39;Update20.geojson&#39;</span>
+<span class="n">file_tif</span> <span class="o">=</span> <span class="s1">&#39;Sentinel2_Jatim_Utuh.tif&#39;</span>
+<span class="n">file_geojson</span> <span class="o">=</span> <span class="s1">&#39;Update22.geojson&#39;</span>
 
 <span class="c1"># Inisialisasi API Google Earth Engine</span>
 <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">file_csv</span><span class="p">)</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">file_tif</span><span class="p">)):</span>
@@ -480,7 +480,7 @@ document.write(`
         <span class="n">ee</span><span class="o">.</span><span class="n">Authenticate</span><span class="p">()</span>
         <span class="n">ee</span><span class="o">.</span><span class="n">Initialize</span><span class="p">()</span>
 
-    <span class="c1"># Membaca data poligon sampel spasial dari GeoJSON</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Membaca data spasial dari GeoJSON...&quot;</span><span class="p">)</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_geojson</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="n">geojson_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
         
@@ -492,58 +492,74 @@ document.write(`
         <span class="s1">&#39;bangunan&#39;</span><span class="p">:</span> <span class="s1">&#39;Bangunan&#39;</span>        
     <span class="p">}</span>
     
-    <span class="c1"># Validasi dan standarisasi penamaan kelas pada poligon</span>
+    <span class="n">jatim_feature</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">fitur_valid</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">geojson_data</span><span class="p">[</span><span class="s1">&#39;features&#39;</span><span class="p">]:</span>
+    
+    <span class="c1"># Memilah isi GeoJSON</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">feature</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">geojson_data</span><span class="p">[</span><span class="s1">&#39;features&#39;</span><span class="p">]):</span>
         <span class="k">if</span> <span class="s1">&#39;Class&#39;</span> <span class="ow">in</span> <span class="n">feature</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">]:</span>
             <span class="n">nama_asli</span> <span class="o">=</span> <span class="n">feature</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="s1">&#39;Class&#39;</span><span class="p">]</span>
-            <span class="k">if</span> <span class="n">nama_asli</span> <span class="ow">in</span> <span class="n">pemetaan_kelas</span><span class="p">:</span>
+            
+            <span class="c1"># SOLUSI: Gunakan .strip() untuk membuang spasi/enter gaib (\n) di akhir teks</span>
+            <span class="k">if</span> <span class="n">nama_asli</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;JAWA TIMUR&#39;</span><span class="p">:</span>
+                <span class="n">jatim_feature</span> <span class="o">=</span> <span class="n">feature</span>
+            <span class="k">elif</span> <span class="n">nama_asli</span> <span class="ow">in</span> <span class="n">pemetaan_kelas</span><span class="p">:</span>
                 <span class="n">feature</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="s1">&#39;Class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pemetaan_kelas</span><span class="p">[</span><span class="n">nama_asli</span><span class="p">]</span>
+                <span class="n">feature</span><span class="p">[</span><span class="s1">&#39;properties&#39;</span><span class="p">][</span><span class="s1">&#39;poly_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
                 <span class="n">fitur_valid</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span>
                 
-    <span class="n">fc</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="n">fitur_valid</span><span class="p">)</span>
-    <span class="n">roi</span> <span class="o">=</span> <span class="n">fc</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span><span class="o">.</span><span class="n">bounds</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">jatim_feature</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;ERROR: Poligon dengan Class &#39;JAWA TIMUR&#39; tidak ditemukan di dalam GeoJSON!&quot;</span><span class="p">)</span>
+
+    <span class="n">roi_jatim</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">Feature</span><span class="p">(</span><span class="n">jatim_feature</span><span class="p">)</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span> 
+    <span class="n">fc_training</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">FeatureCollection</span><span class="p">(</span><span class="n">fitur_valid</span><span class="p">)</span>  
     
-    <span class="c1"># Akuisisi citra Sentinel-2 (6 band mentah)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mengambil data satelit Sentinel-2...&quot;</span><span class="p">)</span>
     <span class="n">s2_base</span> <span class="o">=</span> <span class="n">ee</span><span class="o">.</span><span class="n">ImageCollection</span><span class="p">(</span><span class="s2">&quot;COPERNICUS/S2_SR_HARMONIZED&quot;</span><span class="p">)</span> \
-        <span class="o">.</span><span class="n">filterBounds</span><span class="p">(</span><span class="n">roi</span><span class="p">)</span> \
+        <span class="o">.</span><span class="n">filterBounds</span><span class="p">(</span><span class="n">roi_jatim</span><span class="p">)</span> \
         <span class="o">.</span><span class="n">filterDate</span><span class="p">(</span><span class="s1">&#39;2025-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2026-09-30&#39;</span><span class="p">)</span> \
         <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">ee</span><span class="o">.</span><span class="n">Filter</span><span class="o">.</span><span class="n">lt</span><span class="p">(</span><span class="s1">&#39;CLOUDY_PIXEL_PERCENTAGE&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span> \
         <span class="o">.</span><span class="n">median</span><span class="p">()</span> \
         <span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;B2&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">,</span> <span class="s1">&#39;B4&#39;</span><span class="p">,</span> <span class="s1">&#39;B8A&#39;</span><span class="p">,</span> <span class="s1">&#39;B11&#39;</span><span class="p">,</span> <span class="s1">&#39;B12&#39;</span><span class="p">])</span>
 
-    <span class="c1"># Kalkulasi penambahan indeks NDVI dan NDWI</span>
     <span class="n">ndvi</span> <span class="o">=</span> <span class="n">s2_base</span><span class="o">.</span><span class="n">normalizedDifference</span><span class="p">([</span><span class="s1">&#39;B8A&#39;</span><span class="p">,</span> <span class="s1">&#39;B4&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;NDVI&#39;</span><span class="p">)</span>
     <span class="n">ndwi</span> <span class="o">=</span> <span class="n">s2_base</span><span class="o">.</span><span class="n">normalizedDifference</span><span class="p">([</span><span class="s1">&#39;B3&#39;</span><span class="p">,</span> <span class="s1">&#39;B8A&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;NDWI&#39;</span><span class="p">)</span>
     <span class="n">s2_final</span> <span class="o">=</span> <span class="n">s2_base</span><span class="o">.</span><span class="n">addBands</span><span class="p">([</span><span class="n">ndvi</span><span class="p">,</span> <span class="n">ndwi</span><span class="p">])</span>
     
-    <span class="c1"># Ekstraksi nilai piksel ke format tabular (CSV) pada skala 30m</span>
+    <span class="c1"># Ekstraksi CSV</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">file_csv</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mengekstrak data piksel sampel ke CSV...&quot;</span><span class="p">)</span>
         <span class="n">sampled</span> <span class="o">=</span> <span class="n">s2_final</span><span class="o">.</span><span class="n">sampleRegions</span><span class="p">(</span>
-            <span class="n">collection</span><span class="o">=</span><span class="n">fc</span><span class="p">,</span> <span class="n">properties</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Class&#39;</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">tileScale</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">geometries</span><span class="o">=</span><span class="kc">False</span>
+            <span class="n">collection</span><span class="o">=</span><span class="n">fc_training</span><span class="p">,</span> <span class="n">properties</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Class&#39;</span><span class="p">,</span> <span class="s1">&#39;poly_id&#39;</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">tileScale</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">geometries</span><span class="o">=</span><span class="kc">False</span>
         <span class="p">)</span>
 
-        <span class="n">url</span> <span class="o">=</span> <span class="n">sampled</span><span class="o">.</span><span class="n">getDownloadURL</span><span class="p">(</span><span class="n">filetype</span><span class="o">=</span><span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="n">selectors</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Class&#39;</span><span class="p">,</span> <span class="s1">&#39;B2&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">,</span> <span class="s1">&#39;B4&#39;</span><span class="p">,</span> <span class="s1">&#39;B8A&#39;</span><span class="p">,</span> <span class="s1">&#39;B11&#39;</span><span class="p">,</span> <span class="s1">&#39;B12&#39;</span><span class="p">,</span> <span class="s1">&#39;NDVI&#39;</span><span class="p">,</span> <span class="s1">&#39;NDWI&#39;</span><span class="p">])</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">sampled</span><span class="o">.</span><span class="n">getDownloadURL</span><span class="p">(</span><span class="n">filetype</span><span class="o">=</span><span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="n">selectors</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Class&#39;</span><span class="p">,</span> <span class="s1">&#39;poly_id&#39;</span><span class="p">,</span> <span class="s1">&#39;B2&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">,</span> <span class="s1">&#39;B4&#39;</span><span class="p">,</span> <span class="s1">&#39;B8A&#39;</span><span class="p">,</span> <span class="s1">&#39;B11&#39;</span><span class="p">,</span> <span class="s1">&#39;B12&#39;</span><span class="p">,</span> <span class="s1">&#39;NDVI&#39;</span><span class="p">,</span> <span class="s1">&#39;NDWI&#39;</span><span class="p">])</span>
         <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">file_csv</span><span class="p">)</span>
         
         <span class="n">df_temp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_csv</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+        <span class="n">df_temp</span> <span class="o">=</span> <span class="n">df_temp</span><span class="p">[</span><span class="o">~</span><span class="p">((</span><span class="n">df_temp</span><span class="p">[</span><span class="s1">&#39;Class&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;Hutan Mangrove&#39;</span><span class="p">,</span> <span class="s1">&#39;Hutan&#39;</span><span class="p">,</span> <span class="s1">&#39;Sawah&#39;</span><span class="p">]))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_temp</span><span class="p">[</span><span class="s1">&#39;NDWI&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.1</span><span class="p">))]</span>
         <span class="n">df_temp</span> <span class="o">=</span> <span class="n">df_temp</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
             <span class="s1">&#39;B2&#39;</span><span class="p">:</span> <span class="s1">&#39;Band_2&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">:</span> <span class="s1">&#39;Band_3&#39;</span><span class="p">,</span> <span class="s1">&#39;B4&#39;</span><span class="p">:</span> <span class="s1">&#39;Band_4&#39;</span><span class="p">,</span> 
             <span class="s1">&#39;B8A&#39;</span><span class="p">:</span> <span class="s1">&#39;Band_8A&#39;</span><span class="p">,</span> <span class="s1">&#39;B11&#39;</span><span class="p">:</span> <span class="s1">&#39;Band_11&#39;</span><span class="p">,</span> <span class="s1">&#39;B12&#39;</span><span class="p">:</span> <span class="s1">&#39;Band_12&#39;</span>
         <span class="p">})</span>
         <span class="n">df_temp</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">file_csv</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ekstraksi CSV Selesai.&quot;</span><span class="p">)</span>
 
-    <span class="c1"># Pengunduhan citra raster utuh (TIF) pada skala 100m untuk efisiensi render</span>
+    <span class="c1"># Ekstraksi TIF</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">file_tif</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mulai mengunduh TIF Jawa Timur Utuh... (Proses ini memakan waktu)&quot;</span><span class="p">)</span>
+        <span class="n">s2_clipped</span> <span class="o">=</span> <span class="n">s2_final</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">roi_jatim</span><span class="p">)</span> 
+        
         <span class="n">geemap</span><span class="o">.</span><span class="n">download_ee_image</span><span class="p">(</span>
-            <span class="n">s2_final</span><span class="p">,</span> 
+            <span class="n">s2_clipped</span><span class="p">,</span> 
             <span class="n">filename</span><span class="o">=</span><span class="n">file_tif</span><span class="p">,</span> 
-            <span class="n">scale</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
-            <span class="n">region</span><span class="o">=</span><span class="n">roi</span><span class="p">,</span>
+            <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> 
+            <span class="n">region</span><span class="o">=</span><span class="n">roi_jatim</span><span class="p">,</span>
             <span class="n">crs</span><span class="o">=</span><span class="s1">&#39;EPSG:4326&#39;</span>
         <span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unduhan TIF Jawa Timur Selesai.&quot;</span><span class="p">)</span>
 
-<span class="c1"># Analisis dan visualisasi distribusi kelas data latih</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Memuat dan menganalisis dataset CSV...&quot;</span><span class="p">)</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_csv</span><span class="p">)</span>
 <span class="n">distribusi</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Class&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 
@@ -573,34 +589,42 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total data: 51834 baris, 9 kolom
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Memuat dan menganalisis dataset CSV...
+Total data: 15014 baris, 10 kolom
 
 Distribusi Kelas:
  Class
-Perairan          41628
-Hutan              4278
-Sawah              2672
-Bangunan           2389
-Hutan Mangrove      867
+Hutan             4277
+Hutan Mangrove    3444
+Sawah             2672
+Bangunan          2389
+Perairan          2232
 </pre></div>
 </div>
-<img alt="../_images/e0c8485482fd253b8154e7650f08954c39629403e5de877ac307a9c3280e999f.png" src="../_images/e0c8485482fd253b8154e7650f08954c39629403e5de877ac307a9c3280e999f.png" />
+<img alt="../_images/5b3d5fa527791e87f65ee863fff4eb14bf55582d122ac9207e5132fee6d9af0a.png" src="../_images/5b3d5fa527791e87f65ee863fff4eb14bf55582d122ac9207e5132fee6d9af0a.png" />
 </div>
 </div>
 <section id="sumber-data-dan-skenario-ekstraksi">
 <h3>Sumber Data dan Skenario Ekstraksi<a class="headerlink" href="#sumber-data-dan-skenario-ekstraksi" title="Link to this heading">#</a></h3>
-<p>Data tabular diekstrak berdasarkan sekumpulan area <em>Region of Interest</em> (ROI) berformat GeoJSON yang telah diperbarui dan tersebar di wilayah Jawa Timur. Nilai piksel diekstrak menggunakan layanan Google Earth Engine (<em>cloud-based</em>) dengan parameter ekstraksi sebagai berikut:</p>
+<p>Data diekstrak berdasarkan sekumpulan area <em>Region of Interest</em> (ROI) berformat GeoJSON yang mencakup poligon sampel kelas lahan dan poligon batas wilayah batas Provinsi Jawa Timur. Nilai piksel diekstrak menggunakan layanan komputasi <em>cloud</em> Google Earth Engine dengan parameter ekstraksi sebagai berikut:</p>
 <ul class="simple">
-<li><p><strong>Koleksi Citra:</strong> Sentinel-2 Level-2A (<em>Bottom of Atmosphere</em>).</p></li>
+<li><p><strong>Koleksi Citra:</strong> Sentinel-2 Level-2A Surface Reflectance (<em>Harmonized</em>).</p></li>
 <li><p><strong>Rentang Waktu:</strong> 1 Januari 2025 hingga 30 September 2026.</p></li>
-<li><p><strong>Toleransi Awan:</strong> Maksimum 50%. Reduksi awan dilakukan secara otomatis menggunakan metode <em>Median Reducer</em> (mengambil nilai spektral tengah yang paling bersih dari rentang waktu tersebut).</p></li>
-<li><p><strong>Resolusi Spasial (<em>Scale</em>):</strong> 30 meter per piksel. Resolusi ini dipertahankan untuk memastikan objek kelas minoritas dengan area sempit (seperti Bangunan dan Sawah) tidak hilang atau tertelan oleh <em>grid</em> spasial, sehingga jumlah sampel piksel tetap melimpah dan representatif.</p></li>
-<li><p><strong>Metode Unduh:</strong> Data diekstrak melalui URL <em>download</em> menjadi file <code class="docutils literal notranslate"><span class="pre">dataset_training.csv</span></code> untuk menghindari limitasi memori bawaan (batas 5.000 elemen) pada server Google.</p></li>
+<li><p><strong>Toleransi Awan:</strong> Maksimum <strong>10%</strong> (sangat jernih). Reduksi awan tambahan dilakukan secara otomatis menggunakan metode <em>Median Reducer</em> (mengambil nilai spektral tengah yang paling bersih dari seluruh rentang waktu tersebut).</p></li>
+<li><p><strong>Pita Spektral &amp; Indeks:</strong> Menggunakan 6 band mentah (Band 2, 3, 4, 8A, 11, 12) serta menambahkan 2 pita komputasi indeks, yakni NDVI (Kerapatan Vegetasi) dan NDWI (Kebasahan/Air).</p></li>
+<li><p><strong>Resolusi Spasial (<em>Scale</em>):</strong> 30 meter per piksel. Resolusi ini ditetapkan untuk memastikan objek dengan area sempit (seperti Bangunan) tidak hilang tertelan <em>grid</em> spasial, sekaligus menjaga beban komputasi tetap rasional untuk area skala provinsi.</p></li>
+<li><p><strong>Pembersihan Noise Otomatis:</strong> Diterapkan filter anomali spasial yang membuang piksel-piksel “siluman” di dalam poligon daratan (Hutan, Hutan Mangrove, Sawah) yang secara keliru memiliki nilai indeks air terlalu tinggi (NDWI &gt; 0.1).</p></li>
 </ul>
+<p><strong>Skenario Unduhan Ganda (Dual Extraction)</strong>
+Untuk menghindari limitasi memori (<em>memory limit</em>) dan memisahkan kebutuhan fase proyek, data diunduh melalui dua jalur berbeda:</p>
+<ol class="arabic simple">
+<li><p><strong>Data Tabular (<code class="docutils literal notranslate"><span class="pre">dataset_training.csv</span></code>):</strong> Mengekstrak kemurnian nilai piksel hanya pada titik-titik poligon sampel (Hutan, Mangrove, Sawah, Bangunan, Perairan) melalui URL <em>download</em> khusus sebagai bahan ajar (<em>training</em>) algoritma Machine Learning.</p></li>
+<li><p><strong>Data Raster Spasial (<code class="docutils literal notranslate"><span class="pre">Sentinel2_Jatim_Utuh.tif</span></code>):</strong> Mengunduh peta citra utuh yang dipotong (<em>clipping</em>) secara presisi mengikuti bentuk lekukan poligon “JAWA TIMUR”. File biner berukuran besar ini disiapkan khusus sebagai kanvas kosong untuk tahap <em>Deployment</em> (Inferensi Spasial).</p></li>
+</ol>
 </section>
 <section id="karakteristik-fitur-spektral-band-indeks">
 <h3>Karakteristik Fitur (Spektral Band &amp; Indeks)<a class="headerlink" href="#karakteristik-fitur-spektral-band-indeks" title="Link to this heading">#</a></h3>
-<p>Dataset ini menggunakan 6 variabel spektral independen berupa pantulan cahaya (reflektansi) dari saluran satelit Sentinel-2, ditambah 2 fitur hasil kalkulasi indeks tutupan lahan. Pemilihan 8 fitur ini bertujuan untuk memisahkan 5 kelas lahan secara optimal:</p>
+<p>Dataset ini menggunakan 6 variabel spektral independen berupa pantulan cahaya (<em>reflectance</em>) dari instrumen satelit Sentinel-2, ditambah 2 fitur hasil kalkulasi indeks tutupan lahan. Pemilihan 8 fitur ini secara spesifik bertujuan untuk memisahkan 5 kelas lahan secara optimal:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Nama Fitur</p></th>
@@ -608,26 +632,26 @@ Hutan Mangrove      867
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>Band 2 (Blue) &amp; Band 3 (Green)</p></td>
-<td><p>Sangat sensitif terhadap pantulan air. Kehadiran dua band ini krusial untuk membedakan kelas Perairan dengan objek gelap lain seperti bayangan atau aspal.</p></td>
+<tr class="row-even"><td><p><strong>Band 2 (Blue) &amp; Band 3 (Green)</strong></p></td>
+<td><p>Sangat sensitif terhadap pantulan air. Kehadiran dua band ini krusial untuk membedakan kelas Perairan dengan objek daratan yang gelap (seperti aspal padat atau bayangan awan).</p></td>
 </tr>
-<tr class="row-odd"><td><p>Band 4 (Red)</p></td>
-<td><p>Menyerap klorofil tanaman secara kuat. Sangat esensial untuk mendeteksi kerapatan daun dan memisahkan vegetasi dari non-vegetasi.</p></td>
+<tr class="row-odd"><td><p><strong>Band 4 (Red)</strong></p></td>
+<td><p>Menyerap klorofil tanaman secara kuat. Sangat esensial untuk mendeteksi tingkat kerapatan daun dan memisahkan area vegetasi dari non-vegetasi.</p></td>
 </tr>
-<tr class="row-even"><td><p>Band 8a (Narrow NIR)</p></td>
-<td><p>Memiliki rentang gelombang inframerah dekat yang sempit dan presisi. Mampu menembus gangguan aerosol atmosfer lebih baik dari B8 biasa, sehingga sangat akurat untuk membedakan detail vegetasi spesifik.</p></td>
+<tr class="row-even"><td><p><strong>Band 8A (Narrow NIR)</strong></p></td>
+<td><p>Memiliki rentang gelombang inframerah dekat yang sempit dan presisi. Mampu menembus gangguan aerosol atmosfer lebih baik dari pita NIR standar (Band 8), sehingga sangat akurat untuk membedakan detail spesifik antartipe vegetasi.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Band 11 (SWIR 1)</p></td>
-<td><p>Sangat sensitif terhadap kelembapan tanah tingkat atas dan material penyerap panas. Menjadi fitur penegas utama untuk mengklasifikasikan area Bangunan dan Sawah kering.</p></td>
+<tr class="row-odd"><td><p><strong>Band 11 (SWIR 1)</strong></p></td>
+<td><p>Sangat sensitif terhadap kelembapan tanah tingkat atas dan material penyerap panas. Menjadi fitur penegas utama untuk mengklasifikasikan area Bangunan (<em>built-up</em>) dan Sawah pada fase lahan kering/bera.</p></td>
 </tr>
-<tr class="row-even"><td><p>Band 12 (SWIR 2)</p></td>
-<td><p>Sangat sensitif terhadap genangan air di bawah tajuk (<em>canopy</em>) vegetasi. Ini adalah kunci utama pembeda antara Hutan Mangrove (lahan basah/pasang surut) dengan Hutan Biasa (lahan kering), karena air akan mematikan pantulan spektral SWIR 2.</p></td>
+<tr class="row-even"><td><p><strong>Band 12 (SWIR 2)</strong></p></td>
+<td><p>Sangat sensitif terhadap kelembapan ekstrem dan genangan air di bawah tajuk (<em>canopy</em>). Fitur ini adalah kunci utama pembeda antara Hutan Mangrove (lahan pasang surut) dengan Hutan Biasa (lahan kering), karena genangan air akan menyerap dan mematikan pantulan spektral SWIR 2.</p></td>
 </tr>
-<tr class="row-odd"><td><p>NDVI</p></td>
-<td><p>(<em>Normalized Difference Vegetation Index</em>) Secara tegas memisahkan objek vegetasi hijau (Hutan, Sawah) dengan objek non-vegetasi (Bangunan, Tanah Kosong).</p></td>
+<tr class="row-odd"><td><p><strong>NDVI</strong></p></td>
+<td><p>(<em>Normalized Difference Vegetation Index</em>) Secara tegas memisahkan objek vegetasi hijau (Hutan, Sawah produktif) dengan objek non-vegetasi (Bangunan, Lahan Terbuka).</p></td>
 </tr>
-<tr class="row-even"><td><p>NDWI</p></td>
-<td><p>(<em>Normalized Difference Water Index</em>) Menghilangkan ambiguitas spektral antara Perairan asli dengan objek daratan yang gelap (seperti bayangan awan atau area padat penduduk).</p></td>
+<tr class="row-even"><td><p><strong>NDWI</strong></p></td>
+<td><p>(<em>Normalized Difference Water Index</em>) Menghilangkan ambiguitas spektral dan bertugas sebagai filter <em>noise</em> utama untuk memisahkan Perairan murni dari anomali piksel bayangan di daratan.</p></td>
 </tr>
 </tbody>
 </table>
@@ -643,12 +667,17 @@ Hutan Mangrove      867
 <span class="n">baris</span><span class="p">,</span> <span class="n">kolom</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Struktur Dataset:&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total baris data : </span><span class="si">{</span><span class="n">baris</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total kolom      : </span><span class="si">{</span><span class="n">kolom</span><span class="si">}</span><span class="s2"> (1 label &#39;Class&#39;, </span><span class="si">{</span><span class="n">kolom</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s2"> fitur spektral &amp; indeks)</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total kolom      : </span><span class="si">{</span><span class="n">kolom</span><span class="si">}</span><span class="s2"> (1 label &#39;Class&#39;, 1 &#39;poly_id&#39;, </span><span class="si">{</span><span class="n">kolom</span><span class="o">-</span><span class="mi">2</span><span class="si">}</span><span class="s2"> fitur spektral &amp; indeks)</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Distribusi Kelas:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Distribusi Kelas (Jumlah Piksel):&quot;</span><span class="p">)</span>
 <span class="n">distribusi</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Class&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">kelas</span><span class="p">,</span> <span class="n">jumlah</span> <span class="ow">in</span> <span class="n">distribusi</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- </span><span class="si">{</span><span class="n">kelas</span><span class="si">:</span><span class="s2">&lt;15</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">jumlah</span><span class="si">}</span><span class="s2"> piksel&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Distribusi Area (Jumlah Poligon Unik):&quot;</span><span class="p">)</span>
+<span class="n">poligon_per_kelas</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Class&#39;</span><span class="p">)[</span><span class="s1">&#39;poly_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">kelas</span><span class="p">,</span> <span class="n">jumlah_poly</span> <span class="ow">in</span> <span class="n">poligon_per_kelas</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- </span><span class="si">{</span><span class="n">kelas</span><span class="si">:</span><span class="s2">&lt;15</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">jumlah_poly</span><span class="si">}</span><span class="s2"> poligon&quot;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Samples Data Teratas:&quot;</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
@@ -702,15 +731,22 @@ Hutan Mangrove      867
                 }
             </style>
             </div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Struktur Dataset:
-Total baris data : 51834
-Total kolom      : 9 (1 label &#39;Class&#39;, 8 fitur spektral &amp; indeks)
+Total baris data : 15014
+Total kolom      : 10 (1 label &#39;Class&#39;, 1 &#39;poly_id&#39;, 8 fitur spektral &amp; indeks)
 
-Distribusi Kelas:
-- Perairan       : 41628 piksel
-- Hutan          : 4278 piksel
+Distribusi Kelas (Jumlah Piksel):
+- Hutan          : 4277 piksel
+- Hutan Mangrove : 3444 piksel
 - Sawah          : 2672 piksel
 - Bangunan       : 2389 piksel
-- Hutan Mangrove : 867 piksel
+- Perairan       : 2232 piksel
+
+Distribusi Area (Jumlah Poligon Unik):
+- Bangunan       : 50 poligon
+- Hutan          : 50 poligon
+- Hutan Mangrove : 50 poligon
+- Sawah          : 50 poligon
+- Perairan       : 44 poligon
 
 Samples Data Teratas:
 </pre></div>
@@ -734,6 +770,7 @@ Samples Data Teratas:
     <tr style="text-align: right;">
       <th></th>
       <th>Class</th>
+      <th>poly_id</th>
       <th>Band_2</th>
       <th>Band_3</th>
       <th>Band_4</th>
@@ -748,74 +785,80 @@ Samples Data Teratas:
     <tr>
       <th>0</th>
       <td>Hutan Mangrove</td>
-      <td>626.0</td>
-      <td>866.0</td>
-      <td>711.0</td>
-      <td>2661.5</td>
-      <td>1597.5</td>
-      <td>910.0</td>
-      <td>0.578354</td>
-      <td>-0.509001</td>
+      <td>1</td>
+      <td>449.000000</td>
+      <td>731.000000</td>
+      <td>496.000000</td>
+      <td>2526.00</td>
+      <td>737.500000</td>
+      <td>274.5</td>
+      <td>0.671741</td>
+      <td>-0.551121</td>
     </tr>
     <tr>
       <th>1</th>
       <td>Hutan Mangrove</td>
-      <td>505.0</td>
-      <td>747.5</td>
-      <td>602.0</td>
-      <td>2719.0</td>
-      <td>1642.0</td>
-      <td>841.0</td>
-      <td>0.637459</td>
-      <td>-0.568729</td>
+      <td>1</td>
+      <td>344.000000</td>
+      <td>649.333333</td>
+      <td>329.000000</td>
+      <td>4087.20</td>
+      <td>1285.333333</td>
+      <td>446.5</td>
+      <td>0.851003</td>
+      <td>-0.725819</td>
     </tr>
     <tr>
       <th>2</th>
       <td>Hutan Mangrove</td>
-      <td>906.5</td>
-      <td>1056.0</td>
-      <td>609.0</td>
-      <td>603.0</td>
-      <td>453.5</td>
-      <td>264.0</td>
-      <td>-0.004950</td>
-      <td>0.273056</td>
+      <td>1</td>
+      <td>344.333333</td>
+      <td>631.250000</td>
+      <td>327.750000</td>
+      <td>4072.75</td>
+      <td>1305.000000</td>
+      <td>456.5</td>
+      <td>0.851040</td>
+      <td>-0.731611</td>
     </tr>
     <tr>
       <th>3</th>
       <td>Hutan Mangrove</td>
-      <td>465.5</td>
-      <td>719.5</td>
-      <td>557.0</td>
-      <td>2721.0</td>
-      <td>1628.5</td>
-      <td>893.0</td>
-      <td>0.660159</td>
-      <td>-0.581747</td>
+      <td>1</td>
+      <td>346.500000</td>
+      <td>645.000000</td>
+      <td>341.500000</td>
+      <td>3981.75</td>
+      <td>1325.500000</td>
+      <td>467.0</td>
+      <td>0.842017</td>
+      <td>-0.721187</td>
     </tr>
     <tr>
       <th>4</th>
       <td>Hutan Mangrove</td>
-      <td>472.0</td>
-      <td>686.5</td>
-      <td>569.5</td>
-      <td>2908.5</td>
-      <td>1911.5</td>
-      <td>1071.5</td>
-      <td>0.672513</td>
-      <td>-0.618081</td>
+      <td>1</td>
+      <td>347.500000</td>
+      <td>636.000000</td>
+      <td>328.666667</td>
+      <td>3913.00</td>
+      <td>1314.500000</td>
+      <td>467.5</td>
+      <td>0.845029</td>
+      <td>-0.720378</td>
     </tr>
   </tbody>
 </table>
-</div></div><img alt="../_images/4dfd55a63bd00b9817dfcba8c28ef302564618cae58ca53eff456c70a9549158.png" src="../_images/4dfd55a63bd00b9817dfcba8c28ef302564618cae58ca53eff456c70a9549158.png" />
+</div></div><img alt="../_images/4e06218e712336c0911e9b3e62d5b5c7a7e8263ff566f8f8d6c695fde3759e52.png" src="../_images/4e06218e712336c0911e9b3e62d5b5c7a7e8263ff566f8f8d6c695fde3759e52.png" />
 </div>
 </div>
 </section>
 <section id="temuan-kritis-data-issues">
 <h3>Temuan Kritis (Data Issues)<a class="headerlink" href="#temuan-kritis-data-issues" title="Link to this heading">#</a></h3>
-<p>Berdasarkan hasil analisis, dataset ini masih mengalami masalah ketidakseimbangan kelas (<em>Class Imbalance</em>) yang signifikan. Kelas Perairan sangat mendominasi dengan 41.628 piksel (sekitar 80,3% dari keseluruhan 51.834 data piksel). Di sisi lain, kelas minoritas terkecil yakni Hutan Mangrove hanya memiliki 867 piksel (sekitar 1,67% dari total dataset).</p>
-<p>Kondisi data yang timpang ini berisiko membuat model mengalami bias mayoritas, di mana algoritma akan cenderung over-prediksi pada kelas mayoritas dan mengabaikan kelas minoritas demi mencapai akurasi semu. Namun, karena jumlah sampel pada kelas terkecil (Hutan Mangrove) sudah sangat representatif (867 piksel/hektar), tahap <em>Data Preparation</em> berikutnya akan menerapkan strategi <strong>Undersampling Murni</strong>.</p>
-<p>Seluruh kelas mayoritas akan dipangkas secara acak agar jumlahnya setara persis dengan kelas terkecil (masing-masing 867 piksel). Strategi ini akan menghasilkan dataset yang 100% seimbang sehingga model dapat belajar secara adil murni dari data satelit asli, tanpa perlu menggunakan kloning data sintetis (seperti SMOTE) yang rentan memicu <em>overfitting</em>.</p>
+<p>Berdasarkan hasil ekstraksi data terbaru, perbaikan pada sampel <em>Region of Interest</em> (ROI) dan penerapan filter <em>noise</em> NDWI telah sukses mengatasi masalah ketimpangan kelas yang ekstrem. Dataset kini sangat representatif dengan total 15.014 piksel valid yang tersebar pada 244 area poligon unik (rata-rata ~50 poligon per kelas). Kelas Perairan yang umumnya mendominasi kini berada di angka 2.232 piksel, sementara representasi Hutan Mangrove berhasil ditingkatkan menjadi 3.444 piksel.</p>
+<p>Meski distribusi kelas sudah sangat sehat, tantangan utama pada dataset penginderaan jauh adalah adanya autokorelasi spasial (<em>Spatial Autocorrelation</em>), yakni kondisi di mana piksel-piksel yang letaknya bersebelahan di dalam satu poligon cenderung memiliki nilai spektral yang kembar atau sangat mirip. Jika data dibagi secara acak per-piksel (<em>random pixel split</em>), model akan mengalami fenomena <strong>Spatial Data Leakage</strong> (kebocoran data). Model akan terlihat jenius dengan akurasi semu (&gt;97%) karena ia hanya diuji menggunakan piksel tetangga yang sudah ia hafal, bukan area yang benar-benar baru.</p>
+<p>Untuk mencegah kebocoran spasial tersebut, tahap <em>Data Preparation</em> tidak menggunakan pembagian data acak standar, melainkan menerapkan <strong>Spatial Group Split</strong> menggunakan teknik <em>Stratified Group K-Fold</em> berbasis ID Poligon (<code class="docutils literal notranslate"><span class="pre">poly_id</span></code>). Pemisahan data latih dan data uji dipotong secara mutlak berdasarkan area poligon (tidak ada piksel dari poligon yang sama yang bocor ke dua tempat sekaligus).</p>
+<p>Selanjutnya, teknik <strong>Undersampling Murni</strong> HANYA akan diaplikasikan pada ruang data latih (<em>training set</em>) agar model belajar secara 100% adil dari setiap kelas. Sementara itu, data uji (<em>testing set</em>) dibiarkan natural tanpa penyetaraan untuk menguji ketangguhan model di kondisi lapangan yang sesungguhnya.</p>
 </section>
 <section id="pengecekan-missing-values">
 <h3>Pengecekan Missing Values<a class="headerlink" href="#pengecekan-missing-values" title="Link to this heading">#</a></h3>
@@ -862,6 +905,7 @@ Samples Data Teratas:
             </style>
             </div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jumlah Nilai Kosong per Kolom:
 Class      0
+poly_id    0
 Band_2     0
 Band_3     0
 Band_4     0
@@ -882,7 +926,7 @@ Dataset bersih dari nilai kosong.
 </section>
 <section id="data-preparation">
 <h2>Data Preparation<a class="headerlink" href="#data-preparation" title="Link to this heading">#</a></h2>
-<p>Tahap ini bertujuan untuk menyiapkan dataset agar optimal sebelum masuk ke proses pemodelan, dengan fokus utama memitigasi masalah ketidakseimbangan kelas (<em>class imbalance</em>) yang signifikan melalui pendekatan <em>undersampling</em> murni hingga mencapai proporsi data latih yang 100% seimbang.</p>
+<p>Tahap ini bertujuan untuk menyiapkan dataset agar optimal sebelum masuk ke proses pemodelan, dengan dua fokus utama: mencegah <strong>Spatial Data Leakage</strong> akibat autokorelasi spasial, dan mengatasi <strong>Class Imbalance</strong> melalui pendekatan <em>undersampling</em> murni hingga mencapai proporsi data latih yang 100% seimbang.</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Masalah Data</p></th>
@@ -891,9 +935,13 @@ Dataset bersih dari nilai kosong.
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>Significant Class Imbalance</strong> <br><br> Kelas Perairan sangat mendominasi ~80,3% (41.628 piksel), sedangkan kelas Hutan Mangrove menjadi minoritas dengan ~1,67% (867 piksel).</p></td>
-<td><p><strong>Bias Mayoritas &amp; Paradoks Akurasi</strong> <br><br> Model cenderung over-prediksi pada kelas dominan (Perairan/Hutan) untuk mencari aman. Kelas minoritas akan diabaikan oleh model demi mendapatkan tingkat akurasi global yang seolah-olah tinggi (akurasi semu).</p></td>
-<td><p><strong>1. Stratified Train-Test Split (80:20)</strong> <br> Memisahkan data latih dan uji dengan mempertahankan proporsi kelas asli. Modifikasi penyeimbangan data HANYA dilakukan pada data latih agar data uji tetap objektif mewakili kondisi dunia nyata. <br><br> <strong>2. Undersampling Murni (Target Penyetaraan)</strong> <br> Memangkas data kelas mayoritas (Perairan, Hutan, Sawah, Bangunan) secara acak agar jumlahnya turun dan setara persis dengan kelas terkecil (Hutan Mangrove). <br><br> <strong>3. Murni Tanpa Data Sintetis (No SMOTE)</strong> <br> Mengingat kelas terkecil sudah menembus angka yang sangat representatif (867 piksel), kita tidak perlu lagi memalsukan data. Dataset latih yang 100% seimbang secara alami membuat model belajar dengan adil tanpa memerlukan bantuan pembobotan algoritma (<em>algorithmic weighting</em>).</p></td>
+<tr class="row-even"><td><p><strong>1. Spatial Autocorrelation (Kebocoran Spasial)</strong> <br><br> Piksel yang saling bersebelahan di dalam satu area poligon cenderung memiliki nilai spektral satelit yang sangat mirip atau kembar.</p></td>
+<td><p><strong>Spatial Data Leakage &amp; Akurasi Semu</strong> <br><br> Jika dibagi secara acak per-piksel, model akan diuji menggunakan piksel “bocoran” yang sudah ia hafal dari tetangganya saat proses latih, menghasilkan akurasi palsu &gt;97%.</p></td>
+<td><p><strong>Spatial Group Split (Berbasis <code class="docutils literal notranslate"><span class="pre">poly_id</span></code>)</strong> <br><br> Pemisahan data latih (80%) dan data uji (20%) dipotong secara mutlak berdasarkan ID poligon. Tidak ada satupun piksel dari poligon yang sama yang diperbolehkan bocor menyeberang ke kedua set data.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>2. Class Imbalance (Ketidakseimbangan Kelas)</strong> <br><br> Meski distribusi telah diperbaiki di tahap sebelumnya, kelas Hutan kini menjadi mayoritas (4.277 piksel), sedangkan Perairan menjadi minoritas (2.232 piksel).</p></td>
+<td><p><strong>Bias Mayoritas pada Model</strong> <br><br> Algoritma cenderung <em>over-predict</em> pada kelas dominan untuk mencari aman. Kelas minoritas rentan diabaikan demi mendapatkan tingkat akurasi global yang tinggi.</p></td>
+<td><p><strong>Undersampling Murni HANYA pada Data Latih</strong> <br><br> Memangkas data kelas mayoritas secara acak agar jumlahnya turun dan setara persis dengan kelas terkecil. Modifikasi ini HANYA dilakukan di ruang data latih agar data uji tetap objektif mewakili realita lapangan (tanpa kloning data sintetis seperti SMOTE).</p></td>
 </tr>
 </tbody>
 </table>
@@ -903,23 +951,34 @@ Dataset bersih dari nilai kosong.
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">StratifiedGroupKFold</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">imblearn.under_sampling</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomUnderSampler</span>
 
-<span class="c1"># Memuat dataset dan membuang baris yang memiliki nilai kosong</span>
+<span class="c1"># Memuat dataset </span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;dataset_training.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
 
-<span class="c1"># Pemisahan fitur spektral/indeks (X) dan variabel target (y)</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Class&#39;</span><span class="p">])</span>
+<span class="c1"># Memisahkan target (y), grup poligon, dan fitur (X)</span>
+<span class="c1"># poly_id BUKAN fitur spektral, jadi wajib di-drop agar tidak ikut dipelajari model</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Class&#39;</span><span class="p">,</span> <span class="s1">&#39;poly_id&#39;</span><span class="p">])</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Class&#39;</span><span class="p">]</span>
+<span class="n">groups</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;poly_id&#39;</span><span class="p">]</span>
 
-<span class="c1"># Stratified Train-Test Split (80:20) untuk menjaga proporsi data uji tetap objektif</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+<span class="c1"># Split Spatial per Poligon (5 Lipatan -&gt; 80% Latih, 20% Uji)</span>
+<span class="n">sgkf</span> <span class="o">=</span> <span class="n">StratifiedGroupKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">train_idx</span><span class="p">,</span> <span class="n">test_idx</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">sgkf</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">groups</span><span class="p">))</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train_idx</span><span class="p">],</span> <span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">test_idx</span><span class="p">]</span>
+<span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train_idx</span><span class="p">],</span> <span class="n">y</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">test_idx</span><span class="p">]</span>
+
+<span class="c1"># Verifikasi Keamanan Kebocoran (Sanity Check)</span>
+<span class="k">assert</span> <span class="nb">set</span><span class="p">(</span><span class="n">groups</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train_idx</span><span class="p">])</span><span class="o">.</span><span class="n">isdisjoint</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">groups</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">test_idx</span><span class="p">])),</span> <span class="s2">&quot;BAHAYA: Ada kebocoran poligon!&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Poligon di Data Latih : </span><span class="si">{</span><span class="n">groups</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train_idx</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span><span class="si">}</span><span class="s2"> area&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Poligon di Data Uji   : </span><span class="si">{</span><span class="n">groups</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">test_idx</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span><span class="si">}</span><span class="s2"> area</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Distribusi Data Latih (Sebelum Balancing):&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">y_train</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
 
-<span class="c1"># Undersampling Murni: Memangkas kelas mayoritas agar setara dengan kelas terkecil secara otomatis</span>
+<span class="c1"># Undersampling Murni HANYA pada data latih</span>
 <span class="n">under_sampler</span> <span class="o">=</span> <span class="n">RandomUnderSampler</span><span class="p">(</span><span class="n">sampling_strategy</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 <span class="n">X_train_bal</span><span class="p">,</span> <span class="n">y_train_bal</span> <span class="o">=</span> <span class="n">under_sampler</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 
@@ -935,7 +994,7 @@ Dataset bersih dari nilai kosong.
     <span class="n">hue</span><span class="o">=</span><span class="n">y_train_bal</span><span class="p">,</span>
     <span class="n">legend</span><span class="o">=</span><span class="kc">False</span>
 <span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribusi Data Latih (100% Seimbang Tanpa Data Sintetis)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Distribusi Data Latih (100% Seimbang &amp; Bebas Bocor Spasial)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Jumlah Piksel&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Kelas Lahan&#39;</span><span class="p">)</span>
 
@@ -973,26 +1032,29 @@ Dataset bersih dari nilai kosong.
                     --jp-layout-color3: var(--colab-primary-surface-color, white);
                 }
             </style>
-            </div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Distribusi Data Latih (Sebelum Balancing):
+            </div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Poligon di Data Latih : 203 area
+Poligon di Data Uji   : 41 area
+
+Distribusi Data Latih (Sebelum Balancing):
 Class
-Perairan          33302
-Hutan              3422
-Sawah              2138
-Bangunan           1911
-Hutan Mangrove      694
+Hutan             3422
+Hutan Mangrove    2307
+Sawah             2138
+Bangunan          1912
+Perairan          1786
 Name: count, dtype: int64
 
 Distribusi Data Latih (Setelah Undersampling Murni):
 Class
-Bangunan          694
-Hutan             694
-Hutan Mangrove    694
-Perairan          694
-Sawah             694
+Bangunan          1786
+Hutan             1786
+Hutan Mangrove    1786
+Perairan          1786
+Sawah             1786
 Name: count, dtype: int64
 </pre></div>
 </div>
-<img alt="../_images/810f0fadcccdd86457b498d159d2bedd47bc45f3b2fd60156b59b76df089403b.png" src="../_images/810f0fadcccdd86457b498d159d2bedd47bc45f3b2fd60156b59b76df089403b.png" />
+<img alt="../_images/0e15daf1242ff0bb7f5d142aab378cc830822ad0cf9124ebd4b74e8dba41d72e.png" src="../_images/0e15daf1242ff0bb7f5d142aab378cc830822ad0cf9124ebd4b74e8dba41d72e.png" />
 </div>
 </div>
 </section>
@@ -1000,12 +1062,12 @@ Name: count, dtype: int64
 <h2>Modeling<a class="headerlink" href="#modeling" title="Link to this heading">#</a></h2>
 <p>Tahap ini merupakan inti dari seluruh proses pengembangan, di mana algoritma <em>Machine Learning</em> dilatih menggunakan data spektral yang telah disiapkan agar mampu mengenali karakteristik unik permukaan bumi dan melakukan klasifikasi tutupan lahan secara otomatis.</p>
 <p>Algoritma utama yang digunakan dalam penelitian ini adalah <strong>Random Forest Classifier</strong>, sebuah metode <em>ensemble learning</em> yang sangat tangguh dalam menangani data geospasial karena mampu memodelkan hubungan non-linear yang kompleks antar-band spektral tanpa mudah mengalami <em>overfitting</em>.</p>
-<p>Model dilatih menggunakan 8 fitur independen (6 band spektral mentah dan 2 indeks kalkulasi, yakni NDVI dan NDWI) pada dataset latih yang telah 100% diseimbangkan (tepat 694 piksel per kelas). Karena distribusi kelas kini sudah merata secara fisik menggunakan data observasi satelit murni tanpa kloning sintetis (SMOTE), algoritma tidak lagi memerlukan parameter pembobotan kelas paksa (<em>algorithmic class weighting</em>). Konfigurasi parameter seperti kedalaman pohon (<em>max_depth</em>) disesuaikan secara proporsional agar model mampu mengekstrak pola batas yang rumit, seperti perbedaan serapan SWIR 2 pada Hutan Mangrove dan Hutan Biasa.</p>
+<p>Model dilatih menggunakan 8 fitur independen (6 band spektral mentah dan 2 indeks kalkulasi, yakni NDVI dan NDWI) pada dataset latih yang telah 100% diseimbangkan (tepat 1.786 piksel per kelas). Karena distribusi kelas kini sudah merata secara fisik menggunakan data observasi satelit murni tanpa kloning sintetis (SMOTE), algoritma tidak lagi memerlukan parameter pembobotan kelas paksa (<em>algorithmic class weighting</em>). Konfigurasi parameter seperti kedalaman pohon (<em>max_depth</em>) disesuaikan secara proporsional agar model mampu mengekstrak pola batas yang rumit, seperti perbedaan serapan SWIR pada Hutan Mangrove dan Hutan Biasa.</p>
 <section id="konsep-alur-kerja-pemodelan">
 <h3>Konsep Alur Kerja Pemodelan<a class="headerlink" href="#konsep-alur-kerja-pemodelan" title="Link to this heading">#</a></h3>
 <p>Proses pemodelan dibagi menjadi dua fase utama untuk memastikan model yang dihasilkan tidak hanya sekadar menghafal data latihan, melainkan juga andal saat memprediksi area baru:</p>
 <ul class="simple">
-<li><p><strong>Fase Pelatihan (Training):</strong> Algoritma <em>Random Forest Classifier</em> dilatih secara eksklusif menggunakan data latih hasil <em>undersampling</em> murni. Karena dataset pelatihan sudah 100% seimbang secara jumlah (masing-masing 694 piksel per kelas), algoritma dibiarkan belajar secara natural tanpa perlu intervensi pembobotan kelas. Pada tahap ini, model memetakan pola aturan (<em>decision rules</em>) berdasarkan 8 fitur kunci (Band 2, Band 3, Band 4, Band 8A, Band 11, Band 12, NDVI, dan NDWI) untuk mengenali setiap kelas lahan.</p></li>
+<li><p><strong>Fase Pelatihan (Training):</strong> Algoritma <em>Random Forest Classifier</em> dilatih secara eksklusif menggunakan data latih hasil <em>undersampling</em> murni. Karena dataset pelatihan sudah 100% seimbang secara jumlah (masing-masing 1.786 piksel per kelas), algoritma dibiarkan belajar secara natural tanpa perlu intervensi pembobotan kelas paksa. Pada tahap ini, model memetakan pola aturan (<em>decision rules</em>) berdasarkan 8 fitur kunci (Band 2, Band 3, Band 4, Band 8A, Band 11, Band 12, NDVI, dan NDWI) untuk mengenali setiap kelas lahan.</p></li>
 <li><p><strong>Fase Pengujian (Testing):</strong> Model yang telah selesai dibangun kemudian diuji kemampuannya menggunakan sisa 20% data uji. Data uji ini sangat krusial karena ia tetap dibiarkan dalam kondisi tidak seimbang (<em>imbalanced</em>) sesuai dengan distribusi alam aslinya, dan disembunyikan sepenuhnya selama masa pelatihan. Langkah ini bertujuan untuk mengukur performa objektif dan kejujuran model saat dihadapkan pada skenario dunia nyata yang sebenarnya.</p></li>
 </ul>
 </section>
@@ -1056,17 +1118,17 @@ Name: count, dtype: int64
                 }
             </style>
             </div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dimensi Dataset Pemodelan:
-Jumlah sampel data latih : 3,470
-Jumlah sampel data uji   : 10,367
+Jumlah sampel data latih : 8,930
+Jumlah sampel data uji   : 3,449
 Jumlah fitur             : 8 (Band_2, Band_3, Band_4, Band_8A, Band_11, Band_12, NDVI, NDWI)
 
 Komposisi Kelas Data Latih:
 Class
-Bangunan          694
-Hutan             694
-Hutan Mangrove    694
-Perairan          694
-Sawah             694
+Bangunan          1786
+Hutan             1786
+Hutan Mangrove    1786
+Perairan          1786
+Sawah             1786
 Name: count, dtype: int64
 
 Samples Data Latih:
@@ -1102,59 +1164,59 @@ Samples Data Latih:
   </thead>
   <tbody>
     <tr>
-      <th>47593</th>
-      <td>943.800000</td>
-      <td>1170.333333</td>
-      <td>1455.666667</td>
-      <td>2098.250000</td>
-      <td>2538.000</td>
-      <td>2263.000000</td>
-      <td>0.180810</td>
-      <td>-0.283890</td>
+      <th>11384</th>
+      <td>369.000000</td>
+      <td>696.000000</td>
+      <td>403.000000</td>
+      <td>4327.0</td>
+      <td>2144.00</td>
+      <td>963.0</td>
+      <td>0.829598</td>
+      <td>-0.722875</td>
     </tr>
     <tr>
-      <th>47183</th>
-      <td>1011.000000</td>
-      <td>1166.333333</td>
-      <td>1323.900000</td>
-      <td>1842.000000</td>
-      <td>2543.800</td>
-      <td>2513.285714</td>
-      <td>0.163650</td>
-      <td>-0.224598</td>
+      <th>10099</th>
+      <td>686.000000</td>
+      <td>954.500000</td>
+      <td>1198.000000</td>
+      <td>2916.0</td>
+      <td>3139.50</td>
+      <td>2541.5</td>
+      <td>0.417598</td>
+      <td>-0.506782</td>
     </tr>
     <tr>
-      <th>48508</th>
-      <td>920.250000</td>
-      <td>1129.200000</td>
-      <td>1509.000000</td>
-      <td>2157.666667</td>
-      <td>3077.800</td>
-      <td>2934.666667</td>
-      <td>0.176909</td>
-      <td>-0.312902</td>
+      <th>12275</th>
+      <td>1204.500000</td>
+      <td>1300.500000</td>
+      <td>1512.500000</td>
+      <td>1868.5</td>
+      <td>2485.00</td>
+      <td>2350.0</td>
+      <td>0.105294</td>
+      <td>-0.179236</td>
     </tr>
     <tr>
-      <th>48414</th>
-      <td>741.500000</td>
-      <td>928.769231</td>
-      <td>991.090909</td>
-      <td>1872.625000</td>
-      <td>1934.375</td>
-      <td>1739.571429</td>
-      <td>0.307829</td>
-      <td>-0.336924</td>
+      <th>11481</th>
+      <td>958.857143</td>
+      <td>1121.000000</td>
+      <td>1294.783333</td>
+      <td>2070.0</td>
+      <td>2213.50</td>
+      <td>1987.0</td>
+      <td>0.230391</td>
+      <td>-0.297399</td>
     </tr>
     <tr>
-      <th>46995</th>
-      <td>688.166667</td>
-      <td>912.071429</td>
-      <td>1357.000000</td>
-      <td>2124.125000</td>
-      <td>3172.500</td>
-      <td>2839.333333</td>
-      <td>0.220367</td>
-      <td>-0.399201</td>
+      <th>10510</th>
+      <td>1550.111111</td>
+      <td>1725.333333</td>
+      <td>1782.000000</td>
+      <td>1927.5</td>
+      <td>2541.75</td>
+      <td>2520.6</td>
+      <td>0.039224</td>
+      <td>-0.055345</td>
     </tr>
   </tbody>
 </table>
@@ -1210,7 +1272,7 @@ Samples Data Latih:
     <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span>
 <span class="p">)</span>
 
-<span class="c1"># Pelatihan model menggunakan data hasil Undersampling Murni (694 piksel per kelas)</span>
+<span class="c1"># Pelatihan model menggunakan data hasil Undersampling Murni</span>
 <span class="n">rf_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_bal</span><span class="p">,</span> <span class="n">y_train_bal</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Proses pelatihan selesai. Model berhasil dibangun.&quot;</span><span class="p">)</span>
@@ -1298,7 +1360,7 @@ Samples Data Latih:
                     --jp-layout-color3: var(--colab-primary-surface-color, white);
                 }
             </style>
-            </div><img alt="../_images/f60c90b4d7b328bda5f95cb5c09beeefd1c59baf8414d87e9c7ed2876b6197d5.png" src="../_images/f60c90b4d7b328bda5f95cb5c09beeefd1c59baf8414d87e9c7ed2876b6197d5.png" />
+            </div><img alt="../_images/c3fef8b5c3a29cfcdd1ff688cb6be107ce633016faa1fb7a1a4e598c5758bb8b.png" src="../_images/c3fef8b5c3a29cfcdd1ff688cb6be107ce633016faa1fb7a1a4e598c5758bb8b.png" />
 </div>
 </div>
 </section>
@@ -1307,19 +1369,26 @@ Samples Data Latih:
 <p>Setelah proses pelatihan selesai, model diuji menggunakan data uji untuk mengevaluasi performa klasifikasinya secara menyeluruh. Pengujian ini penting untuk melihat kemampuan generalisasi model terhadap data baru yang belum pernah dipelajari sebelumnya.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">confusion_matrix</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">balanced_accuracy_score</span><span class="p">,</span> <span class="n">f1_score</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">joblib</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Menjalankan prediksi pada data uji...&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Menjalankan prediksi pada data uji (Area Poligon Baru)...&quot;</span><span class="p">)</span>
 
 <span class="c1"># Evaluasi model menggunakan data uji murni yang independen dari proses latih</span>
 <span class="n">y_pred</span> <span class="o">=</span> <span class="n">rf_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
-<span class="n">akurasi</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Akurasi Global Model: </span><span class="si">{</span><span class="n">akurasi</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Laporan Klasifikasi Detail:&quot;</span><span class="p">)</span>
+<span class="c1"># Menghitung berbagai metrik akurasi</span>
+<span class="n">akurasi_global</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">akurasi_seimbang</span> <span class="o">=</span> <span class="n">balanced_accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">f1_makro</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;macro&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Akurasi Global (Bisa bias ke Perairan): </span><span class="si">{</span><span class="n">akurasi_global</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Balanced Accuracy (Metrik Lebih Jujur)  : </span><span class="si">{</span><span class="n">akurasi_seimbang</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Macro F1-Score (Akurasi Rata-rata)      : </span><span class="si">{</span><span class="n">f1_makro</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Laporan Klasifikasi Detail:&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
 
 <span class="c1"># Membongkar salah tebak model dengan Matriks Kebingungan</span>
@@ -1330,7 +1399,7 @@ Samples Data Latih:
     <span class="n">xticklabels</span><span class="o">=</span><span class="n">rf_model</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> 
     <span class="n">yticklabels</span><span class="o">=</span><span class="n">rf_model</span><span class="o">.</span><span class="n">classes_</span>
 <span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Matriks Kebingungan (Confusion Matrix) pada Data Uji&#39;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Matriks Kebingungan pada Area Poligon Baru&#39;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Kelas Asli (Ground Truth)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Tebakan Model (Predicted)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
@@ -1365,26 +1434,27 @@ Samples Data Latih:
                     --jp-layout-color3: var(--colab-primary-surface-color, white);
                 }
             </style>
-            </div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Menjalankan prediksi pada data uji...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi Global Model: 97.73%
+            </div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Menjalankan prediksi pada data uji (Area Poligon Baru)...
+
+Akurasi Global (Bisa bias ke Perairan): 65.18%
+Balanced Accuracy (Metrik Lebih Jujur)  : 77.36%
+Macro F1-Score (Akurasi Rata-rata)      : 68.26%
 
 Laporan Klasifikasi Detail:
                 precision    recall  f1-score   support
 
-      Bangunan       0.98      0.98      0.98       478
-         Hutan       0.98      0.95      0.96       856
-Hutan Mangrove       0.62      0.87      0.72       173
-      Perairan       1.00      0.98      0.99      8326
-         Sawah       0.82      0.96      0.89       534
+      Bangunan       0.99      0.98      0.99       477
+         Hutan       0.59      0.87      0.71       855
+Hutan Mangrove       0.65      0.07      0.13      1137
+      Perairan       0.97      0.99      0.98       446
+         Sawah       0.45      0.95      0.61       534
 
-      accuracy                           0.98     10367
-     macro avg       0.88      0.95      0.91     10367
-  weighted avg       0.98      0.98      0.98     10367
+      accuracy                           0.65      3449
+     macro avg       0.73      0.77      0.68      3449
+  weighted avg       0.69      0.65      0.58      3449
 </pre></div>
 </div>
-<img alt="../_images/648f3daf47073669f2bbbb2a789be9e9dfc37174d76d0341503268ff163589ef.png" src="../_images/648f3daf47073669f2bbbb2a789be9e9dfc37174d76d0341503268ff163589ef.png" />
+<img alt="../_images/0c9b7d1b1beb564de01be75fa3388ee980e058270980b1f7165c163c3bd83b86.png" src="../_images/0c9b7d1b1beb564de01be75fa3388ee980e058270980b1f7165c163c3bd83b86.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Proses selesai. Model berhasil disimpan sebagai &#39;model_rf.pkl&#39;
 </pre></div>
 </div>
@@ -1400,8 +1470,10 @@ Hutan Mangrove       0.62      0.87      0.72       173
 <span class="kn">import</span><span class="w"> </span><span class="nn">rasterio</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">joblib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rasterio.windows</span><span class="w"> </span><span class="kn">import</span> <span class="n">Window</span>
 
-<span class="n">input_tif</span> <span class="o">=</span> <span class="s1">&#39;Sentinel2_Area.tif&#39;</span>
+<span class="n">input_tif</span> <span class="o">=</span> <span class="s1">&#39;Sentinel2_Jatim_Utuh.tif&#39;</span>
 <span class="n">output_tif</span> <span class="o">=</span> <span class="s1">&#39;Hasil_Klasifikasi_LULC.tif&#39;</span>
 <span class="n">file_model</span> <span class="o">=</span> <span class="s1">&#39;model_rf.pkl&#39;</span>
 
@@ -1413,47 +1485,66 @@ Hutan Mangrove       0.62      0.87      0.72       173
 
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Membuka citra satelit input...&quot;</span><span class="p">)</span>
     <span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">input_tif</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
-        <span class="n">meta</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">meta</span>
-        <span class="c1"># Membaca 8 Fitur secara berurutan (B2, B3, B4, B8A, B11, B12, NDVI, NDWI)</span>
-        <span class="n">img_data</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span> 
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dimensi citra input: </span><span class="si">{</span><span class="n">img_data</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> (Band, Baris, Kolom)&quot;</span><span class="p">)</span>
+        <span class="c1"># Siapkan metadata untuk file output</span>
+        <span class="n">meta</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">meta</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">rasterio</span><span class="o">.</span><span class="n">uint8</span><span class="p">,</span> <span class="n">nodata</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> 
+        
+        <span class="n">baris_total</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">height</span>
+        <span class="n">kolom_total</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">width</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dimensi citra input: </span><span class="si">{</span><span class="n">baris_total</span><span class="si">}</span><span class="s2"> Baris x </span><span class="si">{</span><span class="n">kolom_total</span><span class="si">}</span><span class="s2"> Kolom&quot;</span><span class="p">)</span>
 
-    <span class="c1"># Transformasi matriks 3D menjadi format tabel tabular (2D) untuk input model</span>
-    <span class="n">n_bands</span><span class="p">,</span> <span class="n">baris</span><span class="p">,</span> <span class="n">kolom</span> <span class="o">=</span> <span class="n">img_data</span><span class="o">.</span><span class="n">shape</span>
-    <span class="n">img_flatten</span> <span class="o">=</span> <span class="n">img_data</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n_bands</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">T</span> 
+        <span class="c1"># Kamus konversi kelas</span>
+        <span class="n">kamus_warna</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;Perairan&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s1">&#39;Hutan&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s1">&#39;Hutan Mangrove&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+            <span class="s1">&#39;Sawah&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+            <span class="s1">&#39;Bangunan&#39;</span><span class="p">:</span> <span class="mi">5</span>
+        <span class="p">}</span>
+        <span class="n">nama_fitur</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Band_2&#39;</span><span class="p">,</span> <span class="s1">&#39;Band_3&#39;</span><span class="p">,</span> <span class="s1">&#39;Band_4&#39;</span><span class="p">,</span> <span class="s1">&#39;Band_8A&#39;</span><span class="p">,</span> <span class="s1">&#39;Band_11&#39;</span><span class="p">,</span> <span class="s1">&#39;Band_12&#39;</span><span class="p">,</span> <span class="s1">&#39;NDVI&#39;</span><span class="p">,</span> <span class="s1">&#39;NDWI&#39;</span><span class="p">]</span>
 
-    <span class="c1"># Masking piksel background bernilai 0 di luar area kajian</span>
-    <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">img_flatten</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="n">data_valid</span> <span class="o">=</span> <span class="n">img_flatten</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+        <span class="c1"># Batasan jumlah baris yang diproses dalam satu waktu (agar memori tidak jebol)</span>
+        <span class="n">chunk_size</span> <span class="o">=</span> <span class="mi">1000</span> 
+        
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mulai proses klasifikasi secara bertahap (Chunking)...&quot;</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">output_tif</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">meta</span><span class="p">)</span> <span class="k">as</span> <span class="n">dst</span><span class="p">:</span>
+            
+            <span class="c1"># Looping untuk memotong gambar menjadi blok-blok horizontal</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">baris_total</span><span class="p">,</span> <span class="n">chunk_size</span><span class="p">):</span>
+                <span class="n">tinggi_chunk</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">chunk_size</span><span class="p">,</span> <span class="n">baris_total</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span>
+                <span class="n">window</span> <span class="o">=</span> <span class="n">Window</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">kolom_total</span><span class="p">,</span> <span class="n">tinggi_chunk</span><span class="p">)</span>
+                
+                <span class="c1"># Hanya membaca data pada blok (window) saat ini</span>
+                <span class="n">img_data</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="n">window</span><span class="o">=</span><span class="n">window</span><span class="p">)</span>
+                <span class="n">n_bands</span><span class="p">,</span> <span class="n">baris</span><span class="p">,</span> <span class="n">kolom</span> <span class="o">=</span> <span class="n">img_data</span><span class="o">.</span><span class="n">shape</span>
+                
+                <span class="n">img_flatten</span> <span class="o">=</span> <span class="n">img_data</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n_bands</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">T</span> 
 
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Melakukan klasifikasi pada </span><span class="si">{</span><span class="n">data_valid</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2"> piksel data valid...&quot;</span><span class="p">)</span>
-    <span class="n">prediksi_valid</span> <span class="o">=</span> <span class="n">rf_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data_valid</span><span class="p">)</span>
+                <span class="c1"># Masking piksel background</span>
+                <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">img_flatten</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+                
+                <span class="c1"># Siapkan kanvas kosong untuk hasil blok ini (0 = NoData)</span>
+                <span class="n">peta_hasil_chunk</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">baris</span> <span class="o">*</span> <span class="n">kolom</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Proses klasifikasi selesai. Melakukan pemetaan ulang nilai spektral...&quot;</span><span class="p">)</span>
+                <span class="c1"># Jika di blok ini ada daratan/area yang valid</span>
+                <span class="k">if</span> <span class="n">mask</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+                    <span class="n">data_valid</span> <span class="o">=</span> <span class="n">img_flatten</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+                    <span class="n">df_valid</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data_valid</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">nama_fitur</span><span class="p">)</span>
 
-    <span class="c1"># Konversi label kategori string menjadi nilai integer biner untuk format raster GeoTIFF</span>
-    <span class="n">kamus_warna</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;Perairan&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="s1">&#39;Hutan&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-        <span class="s1">&#39;Hutan Mangrove&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-        <span class="s1">&#39;Sawah&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
-        <span class="s1">&#39;Bangunan&#39;</span><span class="p">:</span> <span class="mi">5</span>
-    <span class="p">}</span>
-    <span class="n">prediksi_angka</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">kamus_warna</span><span class="o">.</span><span class="n">get</span><span class="p">)(</span><span class="n">prediksi_valid</span><span class="p">)</span>
+                    <span class="c1"># Prediksi khusus blok ini</span>
+                    <span class="n">prediksi_valid</span> <span class="o">=</span> <span class="n">rf_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">df_valid</span><span class="p">)</span>
+                    <span class="n">prediksi_angka</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">kamus_warna</span><span class="o">.</span><span class="n">get</span><span class="p">)(</span><span class="n">prediksi_valid</span><span class="p">)</span>
 
-    <span class="c1"># Rekonstruksi bentuk data kembali ke dimensi spasial asli (Baris x Kolom)</span>
-    <span class="n">peta_hasil</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">baris</span> <span class="o">*</span> <span class="n">kolom</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">)</span>
-    <span class="n">peta_hasil</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">prediksi_angka</span>
-    <span class="n">peta_hasil_2d</span> <span class="o">=</span> <span class="n">peta_hasil</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">baris</span><span class="p">,</span> <span class="n">kolom</span><span class="p">)</span>
+                    <span class="c1"># Masukkan tebakan ke kanvas</span>
+                    <span class="n">peta_hasil_chunk</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">prediksi_angka</span>
 
-    <span class="c1"># Pembaruan metadata file output (1 Band, Format UInt8, NoData = 0)</span>
-    <span class="n">meta</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">rasterio</span><span class="o">.</span><span class="n">uint8</span><span class="p">,</span> <span class="n">nodata</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> 
+                <span class="c1"># Bentuk ulang ke 2D dan tulis ke file output tepat di posisi bloknya</span>
+                <span class="n">peta_hasil_2d</span> <span class="o">=</span> <span class="n">peta_hasil_chunk</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">baris</span><span class="p">,</span> <span class="n">kolom</span><span class="p">)</span>
+                <span class="n">dst</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">peta_hasil_2d</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="n">window</span><span class="p">)</span>
+                
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;-&gt; Selesai memproses baris </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> sampai </span><span class="si">{</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">tinggi_chunk</span><span class="si">}</span><span class="s2"> dari </span><span class="si">{</span><span class="n">baris_total</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Menulis file output raster...&quot;</span><span class="p">)</span>
-    <span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">output_tif</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">meta</span><span class="p">)</span> <span class="k">as</span> <span class="n">dst</span><span class="p">:</span>
-        <span class="n">dst</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">peta_hasil_2d</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Proses selesai. File klasifikasi spasial disimpan di: </span><span class="si">{</span><span class="n">output_tif</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Proses selesai! Peta klasifikasi se-Jawa Timur berhasil disimpan di: </span><span class="si">{</span><span class="n">output_tif</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1481,6 +1572,54 @@ Hutan Mangrove       0.62      0.87      0.72       173
                 }
             </style>
             </div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File output &#39;Hasil_Klasifikasi_LULC.tif&#39; sudah tersedia. Proses inferensi raster dilewati.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">rasterio</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mulai mengompres peta...&quot;</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;Hasil_Klasifikasi_LULC.tif&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+    <span class="n">meta</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    
+    <span class="n">meta</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">compress</span><span class="o">=</span><span class="s1">&#39;lzw&#39;</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;Hasil_Klasifikasi_LULC_Kecil.tif&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">meta</span><span class="p">)</span> <span class="k">as</span> <span class="n">dst</span><span class="p">:</span>
+        <span class="n">dst</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">src</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Selesai! Silakan cek ukuran file &#39;Hasil_Klasifikasi_LULC_Kecil.tif&#39;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+            <style>
+                .geemap-dark {
+                    --jp-widgets-color: white;
+                    --jp-widgets-label-color: white;
+                    --jp-ui-font-color1: white;
+                    --jp-layout-color2: #454545;
+                    background-color: #383838;
+                }
+
+                .geemap-dark .jupyter-button {
+                    --jp-layout-color3: #383838;
+                }
+
+                .geemap-colab {
+                    background-color: var(--colab-primary-surface-color, white);
+                }
+
+                .geemap-colab .jupyter-button {
+                    --jp-layout-color3: var(--colab-primary-surface-color, white);
+                }
+            </style>
+            </div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mulai mengompres peta...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Selesai! Silakan cek ukuran file &#39;Hasil_Klasifikasi_LULC_Kecil.tif&#39;
 </pre></div>
 </div>
 </div>
