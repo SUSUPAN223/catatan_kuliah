@@ -1,0 +1,221 @@
+Traceback (most recent call last):
+  File "C:\Users\mappattiro\kal\kal\Lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+    ~~~~~~~~~^
+        nb,
+        ^^^
+    ...<4 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "C:\Users\mappattiro\kal\kal\Lib\site-packages\nbclient\client.py", line 1323, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\mappattiro\kal\kal\Lib\site-packages\jupyter_core\utils\__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\mappattiro\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 719, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\mappattiro\kal\kal\Lib\site-packages\nbclient\client.py", line 709, in async_execute
+    await self.async_execute_cell(
+        cell, index, execution_count=self.code_cells_executed + 1
+    )
+  File "C:\Users\mappattiro\kal\kal\Lib\site-packages\nbclient\client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\mappattiro\kal\kal\Lib\site-packages\nbclient\client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import os
+import glob
+import warnings
+import numpy as np
+import pandas as pd
+import librosa
+from tqdm import tqdm
+from audiomentations import Compose, AddGaussianNoise, TimeStretch, PitchShift
+
+warnings.filterwarnings("ignore")
+
+# ================= KONFIGURASI =================
+FOLDER_NANGIS = "dataset_bayi_nangis"
+FOLDER_TIDAK_NANGIS = "dataset_bayi_tidak_nangis"
+OUTPUT_CSV = "fitur_audio_siap_training.csv"
+
+SAMPLE_RATE = 22050
+DURATION = 5  # Durasi seragam per sampel (5 detik, mengikuti standar ESC-50)
+SAMPLES_PER_CHUNK = SAMPLE_RATE * DURATION
+# ===============================================
+
+# Pipeline Augmentasi (Audiomentations)
+augmenter = Compose([
+    AddGaussianNoise(min_amplitude=0.001, max_amplitude=0.012, p=0.5),
+    TimeStretch(min_rate=0.9, max_rate=1.1, p=0.5),
+    PitchShift(min_semitones=-2, max_semitones=2, p=0.5),
+])
+
+def extract_features(y: np.ndarray, sr: int) -> np.ndarray:
+    """
+    Mengekstrak gabungan fitur terbaik untuk klasifikasi suara (130 dimensi fitur):
+    - 40 MFCC + 40 Delta MFCC + 40 Delta-Delta MFCC (Mean & Std = 240 fitur atau diringkas)
+    Di sini kita ambil Mean & Std dari:
+    40 MFCC, 40 Delta MFCC, Spectral Centroid, Spectral Rolloff, ZCR, RMS, dan 7 band Spectral Contrast
+    Total = (40 + 40 + 1 + 1 + 1 + 1 + 7) * 2 = 182 fitur numerik presisi tinggi.
+    """
+    # Pastikan panjang sinyal tepat 5 detik (padding jika kurang sedikit)
+    if len(y) < SAMPLES_PER_CHUNK:
+        y = np.pad(y, (0, SAMPLES_PER_CHUNK - len(y)), mode="constant")
+    else:
+        y = y[:SAMPLES_PER_CHUNK]
+
+    # 1. MFCC (40 koefisien) & Delta MFCC
+    mfcc = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=40)
+    mfcc_delta = librosa.feature.delta(mfcc)
+
+    # 2. Spectral Features (karakteristik frekuensi tangisan bayi sangat kuat di sini)
+    centroid = librosa.feature.spectral_centroid(y=y, sr=sr)
+    rolloff = librosa.feature.spectral_rolloff(y=y, sr=sr)
+    contrast = librosa.feature.spectral_contrast(y=y, sr=sr)
+
+    # 3. Time-domain Features
+    zcr = librosa.feature.zero_crossing_rate(y=y)
+    rms = librosa.feature.rms(y=y)
+
+    # Gabungkan semua matriks fitur
+    all_features = np.vstack([mfcc, mfcc_delta, centroid, rolloff, contrast, zcr, rms])
+
+    # Ambil nilai Rata-rata (Mean) dan Standar Deviasi (Std) sepanjang waktu (axis=1)
+    feat_mean = np.mean(all_features, axis=1)
+    feat_std = np.std(all_features, axis=1)
+
+    return np.hstack([feat_mean, feat_std])
+
+def load_and_slice_audio(filepath: str, sr: int = SAMPLE_RATE, chunk_samples: int = SAMPLES_PER_CHUNK):
+    """
+    Membaca file .mp3 atau .wav, membuang bagian hening (silence),
+    dan memotong audio panjang (30-50 dtk) menjadi potongan-potongan 5 detik.
+    """
+    try:
+        y, _ = librosa.load(filepath, sr=sr, mono=True)
+        # Buang bagian hening di awal/akhir rekaman
+        y, _ = librosa.effects.trim(y, top_db=25)
+
+        chunks = []
+        # Jika total durasi file <= 5 detik (seperti ESC-50), ambil sebagai 1 potongan
+        if len(y) <= chunk_samples:
+            if len(y) >= sr * 1:  # Minimal ada suara 1 detik
+                chunks.append(y)
+        else:
+            # Jika durasi panjang (30-50 detik dari Pixabay), potong per 5 detik
+            for start in range(0, len(y) - chunk_samples + 1, chunk_samples):
+                chunk = y[start : start + chunk_samples]
+                # Pastikan potongan tidak kosong/hening
+                if np.max(np.abs(chunk)) > 0.01:
+                    chunks.append(chunk)
+        return chunks
+    except Exception as e:
+        print(f"\n[!] Gagal memproses file {filepath}: {e}")
+        return []
+
+def process_folder(folder_path: str, label: int, label_name: str, apply_augmentation: bool = False, max_chunks_per_file: int = None):
+    """Memproses seluruh file .mp3 dan .wav di dalam suatu folder."""
+    audio_files = []
+    for ext in ("*.mp3", "*.wav", "*.MP3", "*.WAV"):
+        audio_files.extend(glob.glob(os.path.join(folder_path, ext)))
+
+    # Hilangkan duplikat path di Windows (case-insensitive)
+    audio_files = list(set(audio_files))
+    print(f"[*] Memproses '{folder_path}' ({len(audio_files)} file ditemukan) -> Label: {label} ({label_name})")
+
+    dataset_rows = []
+
+    for filepath in tqdm(audio_files, desc=f"Ekstraksi {label_name}"):
+        filename = os.path.basename(filepath)
+        chunks = load_and_slice_audio(filepath)
+
+        if max_chunks_per_file:
+            chunks = chunks[:max_chunks_per_file]
+
+        for idx, chunk in enumerate(chunks):
+            # 1. Ekstrak fitur dari audio asli
+            feats = extract_features(chunk, SAMPLE_RATE)
+            row = {
+                "filename": f"{filename}_chunk{idx+1}",
+                "label": label,
+                "category": label_name,
+                "is_augmented": 0
+            }
+            for f_idx, val in enumerate(feats):
+                row[f"feat_{f_idx+1}"] = val
+            dataset_rows.append(row)
+
+            # 2. Jika diaktifkan, buat 1 sampel variasi augmentasi via Audiomentations
+            if apply_augmentation:
+                aug_chunk = augmenter(samples=chunk.astype(np.float32), sample_rate=SAMPLE_RATE)
+                aug_feats = extract_features(aug_chunk, SAMPLE_RATE)
+                aug_row = {
+                    "filename": f"{filename}_chunk{idx+1}_aug",
+                    "label": label,
+                    "category": label_name,
+                    "is_augmented": 1
+                }
+                for f_idx, val in enumerate(aug_feats):
+                    aug_row[f"feat_{f_idx+1}"] = val
+                dataset_rows.append(aug_row)
+
+    return dataset_rows
+
+def main():
+    all_data = []
+
+    # 1. Proses Kelas Positif: Bayi Nangis (Label = 1)
+    # Karena 1 file 40 detik menghasilkan ~8 potongan (5 detik), kita batasi misal max 3 potongan per file
+    # agar jumlah sampelnya seimbang dengan 100 file di dataset_bayi_tidak_nangis
+    rows_nangis = process_folder(
+        FOLDER_NANGIS, 
+        label=1, 
+        label_name="bayi_nangis", 
+        apply_augmentation=True,
+        max_chunks_per_file=3
+    )
+    all_data.extend(rows_nangis)
+
+    # 2. Proses Kelas Negatif: Bayi Tidak Nangis / ESC-50 (Label = 0)
+    rows_tidak_nangis = process_folder(
+        FOLDER_TIDAK_NANGIS, 
+        label=0, 
+        label_name="bukan_nangis", 
+        apply_augmentation=True
+    )
+    all_data.extend(rows_tidak_nangis)
+
+    # Simpan ke DataFrame & CSV
+    df = pd.DataFrame(all_data)
+    df.to_csv(OUTPUT_CSV, index=False)
+
+    print("\n=======================================================")
+    print(f"[*] SELESAI! Dataset fitur tersimpan di: {OUTPUT_CSV}")
+    print(f"[*] Total Sampel Audio : {len(df)} baris")
+    print(f"[*] Total Fitur Akustik: {len(df.columns) - 4} kolom fitur")
+    print("\nDistribusi Kelas:")
+    print(df["category"].value_counts())
+    print("=======================================================")
+
+if __name__ == "__main__":
+    main()
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mModuleNotFoundError[39m                       Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 6[39m
+[32m      4[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mnumpy[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mnp[39;00m
+[32m      5[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mpandas[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mpd[39;00m
+[32m----> [39m[32m6[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mlibrosa[39;00m
+[32m      7[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mtqdm[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m tqdm
+[32m      8[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01maudiomentations[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m Compose, AddGaussianNoise, TimeStretch, PitchShift
+
+[31mModuleNotFoundError[39m: No module named 'librosa'
+

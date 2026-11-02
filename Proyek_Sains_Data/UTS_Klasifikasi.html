@@ -57,12 +57,15 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script type="application/vnd.jupyter.widget-state+json">{"state": {"232dec4edc8940b2b05177783d758db9": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "500px"}}}, "version_major": 2, "version_minor": 0}</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="application/vnd.jupyter.widget-state+json">{"state": {"b53ad79578c74fd782d30b5b3a22ebef": {"model_name": "LayoutModel", "model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": "500px"}}}, "version_major": 2, "version_minor": 0}</script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script crossorigin="anonymous" data-jupyter-widgets-cdn="https://cdn.jsdelivr.net/npm/" src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@1.0.6/dist/embed-amd.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Proyek_Sains_Data/UTS_Klasifikasi';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Business Understanding" href="Tugas_Klasifikasi.html" />
     <link rel="prev" title="Tugas_Polinomial" href="Tugas_Polinomial.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -219,6 +222,11 @@
 <li class="toctree-l1"><a class="reference internal" href="Tugas_Pertemuan4.html">Tugas PERTEMUAN 4</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tugas_Polinomial.html">Tugas_Polinomial</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">UTS KLASIFIKASI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tugas_Klasifikasi.html">Business Understanding</a></li>
+
+
+
+
 </ul>
 
     </div>
@@ -451,7 +459,7 @@ document.write(`
 <section id="business-understanding">
 <h2>BUSINESS UNDERSTANDING<a class="headerlink" href="#business-understanding" title="Link to this heading">#</a></h2>
 <p>Proyek klasifikasi tutupan lahan (<em>Land Use Land Cover</em>) wilayah Jawa Timur ini dikembangkan untuk merespons tingginya dinamika alih fungsi lahan akibat urbanisasi dan pertumbuhan ekonomi. Mengingat pemantauan manual di lapangan sangat tidak efisien dan memakan biaya tinggi, sistem ini memanfaatkan penginderaan jauh dari citra satelit Sentinel-2 untuk memetakan permukaan bumi secara otomatis, cepat, dan berkala.</p>
-<p>Dengan mengekstrak 8 fitur andalan yang terdiri dari 6 pita spektral (Band 2, 3, 4, 8A, 11, 12) serta indeks komputasi tambahan berupa NDVI (Kerapatan Vegetasi) dan NDWI (Indeks Kebasahan Air), model <em>Machine Learning</em> Random Forest yang dibangun mampu mengatasi kebingungan visual pada citra standar RGB. Sistem dapat membedakan secara presisi objek-objek yang sering kali mengecoh mata manusia, seperti memisahkan hutan daratan biasa dengan hutan mangrove di pesisir, atau membedakan lahan pertanian produktif dengan area terbangun (<em>built-up area</em>).</p>
+<p>Dengan mengekstrak <strong>14 fitur andalan</strong> yang terdiri dari 6 pita spektral mentah (Band 2, 3, 4, 8A, 11, 12) serta <strong>8 indeks komputasi spektral</strong>—yakni NDVI dan NDWI sebagai indeks dasar, ditambah MVI, CMRI, dan NDMI (spesifik untuk deteksi Mangrove dan lahan basah), serta SAVI, BSI, dan NDTI (spesifik untuk membedakan fase tanam Sawah)—model <em>Machine Learning</em> Random Forest yang dibangun memiliki ketajaman analitis berlapis. Sistem dapat membedakan secara presisi objek-objek hibrida yang sering kali mengecoh mata manusia maupun sensor standar, seperti memisahkan hutan daratan biasa dengan hutan mangrove di pesisir kota, atau membedakan lahan pertanian pasca-panen dengan area terbangun (<em>built-up area</em>).</p>
 <p>Hasil akhir dari prediksi model ini disajikan dalam bentuk <em>dashboard</em> peta geospasial interaktif. Melalui platform ini, para pengambil kebijakan dapat langsung memantau, memfilter, dan menganalisis distribusi tutupan lahan secara <em>real-time</em> demi mendukung perencanaan tata ruang serta pelestarian lingkungan yang lebih akurat dan berbasis data (<em>data-driven</em>).</p>
 </section>
 <section id="data-understanding">
@@ -522,9 +530,45 @@ document.write(`
         <span class="o">.</span><span class="n">median</span><span class="p">()</span> \
         <span class="o">.</span><span class="n">select</span><span class="p">([</span><span class="s1">&#39;B2&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">,</span> <span class="s1">&#39;B4&#39;</span><span class="p">,</span> <span class="s1">&#39;B8A&#39;</span><span class="p">,</span> <span class="s1">&#39;B11&#39;</span><span class="p">,</span> <span class="s1">&#39;B12&#39;</span><span class="p">])</span>
 
+    <span class="c1"># === PENAMBAHAN 8 INDEKS SPEKTRAL ===</span>
     <span class="n">ndvi</span> <span class="o">=</span> <span class="n">s2_base</span><span class="o">.</span><span class="n">normalizedDifference</span><span class="p">([</span><span class="s1">&#39;B8A&#39;</span><span class="p">,</span> <span class="s1">&#39;B4&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;NDVI&#39;</span><span class="p">)</span>
     <span class="n">ndwi</span> <span class="o">=</span> <span class="n">s2_base</span><span class="o">.</span><span class="n">normalizedDifference</span><span class="p">([</span><span class="s1">&#39;B3&#39;</span><span class="p">,</span> <span class="s1">&#39;B8A&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;NDWI&#39;</span><span class="p">)</span>
-    <span class="n">s2_final</span> <span class="o">=</span> <span class="n">s2_base</span><span class="o">.</span><span class="n">addBands</span><span class="p">([</span><span class="n">ndvi</span><span class="p">,</span> <span class="n">ndwi</span><span class="p">])</span>
+    
+    <span class="c1"># 1. Mangrove Vegetation Index (MVI)</span>
+    <span class="n">mvi</span> <span class="o">=</span> <span class="n">s2_base</span><span class="o">.</span><span class="n">expression</span><span class="p">(</span>
+        <span class="s1">&#39;(B8A - B3) / (B11 - B3)&#39;</span><span class="p">,</span> <span class="p">{</span>
+            <span class="s1">&#39;B8A&#39;</span><span class="p">:</span> <span class="n">s2_base</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;B8A&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;B3&#39;</span><span class="p">:</span> <span class="n">s2_base</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;B3&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;B11&#39;</span><span class="p">:</span> <span class="n">s2_base</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;B11&#39;</span><span class="p">)</span>
+        <span class="p">})</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;MVI&#39;</span><span class="p">)</span>
+        
+    <span class="c1"># 2. Combined Mangrove Recognition Index (CMRI)</span>
+    <span class="n">cmri</span> <span class="o">=</span> <span class="n">ndvi</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">ndwi</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;CMRI&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># 3. Normalized Difference Moisture Index (NDMI)</span>
+    <span class="n">ndmi</span> <span class="o">=</span> <span class="n">s2_base</span><span class="o">.</span><span class="n">normalizedDifference</span><span class="p">([</span><span class="s1">&#39;B8A&#39;</span><span class="p">,</span> <span class="s1">&#39;B11&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;NDMI&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># 4. Soil Adjusted Vegetation Index (SAVI)</span>
+    <span class="n">savi</span> <span class="o">=</span> <span class="n">s2_base</span><span class="o">.</span><span class="n">expression</span><span class="p">(</span>
+        <span class="s1">&#39;((B8A - B4) / (B8A + B4 + 0.5)) * 1.5&#39;</span><span class="p">,</span> <span class="p">{</span>
+            <span class="s1">&#39;B8A&#39;</span><span class="p">:</span> <span class="n">s2_base</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;B8A&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;B4&#39;</span><span class="p">:</span> <span class="n">s2_base</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;B4&#39;</span><span class="p">)</span>
+        <span class="p">})</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;SAVI&#39;</span><span class="p">)</span>
+        
+    <span class="c1"># 5. Bare Soil Index (BSI)</span>
+    <span class="n">bsi</span> <span class="o">=</span> <span class="n">s2_base</span><span class="o">.</span><span class="n">expression</span><span class="p">(</span>
+        <span class="s1">&#39;((B11 + B4) - (B8A + B2)) / ((B11 + B4) + (B8A + B2))&#39;</span><span class="p">,</span> <span class="p">{</span>
+            <span class="s1">&#39;B11&#39;</span><span class="p">:</span> <span class="n">s2_base</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;B11&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;B4&#39;</span><span class="p">:</span> <span class="n">s2_base</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;B4&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;B8A&#39;</span><span class="p">:</span> <span class="n">s2_base</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;B8A&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;B2&#39;</span><span class="p">:</span> <span class="n">s2_base</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;B2&#39;</span><span class="p">)</span>
+        <span class="p">})</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;BSI&#39;</span><span class="p">)</span>
+        
+    <span class="c1"># 6. Normalized Difference Tillage Index (NDTI)</span>
+    <span class="n">ndti</span> <span class="o">=</span> <span class="n">s2_base</span><span class="o">.</span><span class="n">normalizedDifference</span><span class="p">([</span><span class="s1">&#39;B11&#39;</span><span class="p">,</span> <span class="s1">&#39;B12&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s1">&#39;NDTI&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Gabungkan 6 Band Mentah dengan 8 Indeks Kalkulasi</span>
+    <span class="n">s2_final</span> <span class="o">=</span> <span class="n">s2_base</span><span class="o">.</span><span class="n">addBands</span><span class="p">([</span><span class="n">ndvi</span><span class="p">,</span> <span class="n">ndwi</span><span class="p">,</span> <span class="n">mvi</span><span class="p">,</span> <span class="n">cmri</span><span class="p">,</span> <span class="n">ndmi</span><span class="p">,</span> <span class="n">savi</span><span class="p">,</span> <span class="n">bsi</span><span class="p">,</span> <span class="n">ndti</span><span class="p">])</span>
     
     <span class="c1"># Ekstraksi CSV</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">file_csv</span><span class="p">):</span>
@@ -533,7 +577,12 @@ document.write(`
             <span class="n">collection</span><span class="o">=</span><span class="n">fc_training</span><span class="p">,</span> <span class="n">properties</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Class&#39;</span><span class="p">,</span> <span class="s1">&#39;poly_id&#39;</span><span class="p">],</span> <span class="n">scale</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">tileScale</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">geometries</span><span class="o">=</span><span class="kc">False</span>
         <span class="p">)</span>
 
-        <span class="n">url</span> <span class="o">=</span> <span class="n">sampled</span><span class="o">.</span><span class="n">getDownloadURL</span><span class="p">(</span><span class="n">filetype</span><span class="o">=</span><span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="n">selectors</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Class&#39;</span><span class="p">,</span> <span class="s1">&#39;poly_id&#39;</span><span class="p">,</span> <span class="s1">&#39;B2&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">,</span> <span class="s1">&#39;B4&#39;</span><span class="p">,</span> <span class="s1">&#39;B8A&#39;</span><span class="p">,</span> <span class="s1">&#39;B11&#39;</span><span class="p">,</span> <span class="s1">&#39;B12&#39;</span><span class="p">,</span> <span class="s1">&#39;NDVI&#39;</span><span class="p">,</span> <span class="s1">&#39;NDWI&#39;</span><span class="p">])</span>
+        <span class="c1"># Update parameter selectors untuk mencakup 14 fitur</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">sampled</span><span class="o">.</span><span class="n">getDownloadURL</span><span class="p">(</span><span class="n">filetype</span><span class="o">=</span><span class="s1">&#39;csv&#39;</span><span class="p">,</span> <span class="n">selectors</span><span class="o">=</span><span class="p">[</span>
+            <span class="s1">&#39;Class&#39;</span><span class="p">,</span> <span class="s1">&#39;poly_id&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;B2&#39;</span><span class="p">,</span> <span class="s1">&#39;B3&#39;</span><span class="p">,</span> <span class="s1">&#39;B4&#39;</span><span class="p">,</span> <span class="s1">&#39;B8A&#39;</span><span class="p">,</span> <span class="s1">&#39;B11&#39;</span><span class="p">,</span> <span class="s1">&#39;B12&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;NDVI&#39;</span><span class="p">,</span> <span class="s1">&#39;NDWI&#39;</span><span class="p">,</span> <span class="s1">&#39;MVI&#39;</span><span class="p">,</span> <span class="s1">&#39;CMRI&#39;</span><span class="p">,</span> <span class="s1">&#39;NDMI&#39;</span><span class="p">,</span> <span class="s1">&#39;SAVI&#39;</span><span class="p">,</span> <span class="s1">&#39;BSI&#39;</span><span class="p">,</span> <span class="s1">&#39;NDTI&#39;</span>
+        <span class="p">])</span>
         <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">file_csv</span><span class="p">)</span>
         
         <span class="n">df_temp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_csv</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
@@ -590,7 +639,7 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Memuat dan menganalisis dataset CSV...
-Total data: 15014 baris, 10 kolom
+Total data: 15014 baris, 16 kolom
 
 Distribusi Kelas:
  Class
@@ -611,47 +660,79 @@ Perairan          2232
 <li><p><strong>Koleksi Citra:</strong> Sentinel-2 Level-2A Surface Reflectance (<em>Harmonized</em>).</p></li>
 <li><p><strong>Rentang Waktu:</strong> 1 Januari 2025 hingga 30 September 2026.</p></li>
 <li><p><strong>Toleransi Awan:</strong> Maksimum <strong>10%</strong> (sangat jernih). Reduksi awan tambahan dilakukan secara otomatis menggunakan metode <em>Median Reducer</em> (mengambil nilai spektral tengah yang paling bersih dari seluruh rentang waktu tersebut).</p></li>
-<li><p><strong>Pita Spektral &amp; Indeks:</strong> Menggunakan 6 band mentah (Band 2, 3, 4, 8A, 11, 12) serta menambahkan 2 pita komputasi indeks, yakni NDVI (Kerapatan Vegetasi) dan NDWI (Kebasahan/Air).</p></li>
+<li><p><strong>Pita Spektral &amp; Indeks:</strong> Menggunakan 6 band mentah (Band 2, 3, 4, 8A, 11, 12) serta <strong>8 indeks komputasi spektral</strong>, yakni NDVI dan NDWI sebagai indeks dasar, MVI, CMRI, dan NDMI (spesifik untuk deteksi Mangrove/lahan basah), serta SAVI, BSI, dan NDTI (spesifik untuk membedakan fase tanam Sawah/pertanian).</p></li>
 <li><p><strong>Resolusi Spasial (<em>Scale</em>):</strong> 30 meter per piksel. Resolusi ini ditetapkan untuk memastikan objek dengan area sempit (seperti Bangunan) tidak hilang tertelan <em>grid</em> spasial, sekaligus menjaga beban komputasi tetap rasional untuk area skala provinsi.</p></li>
 <li><p><strong>Pembersihan Noise Otomatis:</strong> Diterapkan filter anomali spasial yang membuang piksel-piksel “siluman” di dalam poligon daratan (Hutan, Hutan Mangrove, Sawah) yang secara keliru memiliki nilai indeks air terlalu tinggi (NDWI &gt; 0.1).</p></li>
 </ul>
 <p><strong>Skenario Unduhan Ganda (Dual Extraction)</strong>
 Untuk menghindari limitasi memori (<em>memory limit</em>) dan memisahkan kebutuhan fase proyek, data diunduh melalui dua jalur berbeda:</p>
 <ol class="arabic simple">
-<li><p><strong>Data Tabular (<code class="docutils literal notranslate"><span class="pre">dataset_training.csv</span></code>):</strong> Mengekstrak kemurnian nilai piksel hanya pada titik-titik poligon sampel (Hutan, Mangrove, Sawah, Bangunan, Perairan) melalui URL <em>download</em> khusus sebagai bahan ajar (<em>training</em>) algoritma Machine Learning.</p></li>
+<li><p><strong>Data Tabular (<code class="docutils literal notranslate"><span class="pre">dataset_training.csv</span></code>):</strong> Mengekstrak kemurnian nilai piksel hanya pada titik-titik poligon sampel (Hutan, Mangrove, Sawah, Bangunan, Perairan) melalui URL <em>download</em> khusus sebagai bahan ajar (<em>training</em>) algoritma Machine Learning. Dataset kini menghasilkan 16 kolom yang memuat metadata ID poligon, label kelas, dan 14 fitur analitik penuh.</p></li>
 <li><p><strong>Data Raster Spasial (<code class="docutils literal notranslate"><span class="pre">Sentinel2_Jatim_Utuh.tif</span></code>):</strong> Mengunduh peta citra utuh yang dipotong (<em>clipping</em>) secara presisi mengikuti bentuk lekukan poligon “JAWA TIMUR”. File biner berukuran besar ini disiapkan khusus sebagai kanvas kosong untuk tahap <em>Deployment</em> (Inferensi Spasial).</p></li>
 </ol>
 </section>
 <section id="karakteristik-fitur-spektral-band-indeks">
 <h3>Karakteristik Fitur (Spektral Band &amp; Indeks)<a class="headerlink" href="#karakteristik-fitur-spektral-band-indeks" title="Link to this heading">#</a></h3>
-<p>Dataset ini menggunakan 6 variabel spektral independen berupa pantulan cahaya (<em>reflectance</em>) dari instrumen satelit Sentinel-2, ditambah 2 fitur hasil kalkulasi indeks tutupan lahan. Pemilihan 8 fitur ini secara spesifik bertujuan untuk memisahkan 5 kelas lahan secara optimal:</p>
+<p>Dataset ini menggunakan 6 variabel spektral independen berupa pantulan cahaya (<em>reflectance</em>) dari instrumen satelit Sentinel-2, ditambah 8 fitur hasil kalkulasi indeks tutupan lahan. Pemilihan 14 fitur ini secara spesifik bertujuan untuk memisahkan 5 kelas lahan secara berlapis dan komprehensif, khususnya memecah ambiguitas pada ekosistem mangrove dan fase tanam sawah:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Nama Fitur</p></th>
+<th class="head"><p>Sumber &amp; Rumus Matematis</p></th>
 <th class="head"><p>Fungsi Klasifikasi</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><strong>Band 2 (Blue) &amp; Band 3 (Green)</strong></p></td>
+<td><p><em>Pita Spektral Mentah</em><br>(Observasi Sensor Langsung)</p></td>
 <td><p>Sangat sensitif terhadap pantulan air. Kehadiran dua band ini krusial untuk membedakan kelas Perairan dengan objek daratan yang gelap (seperti aspal padat atau bayangan awan).</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Band 4 (Red)</strong></p></td>
+<td><p><em>Pita Spektral Mentah</em><br>(Observasi Sensor Langsung)</p></td>
 <td><p>Menyerap klorofil tanaman secara kuat. Sangat esensial untuk mendeteksi tingkat kerapatan daun dan memisahkan area vegetasi dari non-vegetasi.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Band 8A (Narrow NIR)</strong></p></td>
+<td><p><em>Pita Spektral Mentah</em><br>(Observasi Sensor Langsung)</p></td>
 <td><p>Memiliki rentang gelombang inframerah dekat yang sempit dan presisi. Mampu menembus gangguan aerosol atmosfer lebih baik dari pita NIR standar (Band 8), sehingga sangat akurat untuk membedakan detail spesifik antartipe vegetasi.</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>Band 11 (SWIR 1)</strong></p></td>
+<td><p><em>Pita Spektral Mentah</em><br>(Observasi Sensor Langsung)</p></td>
 <td><p>Sangat sensitif terhadap kelembapan tanah tingkat atas dan material penyerap panas. Menjadi fitur penegas utama untuk mengklasifikasikan area Bangunan (<em>built-up</em>) dan Sawah pada fase lahan kering/bera.</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>Band 12 (SWIR 2)</strong></p></td>
-<td><p>Sangat sensitif terhadap kelembapan ekstrem dan genangan air di bawah tajuk (<em>canopy</em>). Fitur ini adalah kunci utama pembeda antara Hutan Mangrove (lahan pasang surut) dengan Hutan Biasa (lahan kering), karena genangan air akan menyerap dan mematikan pantulan spektral SWIR 2.</p></td>
+<td><p><em>Pita Spektral Mentah</em><br>(Observasi Sensor Langsung)</p></td>
+<td><p>Sangat sensitif terhadap kelembapan ekstrem dan genangan air di bawah tajuk (<em>canopy</em>). Fitur ini adalah kunci utama pembeda antara Hutan Mangrove (lahan pasang surut) dengan Hutan Biasa (lahan kering).</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>NDVI</strong></p></td>
-<td><p>(<em>Normalized Difference Vegetation Index</em>) Secara tegas memisahkan objek vegetasi hijau (Hutan, Sawah produktif) dengan objek non-vegetasi (Bangunan, Lahan Terbuka).</p></td>
+<tr class="row-odd"><td><p><strong>NDVI</strong><br>(<em>Normalized Difference Vegetation Index</em>)</p></td>
+<td><p><em>Kalkulasi Indeks</em><br><span class="math notranslate nohighlight">\(\frac{B8A - B4}{B8A + B4}\)</span></p></td>
+<td><p>Indeks vegetasi dasar yang memisahkan objek vegetasi hijau (Hutan, Sawah produktif) dengan objek non-vegetasi (Bangunan, Lahan Terbuka).</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>NDWI</strong></p></td>
-<td><p>(<em>Normalized Difference Water Index</em>) Menghilangkan ambiguitas spektral dan bertugas sebagai filter <em>noise</em> utama untuk memisahkan Perairan murni dari anomali piksel bayangan di daratan.</p></td>
+<tr class="row-even"><td><p><strong>NDWI</strong><br>(<em>Normalized Difference Water Index</em>)</p></td>
+<td><p><em>Kalkulasi Indeks</em><br><span class="math notranslate nohighlight">\(\frac{B3 - B8A}{B3 + B8A}\)</span></p></td>
+<td><p>Menghilangkan ambiguitas spektral dan bertugas sebagai filter <em>noise</em> utama untuk memisahkan Perairan murni dari anomali piksel bayangan di daratan.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>MVI</strong><br>(<em>Mangrove Vegetation Index</em>)</p></td>
+<td><p><em>Kalkulasi Indeks</em><br><span class="math notranslate nohighlight">\(\frac{B8A - B3}{B11 - B3}\)</span></p></td>
+<td><p>Dirancang spesifik untuk meredam pantulan lumpur/air laut dan menonjolkan pigmen kanopi basah. Fitur absolut untuk mencegah model menebak pohon peneduh di atas aspal kota sebagai mangrove.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>CMRI</strong><br>(<em>Combined Mangrove Recognition Index</em>)</p></td>
+<td><p><em>Kalkulasi Indeks</em><br><span class="math notranslate nohighlight">\(NDVI - NDWI\)</span></p></td>
+<td><p>Mengawinkan NDVI dan NDWI. Menciptakan kontras ekstrem untuk objek yang sangat hijau sekaligus tergenang air, mengunci perbedaan mutlak antara mangrove dan hutan darat.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>NDMI</strong><br>(<em>Normalized Difference Moisture Index</em>)</p></td>
+<td><p><em>Kalkulasi Indeks</em><br><span class="math notranslate nohighlight">\(\frac{B8A - B11}{B8A + B11}\)</span></p></td>
+<td><p>Mengukur tingkat saturasi air murni di dalam struktur jaringan daun. Daun mangrove di area pasang surut memiliki tingkat jenuh air yang jauh lebih tinggi dibanding vegetasi darat.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>SAVI</strong><br>(<em>Soil Adjusted Vegetation Index</em>)</p></td>
+<td><p><em>Kalkulasi Indeks</em><br><span class="math notranslate nohighlight">\(\frac{B8A - B4}{B8A + B4 + 0.5} \times 1.5\)</span></p></td>
+<td><p>Memiliki faktor pengoreksi kecerahan tanah. Sangat tajam untuk mengenali Sawah fase vegetatif di mana pantulan tanah dari sela-sela padi masih terekam sensor, membedakannya dari tajuk hutan yang rapat.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>BSI</strong><br>(<em>Bare Soil Index</em>)</p></td>
+<td><p><em>Kalkulasi Indeks</em><br><span class="math notranslate nohighlight">\(\frac{(B11 + B4) - (B8A + B2)}{(B11 + B4) + (B8A + B2)}\)</span></p></td>
+<td><p>Mengisolasi pantulan tanah terbuka alami dari pantulan material buatan manusia (beton/aspal), mencegah lahan sawah pasca-panen (<em>bera</em>) keliru diklasifikasikan sebagai area Bangunan.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>NDTI</strong><br>(<em>Normalized Difference Tillage Index</em>)</p></td>
+<td><p><em>Kalkulasi Indeks</em><br><span class="math notranslate nohighlight">\(\frac{B11 - B12}{B11 + B12}\)</span></p></td>
+<td><p>Memanfaatkan selisih SWIR 1 dan SWIR 2 untuk mendeteksi residu tanaman panen dan tanah bajakan (<em>tillage</em>). Menjadi fitur pamungkas untuk mengunci kelas Sawah di segala fase tanam.</p></td>
 </tr>
 </tbody>
 </table>
@@ -732,7 +813,7 @@ Untuk menghindari limitasi memori (<em>memory limit</em>) dan memisahkan kebutuh
             </style>
             </div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Struktur Dataset:
 Total baris data : 15014
-Total kolom      : 10 (1 label &#39;Class&#39;, 1 &#39;poly_id&#39;, 8 fitur spektral &amp; indeks)
+Total kolom      : 16 (1 label &#39;Class&#39;, 1 &#39;poly_id&#39;, 14 fitur spektral &amp; indeks)
 
 Distribusi Kelas (Jumlah Piksel):
 - Hutan          : 4277 piksel
@@ -779,6 +860,12 @@ Samples Data Teratas:
       <th>Band_12</th>
       <th>NDVI</th>
       <th>NDWI</th>
+      <th>MVI</th>
+      <th>CMRI</th>
+      <th>NDMI</th>
+      <th>SAVI</th>
+      <th>BSI</th>
+      <th>NDTI</th>
     </tr>
   </thead>
   <tbody>
@@ -786,66 +873,96 @@ Samples Data Teratas:
       <th>0</th>
       <td>Hutan Mangrove</td>
       <td>1</td>
-      <td>449.000000</td>
-      <td>731.000000</td>
-      <td>496.000000</td>
-      <td>2526.00</td>
-      <td>737.500000</td>
-      <td>274.5</td>
-      <td>0.671741</td>
-      <td>-0.551121</td>
+      <td>387.714286</td>
+      <td>674.000000</td>
+      <td>369.666667</td>
+      <td>3313.500000</td>
+      <td>1305.750000</td>
+      <td>494.500000</td>
+      <td>0.799267</td>
+      <td>-0.661944</td>
+      <td>4.178077</td>
+      <td>1.461210</td>
+      <td>0.434648</td>
+      <td>1.198738</td>
+      <td>-0.376778</td>
+      <td>0.450632</td>
     </tr>
     <tr>
       <th>1</th>
       <td>Hutan Mangrove</td>
       <td>1</td>
-      <td>344.000000</td>
-      <td>649.333333</td>
-      <td>329.000000</td>
-      <td>4087.20</td>
-      <td>1285.333333</td>
-      <td>446.5</td>
-      <td>0.851003</td>
-      <td>-0.725819</td>
+      <td>299.000000</td>
+      <td>575.000000</td>
+      <td>307.000000</td>
+      <td>3074.000000</td>
+      <td>1271.000000</td>
+      <td>508.000000</td>
+      <td>0.818397</td>
+      <td>-0.684845</td>
+      <td>3.590517</td>
+      <td>1.503242</td>
+      <td>0.414960</td>
+      <td>1.227414</td>
+      <td>-0.362553</td>
+      <td>0.428893</td>
     </tr>
     <tr>
       <th>2</th>
       <td>Hutan Mangrove</td>
       <td>1</td>
-      <td>344.333333</td>
-      <td>631.250000</td>
-      <td>327.750000</td>
-      <td>4072.75</td>
-      <td>1305.000000</td>
-      <td>456.5</td>
-      <td>0.851040</td>
-      <td>-0.731611</td>
+      <td>325.857143</td>
+      <td>599.142857</td>
+      <td>326.125000</td>
+      <td>3067.250000</td>
+      <td>1255.684211</td>
+      <td>505.000000</td>
+      <td>0.807787</td>
+      <td>-0.673170</td>
+      <td>3.759256</td>
+      <td>1.480958</td>
+      <td>0.419059</td>
+      <td>1.211502</td>
+      <td>-0.364086</td>
+      <td>0.426359</td>
     </tr>
     <tr>
       <th>3</th>
       <td>Hutan Mangrove</td>
       <td>1</td>
-      <td>346.500000</td>
-      <td>645.000000</td>
-      <td>341.500000</td>
-      <td>3981.75</td>
-      <td>1325.500000</td>
-      <td>467.0</td>
-      <td>0.842017</td>
-      <td>-0.721187</td>
+      <td>336.311111</td>
+      <td>585.230769</td>
+      <td>325.666667</td>
+      <td>3035.500000</td>
+      <td>1238.925000</td>
+      <td>501.600000</td>
+      <td>0.806218</td>
+      <td>-0.676733</td>
+      <td>3.748342</td>
+      <td>1.482951</td>
+      <td>0.420308</td>
+      <td>1.209147</td>
+      <td>-0.366100</td>
+      <td>0.423622</td>
     </tr>
     <tr>
       <th>4</th>
       <td>Hutan Mangrove</td>
       <td>1</td>
-      <td>347.500000</td>
-      <td>636.000000</td>
-      <td>328.666667</td>
-      <td>3913.00</td>
-      <td>1314.500000</td>
-      <td>467.5</td>
-      <td>0.845029</td>
-      <td>-0.720378</td>
+      <td>344.500000</td>
+      <td>602.250000</td>
+      <td>327.125000</td>
+      <td>3023.833333</td>
+      <td>1227.428571</td>
+      <td>492.222222</td>
+      <td>0.804757</td>
+      <td>-0.667823</td>
+      <td>3.873427</td>
+      <td>1.472581</td>
+      <td>0.422558</td>
+      <td>1.206956</td>
+      <td>-0.368438</td>
+      <td>0.427532</td>
     </tr>
   </tbody>
 </table>
@@ -855,8 +972,8 @@ Samples Data Teratas:
 </section>
 <section id="temuan-kritis-data-issues">
 <h3>Temuan Kritis (Data Issues)<a class="headerlink" href="#temuan-kritis-data-issues" title="Link to this heading">#</a></h3>
-<p>Berdasarkan hasil ekstraksi data terbaru, perbaikan pada sampel <em>Region of Interest</em> (ROI) dan penerapan filter <em>noise</em> NDWI telah sukses mengatasi masalah ketimpangan kelas yang ekstrem. Dataset kini sangat representatif dengan total 15.014 piksel valid yang tersebar pada 244 area poligon unik (rata-rata ~50 poligon per kelas). Kelas Perairan yang umumnya mendominasi kini berada di angka 2.232 piksel, sementara representasi Hutan Mangrove berhasil ditingkatkan menjadi 3.444 piksel.</p>
-<p>Meski distribusi kelas sudah sangat sehat, tantangan utama pada dataset penginderaan jauh adalah adanya autokorelasi spasial (<em>Spatial Autocorrelation</em>), yakni kondisi di mana piksel-piksel yang letaknya bersebelahan di dalam satu poligon cenderung memiliki nilai spektral yang kembar atau sangat mirip. Jika data dibagi secara acak per-piksel (<em>random pixel split</em>), model akan mengalami fenomena <strong>Spatial Data Leakage</strong> (kebocoran data). Model akan terlihat jenius dengan akurasi semu (&gt;97%) karena ia hanya diuji menggunakan piksel tetangga yang sudah ia hafal, bukan area yang benar-benar baru.</p>
+<p>Berdasarkan hasil ekstraksi data terbaru, perbaikan pada sampel <em>Region of Interest</em> (ROI) dan penerapan filter <em>noise</em> NDWI telah sukses mengatasi masalah ketimpangan kelas yang ekstrem. Dataset kini sangat representatif dengan total 15.014 piksel valid yang memuat 14 fitur analitik penuh, tersebar pada 244 area poligon unik (rata-rata ~50 poligon per kelas). Kelas Perairan yang umumnya mendominasi kini berada di angka 2.232 piksel, sementara representasi Hutan Mangrove berhasil ditingkatkan menjadi 3.444 piksel.</p>
+<p>Meski distribusi kelas sudah sangat sehat dan variasi fitur kini semakin kaya, tantangan utama pada dataset penginderaan jauh adalah adanya autokorelasi spasial (<em>Spatial Autocorrelation</em>), yakni kondisi di mana piksel-piksel yang letaknya bersebelahan di dalam satu poligon cenderung memiliki nilai spektral yang kembar atau sangat mirip. Jika data dibagi secara acak per-piksel (<em>random pixel split</em>), model akan mengalami fenomena <strong>Spatial Data Leakage</strong> (kebocoran data). Model akan terlihat jenius dengan akurasi semu (&gt;97%) karena ia hanya diuji menggunakan piksel tetangga yang sudah ia hafal, bukan area yang benar-benar baru.</p>
 <p>Untuk mencegah kebocoran spasial tersebut, tahap <em>Data Preparation</em> tidak menggunakan pembagian data acak standar, melainkan menerapkan <strong>Spatial Group Split</strong> menggunakan teknik <em>Stratified Group K-Fold</em> berbasis ID Poligon (<code class="docutils literal notranslate"><span class="pre">poly_id</span></code>). Pemisahan data latih dan data uji dipotong secara mutlak berdasarkan area poligon (tidak ada piksel dari poligon yang sama yang bocor ke dua tempat sekaligus).</p>
 <p>Selanjutnya, teknik <strong>Undersampling Murni</strong> HANYA akan diaplikasikan pada ruang data latih (<em>training set</em>) agar model belajar secara 100% adil dari setiap kelas. Sementara itu, data uji (<em>testing set</em>) dibiarkan natural tanpa penyetaraan untuk menguji ketangguhan model di kondisi lapangan yang sesungguhnya.</p>
 </section>
@@ -914,6 +1031,12 @@ Band_11    0
 Band_12    0
 NDVI       0
 NDWI       0
+MVI        0
+CMRI       0
+NDMI       0
+SAVI       0
+BSI        0
+NDTI       0
 dtype: int64
 
 Total nilai kosong: 0
@@ -1061,13 +1184,13 @@ Name: count, dtype: int64
 <section id="modeling">
 <h2>Modeling<a class="headerlink" href="#modeling" title="Link to this heading">#</a></h2>
 <p>Tahap ini merupakan inti dari seluruh proses pengembangan, di mana algoritma <em>Machine Learning</em> dilatih menggunakan data spektral yang telah disiapkan agar mampu mengenali karakteristik unik permukaan bumi dan melakukan klasifikasi tutupan lahan secara otomatis.</p>
-<p>Algoritma utama yang digunakan dalam penelitian ini adalah <strong>Random Forest Classifier</strong>, sebuah metode <em>ensemble learning</em> yang sangat tangguh dalam menangani data geospasial karena mampu memodelkan hubungan non-linear yang kompleks antar-band spektral tanpa mudah mengalami <em>overfitting</em>.</p>
-<p>Model dilatih menggunakan 8 fitur independen (6 band spektral mentah dan 2 indeks kalkulasi, yakni NDVI dan NDWI) pada dataset latih yang telah 100% diseimbangkan (tepat 1.786 piksel per kelas). Karena distribusi kelas kini sudah merata secara fisik menggunakan data observasi satelit murni tanpa kloning sintetis (SMOTE), algoritma tidak lagi memerlukan parameter pembobotan kelas paksa (<em>algorithmic class weighting</em>). Konfigurasi parameter seperti kedalaman pohon (<em>max_depth</em>) disesuaikan secara proporsional agar model mampu mengekstrak pola batas yang rumit, seperti perbedaan serapan SWIR pada Hutan Mangrove dan Hutan Biasa.</p>
+<p>Algoritma utama yang digunakan dalam penelitian ini adalah <strong>Random Forest Classifier</strong>, sebuah metode <em>ensemble learning</em> yang sangat tangguh dalam menangani data geospasial karena mampu memodelkan hubungan non-linear yang kompleks antar-fitur spektral tanpa mudah mengalami <em>overfitting</em>.</p>
+<p>Model dilatih menggunakan <strong>14 fitur independen</strong> (6 band spektral mentah dan 8 indeks kalkulasi, yakni NDVI, NDWI, MVI, CMRI, NDMI, SAVI, BSI, dan NDTI) pada dataset latih yang telah 100% diseimbangkan (tepat 1.786 piksel per kelas). Karena distribusi kelas kini sudah merata secara fisik menggunakan data observasi satelit murni tanpa kloning sintetis (SMOTE), algoritma tidak lagi memerlukan parameter pembobotan kelas paksa (<em>algorithmic class weighting</em>). Konfigurasi parameter seperti kedalaman pohon (<em>max_depth</em>) disesuaikan secara proporsional agar model mampu mengekstrak pola batas yang rumit, seperti isolasi presisi Hutan Mangrove menggunakan MVI dan NDMI, serta identifikasi fase tanam Sawah secara akurat menggunakan NDTI dan SAVI.</p>
 <section id="konsep-alur-kerja-pemodelan">
 <h3>Konsep Alur Kerja Pemodelan<a class="headerlink" href="#konsep-alur-kerja-pemodelan" title="Link to this heading">#</a></h3>
 <p>Proses pemodelan dibagi menjadi dua fase utama untuk memastikan model yang dihasilkan tidak hanya sekadar menghafal data latihan, melainkan juga andal saat memprediksi area baru:</p>
 <ul class="simple">
-<li><p><strong>Fase Pelatihan (Training):</strong> Algoritma <em>Random Forest Classifier</em> dilatih secara eksklusif menggunakan data latih hasil <em>undersampling</em> murni. Karena dataset pelatihan sudah 100% seimbang secara jumlah (masing-masing 1.786 piksel per kelas), algoritma dibiarkan belajar secara natural tanpa perlu intervensi pembobotan kelas paksa. Pada tahap ini, model memetakan pola aturan (<em>decision rules</em>) berdasarkan 8 fitur kunci (Band 2, Band 3, Band 4, Band 8A, Band 11, Band 12, NDVI, dan NDWI) untuk mengenali setiap kelas lahan.</p></li>
+<li><p><strong>Fase Pelatihan (Training):</strong> Algoritma <em>Random Forest Classifier</em> dilatih secara eksklusif menggunakan data latih hasil <em>undersampling</em> murni. Karena dataset pelatihan sudah 100% seimbang secara jumlah (masing-masing 1.786 piksel per kelas), algoritma dibiarkan belajar secara natural tanpa perlu intervensi pembobotan kelas paksa. Pada tahap ini, model memetakan pola aturan (<em>decision rules</em>) berdasarkan <strong>14 fitur analitik</strong> (6 band spektral mentah dan 8 indeks komputasi, yakni NDVI, NDWI, MVI, CMRI, NDMI, SAVI, BSI, dan NDTI) untuk mengenali setiap kelas lahan.</p></li>
 <li><p><strong>Fase Pengujian (Testing):</strong> Model yang telah selesai dibangun kemudian diuji kemampuannya menggunakan sisa 20% data uji. Data uji ini sangat krusial karena ia tetap dibiarkan dalam kondisi tidak seimbang (<em>imbalanced</em>) sesuai dengan distribusi alam aslinya, dan disembunyikan sepenuhnya selama masa pelatihan. Langkah ini bertujuan untuk mengukur performa objektif dan kejujuran model saat dihadapkan pada skenario dunia nyata yang sebenarnya.</p></li>
 </ul>
 </section>
@@ -1084,7 +1207,7 @@ Name: count, dtype: int64
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dimensi Dataset Pemodelan:&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Jumlah sampel data latih : </span><span class="si">{</span><span class="n">X_train_bal</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Jumlah sampel data uji   : </span><span class="si">{</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Jumlah fitur             : </span><span class="si">{</span><span class="n">X_train_bal</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> (Band_2, Band_3, Band_4, Band_8A, Band_11, Band_12, NDVI, NDWI)</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Jumlah fitur             : </span><span class="si">{</span><span class="n">X_train_bal</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> (Band_2, Band_3, Band_4, Band_8A, Band_11, Band_12, NDVI, NDWI, MVI, CMRI, NDMI, SAVI, BSI, NDTI)</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Komposisi Kelas Data Latih:&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">y_train_bal</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
@@ -1120,7 +1243,7 @@ Name: count, dtype: int64
             </div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dimensi Dataset Pemodelan:
 Jumlah sampel data latih : 8,930
 Jumlah sampel data uji   : 3,449
-Jumlah fitur             : 8 (Band_2, Band_3, Band_4, Band_8A, Band_11, Band_12, NDVI, NDWI)
+Jumlah fitur             : 14 (Band_2, Band_3, Band_4, Band_8A, Band_11, Band_12, NDVI, NDWI, MVI, CMRI, NDMI, SAVI, BSI, NDTI)
 
 Komposisi Kelas Data Latih:
 Class
@@ -1160,6 +1283,12 @@ Samples Data Latih:
       <th>Band_12</th>
       <th>NDVI</th>
       <th>NDWI</th>
+      <th>MVI</th>
+      <th>CMRI</th>
+      <th>NDMI</th>
+      <th>SAVI</th>
+      <th>BSI</th>
+      <th>NDTI</th>
     </tr>
   </thead>
   <tbody>
@@ -1173,6 +1302,12 @@ Samples Data Latih:
       <td>963.0</td>
       <td>0.829598</td>
       <td>-0.722875</td>
+      <td>2.507597</td>
+      <td>1.552473</td>
+      <td>0.337351</td>
+      <td>1.244266</td>
+      <td>-0.296700</td>
+      <td>0.380109</td>
     </tr>
     <tr>
       <th>10099</th>
@@ -1184,6 +1319,12 @@ Samples Data Latih:
       <td>2541.5</td>
       <td>0.417598</td>
       <td>-0.506782</td>
+      <td>0.897712</td>
+      <td>0.924381</td>
+      <td>-0.036909</td>
+      <td>0.626322</td>
+      <td>0.092638</td>
+      <td>0.105263</td>
     </tr>
     <tr>
       <th>12275</th>
@@ -1195,6 +1336,12 @@ Samples Data Latih:
       <td>2350.0</td>
       <td>0.105294</td>
       <td>-0.179236</td>
+      <td>0.479527</td>
+      <td>0.284531</td>
+      <td>-0.141610</td>
+      <td>0.157918</td>
+      <td>0.130755</td>
+      <td>0.027921</td>
     </tr>
     <tr>
       <th>11481</th>
@@ -1206,6 +1353,12 @@ Samples Data Latih:
       <td>1987.0</td>
       <td>0.230391</td>
       <td>-0.297399</td>
+      <td>0.868650</td>
+      <td>0.527790</td>
+      <td>-0.033501</td>
+      <td>0.345536</td>
+      <td>0.073339</td>
+      <td>0.053922</td>
     </tr>
     <tr>
       <th>10510</th>
@@ -1217,6 +1370,12 @@ Samples Data Latih:
       <td>2520.6</td>
       <td>0.039224</td>
       <td>-0.055345</td>
+      <td>0.247627</td>
+      <td>0.094569</td>
+      <td>-0.137439</td>
+      <td>0.058827</td>
+      <td>0.108460</td>
+      <td>0.004178</td>
     </tr>
   </tbody>
 </table>
@@ -1225,7 +1384,7 @@ Samples Data Latih:
 </section>
 <section id="proses-pelatihan-model-training">
 <h3>Proses Pelatihan Model (Training)<a class="headerlink" href="#proses-pelatihan-model-training" title="Link to this heading">#</a></h3>
-<p>Pada tahap ini, algoritma <em>Random Forest</em> diinisialisasi untuk mempelajari pola hubungan antara 8 fitur karakteristik spektral (6 band mentah dan 2 indeks kalkulasi) dengan kelas tutupan lahan pada dataset latih. Konfigurasi model menggunakan beberapa parameter kunci dengan alasan teknis berikut:</p>
+<p>Pada tahap ini, algoritma <em>Random Forest</em> diinisialisasi untuk mempelajari pola hubungan antara <strong>14 fitur analitik</strong> (6 band mentah dan 8 indeks kalkulasi) dengan kelas tutupan lahan pada dataset latih. Konfigurasi model menggunakan beberapa parameter kunci dengan alasan teknis berikut:</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
@@ -1240,7 +1399,7 @@ Samples Data Latih:
 </tr>
 <tr class="row-odd"><td><p><strong>max_depth</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">15</span></code></p></td>
-<td><p>Membatasi kedalaman maksimal setiap pohon. Angka 15 cukup dalam untuk mengekstrak pola batas yang rumit (seperti perbedaan serapan air pada Mangrove vs Hutan Biasa), sekaligus mencegah model menghafal data (<em>overfitting</em>).</p></td>
+<td><p>Membatasi kedalaman maksimal setiap pohon. Angka 15 cukup dalam untuk mengekstrak pola batas yang rumit (seperti isolasi Mangrove menggunakan MVI atau fase tanam Sawah dengan NDTI), sekaligus mencegah model menghafal data (<em>overfitting</em>).</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>min_samples_leaf</strong></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">2</span></code></p></td>
@@ -1325,7 +1484,7 @@ Samples Data Latih:
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 <span class="n">plot_tree</span><span class="p">(</span>
     <span class="n">pohon_pertama</span><span class="p">,</span> 
-    <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Band_2&#39;</span><span class="p">,</span> <span class="s1">&#39;Band_3&#39;</span><span class="p">,</span> <span class="s1">&#39;Band_4&#39;</span><span class="p">,</span> <span class="s1">&#39;Band_8A&#39;</span><span class="p">,</span> <span class="s1">&#39;Band_11&#39;</span><span class="p">,</span> <span class="s1">&#39;Band_12&#39;</span><span class="p">,</span> <span class="s1">&#39;NDVI&#39;</span><span class="p">,</span> <span class="s1">&#39;NDWI&#39;</span><span class="p">],</span> 
+    <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Band_2&#39;</span><span class="p">,</span> <span class="s1">&#39;Band_3&#39;</span><span class="p">,</span> <span class="s1">&#39;Band_4&#39;</span><span class="p">,</span> <span class="s1">&#39;Band_8A&#39;</span><span class="p">,</span> <span class="s1">&#39;Band_11&#39;</span><span class="p">,</span> <span class="s1">&#39;Band_12&#39;</span><span class="p">,</span> <span class="s1">&#39;NDVI&#39;</span><span class="p">,</span> <span class="s1">&#39;NDWI&#39;</span><span class="p">,</span> <span class="s1">&#39;MVI&#39;</span><span class="p">,</span> <span class="s1">&#39;CMRI&#39;</span><span class="p">,</span> <span class="s1">&#39;NDMI&#39;</span><span class="p">,</span> <span class="s1">&#39;SAVI&#39;</span><span class="p">,</span> <span class="s1">&#39;BSI&#39;</span><span class="p">,</span> <span class="s1">&#39;NDTI&#39;</span><span class="p">],</span> 
     <span class="n">class_names</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">rf_model</span><span class="o">.</span><span class="n">classes_</span><span class="p">),</span> 
     <span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
     <span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span>
@@ -1360,7 +1519,7 @@ Samples Data Latih:
                     --jp-layout-color3: var(--colab-primary-surface-color, white);
                 }
             </style>
-            </div><img alt="../_images/c3fef8b5c3a29cfcdd1ff688cb6be107ce633016faa1fb7a1a4e598c5758bb8b.png" src="../_images/c3fef8b5c3a29cfcdd1ff688cb6be107ce633016faa1fb7a1a4e598c5758bb8b.png" />
+            </div><img alt="../_images/b5d91ef26e515ded42877f39c4cf4f153cc1443abb927f10319257c734e7d9e2.png" src="../_images/b5d91ef26e515ded42877f39c4cf4f153cc1443abb927f10319257c734e7d9e2.png" />
 </div>
 </div>
 </section>
@@ -1436,25 +1595,25 @@ Samples Data Latih:
             </style>
             </div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Menjalankan prediksi pada data uji (Area Poligon Baru)...
 
-Akurasi Global (Bisa bias ke Perairan): 65.18%
-Balanced Accuracy (Metrik Lebih Jujur)  : 77.36%
+Akurasi Global (Bisa bias ke Perairan): 64.48%
+Balanced Accuracy (Metrik Lebih Jujur)  : 76.87%
 Macro F1-Score (Akurasi Rata-rata)      : 68.26%
 
 Laporan Klasifikasi Detail:
                 precision    recall  f1-score   support
 
-      Bangunan       0.99      0.98      0.99       477
-         Hutan       0.59      0.87      0.71       855
-Hutan Mangrove       0.65      0.07      0.13      1137
+      Bangunan       1.00      0.98      0.99       477
+         Hutan       0.49      0.87      0.63       855
+Hutan Mangrove       0.57      0.06      0.11      1137
       Perairan       0.97      0.99      0.98       446
-         Sawah       0.45      0.95      0.61       534
+         Sawah       0.57      0.94      0.71       534
 
-      accuracy                           0.65      3449
-     macro avg       0.73      0.77      0.68      3449
-  weighted avg       0.69      0.65      0.58      3449
+      accuracy                           0.64      3449
+     macro avg       0.72      0.77      0.68      3449
+  weighted avg       0.66      0.64      0.56      3449
 </pre></div>
 </div>
-<img alt="../_images/0c9b7d1b1beb564de01be75fa3388ee980e058270980b1f7165c163c3bd83b86.png" src="../_images/0c9b7d1b1beb564de01be75fa3388ee980e058270980b1f7165c163c3bd83b86.png" />
+<img alt="../_images/30111b956f0555df91100dad52361c48c01695d820a0550031a7c11643365bae.png" src="../_images/30111b956f0555df91100dad52361c48c01695d820a0550031a7c11643365bae.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Proses selesai. Model berhasil disimpan sebagai &#39;model_rf.pkl&#39;
 </pre></div>
 </div>
@@ -1501,7 +1660,12 @@ Hutan Mangrove       0.65      0.07      0.13      1137
             <span class="s1">&#39;Sawah&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
             <span class="s1">&#39;Bangunan&#39;</span><span class="p">:</span> <span class="mi">5</span>
         <span class="p">}</span>
-        <span class="n">nama_fitur</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Band_2&#39;</span><span class="p">,</span> <span class="s1">&#39;Band_3&#39;</span><span class="p">,</span> <span class="s1">&#39;Band_4&#39;</span><span class="p">,</span> <span class="s1">&#39;Band_8A&#39;</span><span class="p">,</span> <span class="s1">&#39;Band_11&#39;</span><span class="p">,</span> <span class="s1">&#39;Band_12&#39;</span><span class="p">,</span> <span class="s1">&#39;NDVI&#39;</span><span class="p">,</span> <span class="s1">&#39;NDWI&#39;</span><span class="p">]</span>
+        
+        <span class="c1"># UPDATE: Sesuaikan nama fitur menjadi 14 (Sama persis dengan saat training)</span>
+        <span class="n">nama_fitur</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;Band_2&#39;</span><span class="p">,</span> <span class="s1">&#39;Band_3&#39;</span><span class="p">,</span> <span class="s1">&#39;Band_4&#39;</span><span class="p">,</span> <span class="s1">&#39;Band_8A&#39;</span><span class="p">,</span> <span class="s1">&#39;Band_11&#39;</span><span class="p">,</span> <span class="s1">&#39;Band_12&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;NDVI&#39;</span><span class="p">,</span> <span class="s1">&#39;NDWI&#39;</span><span class="p">,</span> <span class="s1">&#39;MVI&#39;</span><span class="p">,</span> <span class="s1">&#39;CMRI&#39;</span><span class="p">,</span> <span class="s1">&#39;NDMI&#39;</span><span class="p">,</span> <span class="s1">&#39;SAVI&#39;</span><span class="p">,</span> <span class="s1">&#39;BSI&#39;</span><span class="p">,</span> <span class="s1">&#39;NDTI&#39;</span>
+        <span class="p">]</span>
 
         <span class="c1"># Batasan jumlah baris yang diproses dalam satu waktu (agar memori tidak jebol)</span>
         <span class="n">chunk_size</span> <span class="o">=</span> <span class="mi">1000</span> 
@@ -1514,13 +1678,13 @@ Hutan Mangrove       0.65      0.07      0.13      1137
                 <span class="n">tinggi_chunk</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">chunk_size</span><span class="p">,</span> <span class="n">baris_total</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span>
                 <span class="n">window</span> <span class="o">=</span> <span class="n">Window</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">kolom_total</span><span class="p">,</span> <span class="n">tinggi_chunk</span><span class="p">)</span>
                 
-                <span class="c1"># Hanya membaca data pada blok (window) saat ini</span>
-                <span class="n">img_data</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">read</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="n">window</span><span class="o">=</span><span class="n">window</span><span class="p">)</span>
+                <span class="c1"># UPDATE: Membaca 14 band sekaligus dari TIF (Index 1 sampai 14)</span>
+                <span class="n">img_data</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">)),</span> <span class="n">window</span><span class="o">=</span><span class="n">window</span><span class="p">)</span>
                 <span class="n">n_bands</span><span class="p">,</span> <span class="n">baris</span><span class="p">,</span> <span class="n">kolom</span> <span class="o">=</span> <span class="n">img_data</span><span class="o">.</span><span class="n">shape</span>
                 
                 <span class="n">img_flatten</span> <span class="o">=</span> <span class="n">img_data</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n_bands</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">T</span> 
 
-                <span class="c1"># Masking piksel background</span>
+                <span class="c1"># Masking piksel background (mengabaikan piksel hitam/kosong di luar area Jatim)</span>
                 <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">img_flatten</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
                 
                 <span class="c1"># Siapkan kanvas kosong untuk hasil blok ini (0 = NoData)</span>
@@ -1583,7 +1747,6 @@ Hutan Mangrove       0.65      0.07      0.13      1137
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mulai mengompres peta...&quot;</span><span class="p">)</span>
 <span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;Hasil_Klasifikasi_LULC.tif&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
     <span class="n">meta</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-    
     <span class="n">meta</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">compress</span><span class="o">=</span><span class="s1">&#39;lzw&#39;</span><span class="p">)</span>
 
     <span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;Hasil_Klasifikasi_LULC_Kecil.tif&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">meta</span><span class="p">)</span> <span class="k">as</span> <span class="n">dst</span><span class="p">:</span>
@@ -1670,6 +1833,15 @@ Hutan Mangrove       0.65      0.07      0.13      1137
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Tugas_Polinomial</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="Tugas_Klasifikasi.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Business Understanding</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
