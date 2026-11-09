@@ -428,10 +428,18 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menampilkan-model">Menampilkan Model</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing">TESTING</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cetak-model-terbaik">Cetak Model Terbaik</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alasan-pemilihan-algoritma-pemodelan">Alasan Pemilihan Algoritma Pemodelan</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deployment">DEPLOYMENT</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#link-streamlit">LINK STREAMLIT</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">Evaluation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perbandingan-performa-model-pada-data-uji">Perbandingan Performa Model pada Data Uji</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identifikasi-kelemahan-model-analisis-kesalahan-error-analysis">Identifikasi Kelemahan Model &amp; Analisis Kesalahan (<em>Error Analysis</em>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arsitektur-teknis-sistem-hybrid-deployment">Arsitektur Teknis Sistem (<em>Hybrid Deployment</em>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pengujian-sistem-dengan-berbagai-variasi-suara">Pengujian Sistem dengan Berbagai Variasi Suara</a></li>
 </ul>
 </li>
 </ul>
@@ -2097,6 +2105,34 @@ Bukan Nangis (0)       0.92      0.69      0.79        49
 </div>
 </div>
 </section>
+<section id="alasan-pemilihan-algoritma-pemodelan">
+<h3>Alasan Pemilihan Algoritma Pemodelan<a class="headerlink" href="#alasan-pemilihan-algoritma-pemodelan" title="Link to this heading">#</a></h3>
+<p>Pemilihan kandidat algoritma dalam penelitian ini didasarkan pada karakteristik struktural dataset hasil ekstraksi fitur (<code class="docutils literal notranslate"><span class="pre">X_train_scaled</span></code>), yang memiliki dimensi fitur tinggi (<strong>182 fitur akustik kontinu</strong>) dengan ukuran sampel pelatihan berskala menengah (<strong>494 sampel</strong>). Pada ruang berdimensi tinggi (<em>high-dimensional feature space</em>) dengan rasio fitur terhadap sampel yang cukup rapat, model klasifikasi rentan mengalami masalah kutukan dimensi (<em>curse of dimensionality</em>) serta <em>overfitting</em> apabila tidak memiliki mekanisme regularisasi yang kuat. Selain itu, karakteristik sinyal akustik tangisan bayi dan kebisingan lingkungan memiliki hubungan non-linear yang kompleks antar spektrum frekuensinya.</p>
+<p>Berdasarkan pertimbangan teknis tersebut, penelitian ini memilih dan membandingkan paradigma pemisahan hiperbidang (<em>kernel-based hyperplane</em>) dan ansambel pohon keputusan (<em>tree-based ensemble</em>) dengan rincian alasan sebagai berikut:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Algoritma Klasifikasi</p></th>
+<th class="head text-left"><p>Paradigma Matematis</p></th>
+<th class="head text-left"><p>Alasan Pemilihan pada Kasus Klasifikasi 182 Fitur Audio</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>1. Support Vector Machine (SVM - RBF Kernel)</strong></p></td>
+<td class="text-left"><p>Pemisahan ruang berdimensi tinggi berbasis margin maksimum (<em>Maximum Margin Hyperplane</em>).</p></td>
+<td class="text-left"><p>• <strong>Tangguh pada Dimensi Tinggi:</strong> SVM secara matematis sangat efektif menangani data dengan jumlah fitur yang banyak (182 kolom) meskipun jumlah sampel latih terbatas (494 baris), karena batas keputusan (<em>decision boundary</em>) hanya ditentukan oleh titik-titik kritis (<em>support vectors</em>).<br>• <strong>Pemetaan Non-Linear via Kernel RBF:</strong> Penggunaan <em>Radial Basis Function</em> (<code class="docutils literal notranslate"><span class="pre">rbf</span></code>) mampu memproyeksikan interaksi kompleks antara fitur <em>MFCC</em>, <em>Spectral Contrast</em>, dan <em>Centroid</em> ke ruang dimensi yang lebih tinggi sehingga kelas <code class="docutils literal notranslate"><span class="pre">bayi_nangis</span></code> dan <code class="docutils literal notranslate"><span class="pre">bukan_nangis</span></code> dapat dipisahkan secara tegas.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>2. Random Forest</strong></p></td>
+<td class="text-left"><p>Ansambel paralel pohon keputusan berbasis <em>Bootstrap Aggregating</em> (<em>Bagging</em>).</p></td>
+<td class="text-left"><p>• <strong>Reduksi Variansi &amp; Pencegahan <em>Overfitting</em>:</strong> Sinyal audio lingkungan (<em>ESC-50</em>) mengandung banyak derau (<em>noise</em>) dan pencilan akustik. Dengan menggabungkan suara mayoritas (<em>majority voting</em>) dari ratusan pohon keputusan yang dilatih secara independen, Random Forest mampu menjaga stabilitas prediksi.<br>• <strong>Seleksi Fitur Acak (<code class="docutils literal notranslate"><span class="pre">max_features='sqrt'</span></code>):</strong> Pada setiap percabangan simpul, algoritma hanya mengevaluasi <span class="math notranslate nohighlight">\(\sqrt{182} \approx 13\)</span> fitur secara acak, sehingga mencegah dominasi fitur tertentu yang saling berkorelasi tinggi (<em>multikolinearitas</em> antar koefisien MFCC).</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>3. XGBoost (<em>Extreme Gradient Boosting</em>)</strong></p></td>
+<td class="text-left"><p>Ansambel sekuensial pohon keputusan berbasis koreksi residu gradien (<em>Boosting</em>).</p></td>
+<td class="text-left"><p>• <strong>Fokus pada Sampel Sulit (<em>Hard Examples</em>):</strong> Berbeda dengan <em>Bagging</em>, XGBoost membangun pohon keputusan secara bertahap di mana setiap pohon baru berfokus mengoreksi kesalahan klasifikasi (<em>residual error</em>) dari pohon sebelumnya. Hal ini sangat berguna untuk membedakan suara lingkungan berfrekuensi mirip tangisan bayi (seperti suara kucing atau tawa manusia).<br>• <strong>Regularisasi Internal (<span class="math notranslate nohighlight">\(L_1\)</span> &amp; <span class="math notranslate nohighlight">\(L_2\)</span>):</strong> Memiliki penalti kompleksitas pohon bawaan dan pengaturan kedalaman dangkal (<code class="docutils literal notranslate"><span class="pre">max_depth</span></code>) yang menahan model agar tidak menghafal <em>noise</em> pada data latih.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
 </section>
 <section id="deployment">
 <h2>DEPLOYMENT<a class="headerlink" href="#deployment" title="Link to this heading">#</a></h2>
@@ -2104,6 +2140,132 @@ Bukan Nangis (0)       0.92      0.69      0.79        49
 <section id="link-streamlit">
 <h3>LINK STREAMLIT<a class="headerlink" href="#link-streamlit" title="Link to this heading">#</a></h3>
 <p>LINK : <a class="reference external" href="https://detectioncry-khetb4mndzhhcaggzwbglf.streamlit.app/">https://detectioncry-khetb4mndzhhcaggzwbglf.streamlit.app/</a></p>
+</section>
+</section>
+<section id="evaluation">
+<h2>Evaluation<a class="headerlink" href="#evaluation" title="Link to this heading">#</a></h2>
+<p>Tahap <strong>Evaluation</strong> difokuskan untuk mengukur kemampuan generalisasi ketiga model terbaik terhadap <strong>73 sampel data uji murni</strong> (<code class="docutils literal notranslate"><span class="pre">X_test_scaled</span></code>), yang terdiri dari:</p>
+<ul class="simple">
+<li><p><strong>49 sampel</strong> kelas <em>Bukan Nangis</em> (0)</p></li>
+<li><p><strong>24 sampel</strong> kelas <em>Bayi Nangis</em> (1)</p></li>
+</ul>
+<p>Evaluasi dilakukan secara kuantitatif menggunakan metrik:</p>
+<ul class="simple">
+<li><p>Accuracy</p></li>
+<li><p>Precision</p></li>
+<li><p>Recall</p></li>
+<li><p>F1-Score</p></li>
+<li><p>Analisis <em>Confusion Matrix</em></p></li>
+</ul>
+<p>Tujuan utama dari evaluasi ini adalah untuk mengidentifikasi sejauh mana model mampu meminimalkan kesalahan prediksi, khususnya kasus lolos deteksi (<em>False Negative</em>).</p>
+<section id="perbandingan-performa-model-pada-data-uji">
+<h3>Perbandingan Performa Model pada Data Uji<a class="headerlink" href="#perbandingan-performa-model-pada-data-uji" title="Link to this heading">#</a></h3>
+<p>Berdasarkan hasil pengujian terhadap data uji murni tanpa augmentasi, rekapitulasi performa ketiga algoritma dirangkum dalam tabel berikut:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Peringkat</p></th>
+<th class="head text-left"><p>Model Klasifikasi</p></th>
+<th class="head text-center"><p>Accuracy (%)</p></th>
+<th class="head text-center"><p>Precision (%)</p></th>
+<th class="head text-center"><p>Recall (%)</p></th>
+<th class="head text-center"><p>F1-Score (%)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p><strong>1</strong></p></td>
+<td class="text-left"><p><strong>SVM (RBF)</strong></p></td>
+<td class="text-center"><p><strong>80,82%</strong></p></td>
+<td class="text-center"><p><strong>65,62%</strong></p></td>
+<td class="text-center"><p>87,50%</p></td>
+<td class="text-center"><p><strong>75,00%</strong></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>2</p></td>
+<td class="text-left"><p>XGBoost</p></td>
+<td class="text-center"><p>75,34%</p></td>
+<td class="text-center"><p>58,33%</p></td>
+<td class="text-center"><p>87,50%</p></td>
+<td class="text-center"><p>70,00%</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>3</p></td>
+<td class="text-left"><p>Random Forest</p></td>
+<td class="text-center"><p>73,97%</p></td>
+<td class="text-center"><p>56,41%</p></td>
+<td class="text-center"><p><strong>91,67%</strong></p></td>
+<td class="text-center"><p>69,84%</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Berdasarkan tabel di atas, <strong>SVM dengan Kernel RBF</strong> ditetapkan sebagai <strong>model terbaik</strong> karena:</p>
+<ul class="simple">
+<li><p><strong>Unggul pada mayoritas metrik utama</strong>: Mencatat nilai tertinggi pada <em>Accuracy</em> (80,82%), <em>Precision</em> (65,62%), dan <em>F1-Score</em> (75,00%).</p></li>
+<li><p><strong>Sensitivitas tinggi</strong>: Mempertahankan tingkat <em>Recall</em> sebesar <strong>87,50%</strong> (berhasil mendeteksi 21 dari 24 sampel tangisan bayi yang sebenarnya).</p></li>
+</ul>
+</section>
+<section id="identifikasi-kelemahan-model-analisis-kesalahan-error-analysis">
+<h3>Identifikasi Kelemahan Model &amp; Analisis Kesalahan (<em>Error Analysis</em>)<a class="headerlink" href="#identifikasi-kelemahan-model-analisis-kesalahan-error-analysis" title="Link to this heading">#</a></h3>
+<p>Meskipun <strong>SVM (RBF)</strong> mencapai tingkat akurasi yang memuaskan (mendekati standar <em>benchmark</em> klasifikasi suara lingkungan ESC-50 sebesar <strong>81,30%</strong>), hasil evaluasi <em>Confusion Matrix</em> mengindikasikan beberapa kelemahan spesifik berikut:</p>
+<ul class="simple">
+<li><p><strong>Tingkat <em>Precision</em> Belum Optimal (65,62%)</strong>:
+Terdapat <strong>11 sampel alarm palsu (<em>False Positive</em>)</strong>. Suara lingkungan non-tangisan (seperti kucing mengeong, orang tertawa bernada tinggi, batuk, bersin, atau derau rumah tangga) keliru diprediksi sebagai tangisan bayi.</p></li>
+<li><p><strong>Karakteristik Akustik yang <em>Overlapping</em></strong>:
+Dipicu oleh kemiripan karakteristik spektral (<em>pitch</em> dan <em>frequency envelope</em>) antara lengkingan suara hewan peliharaan atau vokal manusia dewasa tertentu dengan frekuensi dasar tangisan bayi pada rentang <strong>300 Hz – 3000 Hz</strong>.</p></li>
+<li><p><strong>Kompromi Sensitivitas (<em>Recall</em> vs <em>Precision</em>)</strong>:
+Model sengaja dirancang lebih “waspada” terhadap risiko bayi menangis sehingga ** <em>Recall</em> mencapai 87,5%** (hanya meloloskan 3 sampel tangisan atau <em>False Negative</em>). Konsekuensinya, jumlah alarm palsu pada lingkungan bising meningkat.</p></li>
+</ul>
+</section>
+<section id="arsitektur-teknis-sistem-hybrid-deployment">
+<h3>Arsitektur Teknis Sistem (<em>Hybrid Deployment</em>)<a class="headerlink" href="#arsitektur-teknis-sistem-hybrid-deployment" title="Link to this heading">#</a></h3>
+<p>Untuk menjamin stabilitas performa komputasi pemrosesan audio sekaligus keamanan pengiriman pesan, sistem dibangun menggunakan <strong>Arsitektur Hybrid</strong>:</p>
+<ul class="simple">
+<li><p><strong>Antarmuka Pengguna &amp; Mesin ML (<em>Streamlit Community Cloud</em>)</strong>:
+Berjalan di peladen <em>cloud</em> publik (<code class="docutils literal notranslate"><span class="pre">https://...streamlit.app</span></code>) untuk menangkap <em>streaming</em> mikrofon pengguna (<em>custom component</em> <code class="docutils literal notranslate"><span class="pre">mic_stream</span></code> / <code class="docutils literal notranslate"><span class="pre">st.audio_input</span></code>), mengekstraksi <strong>182 fitur akustik</strong> via pustaka <code class="docutils literal notranslate"><span class="pre">librosa</span></code>, dan menjalankan prediksi model SVM secara <em>real-time</em> setiap rentang waktu 10 detik.</p></li>
+<li><p><strong>Gateway Notifikasi WhatsApp (Panel Bot Node.js / Baileys)</strong>:
+Berjalan di dalam kontainer peladen privat pengguna (<code class="docutils literal notranslate"><span class="pre">https://abssbot.rbhost.my.id</span></code> melalui Port 1986). Ketika model SVM mendeteksi tangisan bayi (<code class="docutils literal notranslate"><span class="pre">prediksi</span> <span class="pre">==</span> <span class="pre">1</span></code>), aplikasi Streamlit menembakkan permintaan HTTP POST (<code class="docutils literal notranslate"><span class="pre">requests.post</span></code>) ke <em>endpoint</em> <code class="docutils literal notranslate"><span class="pre">/kirim-notif</span></code> di panel bot, yang kemudian diteruskan secara instan ke nomor WhatsApp orang tua, panel bot di sewa melalui web <a class="reference external" href="http://autoresbot.com">autoresbot.com</a>.</p></li>
+<li><p><strong>Fitur Keamanan Anti-Spam (<em>Cooldown</em> 30 Detik)</strong>:
+Sistem dilengkapi mekanisme penahanan otomatis selama <strong>30 detik</strong> pada setiap pengiriman notifikasi WhatsApp guna mencegah pemblokiran akun (<em>banning</em>) akibat lonjakan pesan beruntun (<em>spam</em>) di peladen WhatsApp.</p></li>
+</ul>
+</section>
+<section id="pengujian-sistem-dengan-berbagai-variasi-suara">
+<h3>Pengujian Sistem dengan Berbagai Variasi Suara<a class="headerlink" href="#pengujian-sistem-dengan-berbagai-variasi-suara" title="Link to this heading">#</a></h3>
+<p>Pengujian fungsionalitas aplikasi dan ketepatan respons sistem telah diuji menggunakan berbagai skenario jenis suara (input mikrofon langsung dan berkas audio uji):</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>No</p></th>
+<th class="head text-left"><p>Jenis Skenario Suara Pengujian</p></th>
+<th class="head text-left"><p>Respon Klasifikasi Model (SVM)</p></th>
+<th class="head text-left"><p>Status &amp; Tindakan Sistem WhatsApp</p></th>
+<th class="head text-left"><p>Keterangan / Evaluasi Lapangan</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p><strong>1</strong></p></td>
+<td class="text-left"><p><strong>Suara Tangisan Bayi Asli</strong></p></td>
+<td class="text-left"><p>Bayi Nangis (Label 1, <em>Confidence</em> &gt; 75%)</p></td>
+<td class="text-left"><p><strong>Terkirim ✓</strong><br>(Pesan darurat langsung masuk ke nomor WA tujuan).</p></td>
+<td class="text-left"><p>Sistem bereaksi cepat dan akurat dalam mendeteksi pola lengkingan suara bayi.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p><strong>2</strong></p></td>
+<td class="text-left"><p><strong>Suara Lingkungan Senyap / Hening</strong></p></td>
+<td class="text-left"><p>Bukan Nangis (Label 0)</p></td>
+<td class="text-left"><p><strong>Diabaikan</strong><br>(Tidak ada pesan terkirim).</p></td>
+<td class="text-left"><p>Filter energi minimum (<code class="docutils literal notranslate"><span class="pre">SILENCE_RMS</span></code>) berhasil mencegah analisis pada area tanpa suara.</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p><strong>3</strong></p></td>
+<td class="text-left"><p><strong>Suara Kucing Mengeong / Tawa Tinggi</strong></p></td>
+<td class="text-left"><p>Bukan Nangis atau sesekali <em>False Positive</em> (Bayi Nangis)</p></td>
+<td class="text-left"><p><strong>Terkirim hanya jika</strong> <em>confidence</em> melampaui ambang batas model.</p></td>
+<td class="text-left"><p>Membuktikan adanya tantangan <em>overlapping</em> frekuensi suara tinggi seperti dianalisis pada bab Evaluasi.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p><strong>4</strong></p></td>
+<td class="text-left"><p><strong>Uji Tombol Manual (📲 Test WA)</strong></p></td>
+<td class="text-left"><p>Simulasi Test Koneksi (<em>Confidence</em> 99,99%)</p></td>
+<td class="text-left"><p><strong>Terkirim ✓</strong><br>(Pesan uji coba instan dengan hitung mundur <em>cooldown</em> 30 detik).</p></td>
+<td class="text-left"><p>Memastikan jalur komunikasi HTTP POST antara Streamlit dan Bot Panel berjalan lancar tanpa hambatan.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 </section>
 </section>
@@ -2177,10 +2339,18 @@ Bukan Nangis (0)       0.92      0.69      0.79        49
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menampilkan-model">Menampilkan Model</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing">TESTING</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cetak-model-terbaik">Cetak Model Terbaik</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alasan-pemilihan-algoritma-pemodelan">Alasan Pemilihan Algoritma Pemodelan</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deployment">DEPLOYMENT</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#link-streamlit">LINK STREAMLIT</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">Evaluation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perbandingan-performa-model-pada-data-uji">Perbandingan Performa Model pada Data Uji</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#identifikasi-kelemahan-model-analisis-kesalahan-error-analysis">Identifikasi Kelemahan Model &amp; Analisis Kesalahan (<em>Error Analysis</em>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arsitektur-teknis-sistem-hybrid-deployment">Arsitektur Teknis Sistem (<em>Hybrid Deployment</em>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pengujian-sistem-dengan-berbagai-variasi-suara">Pengujian Sistem dengan Berbagai Variasi Suara</a></li>
 </ul>
 </li>
 </ul>
